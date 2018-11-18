@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    implementation libraries.rxJava
+    implementation libraries.dagger
+
+    implementation libraries.timetablespbu
+    implementation libraries.jodatime
+}
