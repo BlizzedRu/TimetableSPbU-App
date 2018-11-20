@@ -3,4 +3,7 @@
     <string name="common_main_navigation_search_title">Поиск</string>
     <string name="common_main_navigation_schedule_title">Расписание</string>
     <string name="common_main_navigation_bookmarks_title">Закладки</string>
+
+    <string name="screen_search_educators_tab_title">Преподаватели</string>
+    <string name="screen_search_classrooms_tab_title">Аудитории</string>
 </resources>

@@ -5,5 +5,5 @@ import ru.blizzed.timetablespbu.ui.core.NoState
 import ru.blizzed.timetablespbu.ui.core.Screen
 import ru.blizzed.timetablespbu.ui.core.ScreenParams
 
-@ScreenParams(R.layout.fragment_bookmarks)
+@ScreenParams(R.layout.screen_bookmarks)
 class BookmarksScreen(screenContext: Screen.ScreenContext) : Screen<NoState>(screenContext)
