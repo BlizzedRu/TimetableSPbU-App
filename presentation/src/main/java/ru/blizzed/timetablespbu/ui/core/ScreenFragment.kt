@@ -67,11 +67,10 @@ class ScreenFragment<State : Parcelable> : Fragment() {
 
     private fun createScreen(screenContext: ScreenContext): Screen<State>? =
         screenClass.primaryConstructor?.run {
-            if (parameters.size == 1) {
-                call(screenContext)
-            } else {
-                throw ScreenCreationException("Screen class ${screenClass.simpleName} must have only one single constructor with ScreenContext param.")
-            }
+            if (parameters.size != 1) throw ScreenCreationException(
+                "Screen class ${screenClass.simpleName} must have only one single constructor with ScreenContext param."
+            )
+            call(screenContext)
         }
 
     override fun onStart() {

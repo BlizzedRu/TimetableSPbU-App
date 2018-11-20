@@ -11,10 +11,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import ru.blizzed.timetablespbu.viewmodel.ViewModelsProvider
 import timber.log.Timber
-import kotlin.reflect.KMutableProperty
-import kotlin.reflect.full.declaredMemberProperties
-import kotlin.reflect.jvm.isAccessible
-import kotlin.reflect.jvm.javaField
+import kotlin.reflect.KClass
 
 abstract class Screen<State : Parcelable>(
     screenContext: ScreenContext
@@ -84,19 +81,19 @@ abstract class Screen<State : Parcelable>(
 
     fun startActivityForResult(intent: Intent, requestCode: Int) = fragment.startActivityForResult(intent, requestCode)
 
+    fun <State : Parcelable> openScreen(
+        screenClass: KClass<out Screen<out State>>,
+        state: Parcelable = NoState
+    ) = activity.openScreen(screenClass, state)
+
     private fun injectViewModels() {
-        javaClass.kotlin.declaredMemberProperties
-            // There is an issue with Kotlin's findAnnotation() so use java
-            .map { field -> field to field.javaField?.declaredAnnotations?.firstOrNull { it is InjectViewModel } as InjectViewModel? }
-            .filter { it -> it.second != null }
-            .onEach {
-                if (it.first !is KMutableProperty<*>) throw ScreenCreationException("ViewModel property ${it.first.name} must be mutable.")
-            }
-            .map { it.first as KMutableProperty<*> to it.second!! }
+        javaClass.declaredFields
+            .filter { it.isAnnotationPresent(InjectViewModel::class.java) }
+            .map { it to it.getAnnotation(InjectViewModel::class.java) }
             .forEach {
                 with(it.first) {
                     isAccessible = true
-                    setter.call(
+                    set(
                         this@Screen,
                         ViewModelsProvider.of(getLifecycleOwnerByType(it.second.lifecycleOwner)).get(it.second.viewModelClass.java)
                     )
