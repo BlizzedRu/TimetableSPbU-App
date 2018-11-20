@@ -1,22 +1,24 @@
 package ru.blizzed.timetablespbu.ui
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.SparseArray
 import android.view.Menu
 import android.view.MenuItem
-import androidx.annotation.IdRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.util.contains
-import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.blizzed.timetablespbu.R
-import ru.blizzed.timetablespbu.ui.common.BaseFragment
-import ru.blizzed.timetablespbu.ui.screens.actions.SearchFragment
-import ru.blizzed.timetablespbu.ui.screens.bookmarks.BookmarksFragment
-import ru.blizzed.timetablespbu.ui.screens.schedule.ScheduleFragment
+import ru.blizzed.timetablespbu.ui.core.NoState
+import ru.blizzed.timetablespbu.ui.core.Screen
+import ru.blizzed.timetablespbu.ui.core.ScreenActivity
+import ru.blizzed.timetablespbu.ui.screens.bookmarks.BookmarksScreen
+import ru.blizzed.timetablespbu.ui.screens.schedule.ScheduleScreen
+import ru.blizzed.timetablespbu.ui.screens.search.SearchScreen
+import ru.blizzed.timetablespbu.ui.screens.search.SearchScreenState
+import kotlin.reflect.KClass
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ScreenActivity() {
 
     companion object {
         private const val DEFAULT_NAVIGATION_ITEM_ID = R.id.main_navigation_schedule
@@ -32,35 +34,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeBottomNavigation() {
-        val pages = SparseArray<BaseFragment>().apply {
-            put(R.id.main_navigation_search, SearchFragment())
-            put(R.id.main_navigation_schedule, ScheduleFragment())
-            put(R.id.main_navigation_bookmarks, BookmarksFragment())
+        val screens = SparseArray<Pair<KClass<out Screen<out Parcelable>>, Parcelable>>().apply {
+            put(R.id.main_navigation_search, SearchScreen::class to SearchScreenState())
+            put(R.id.main_navigation_schedule, ScheduleScreen::class to NoState)
+            put(R.id.main_navigation_bookmarks, BookmarksScreen::class to NoState)
         }
 
         bottomNavigationController = BottomNavigationController(
-            containerId = R.id.main_fragment_container,
-            fragmentManager = supportFragmentManager,
-            fragments = pages,
+            screens = screens,
             defaultItemId = DEFAULT_NAVIGATION_ITEM_ID,
             onItemSelectedListener = ::onNavigationItemSelected
-        ).apply { startUpWithNavigationView(main_navigation_view) }
+        ).apply { startUpWithNavigationView(navigationView) }
     }
 
-    private fun onNavigationItemSelected(menuItem: MenuItem, fragment: BaseFragment) {
+    private fun onNavigationItemSelected(menuItem: MenuItem) {
         supportActionBar?.title = menuItem.title
     }
 
-    private class BottomNavigationController(
-        @IdRes private val containerId: Int,
-        private val fragmentManager: FragmentManager,
-        private val fragments: SparseArray<BaseFragment>,
+    private inner class BottomNavigationController(
+        private val screens: SparseArray<Pair<KClass<out Screen<out Parcelable>>, Parcelable>>,
         private val defaultItemId: Int? = null,
-        private val onItemSelectedListener: (MenuItem, BaseFragment) -> Unit
+        private val onItemSelectedListener: (MenuItem) -> Unit
     ) {
 
         private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            fragments.contains(item.itemId).also {
+            screens.contains(item.itemId).also {
                 if (it) onItemSelected(item)
             }
         }
@@ -76,14 +74,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        fun getFragment(itemId: Int): BaseFragment = fragments[itemId]
-
         private fun onItemSelected(item: MenuItem) {
-            fragments[item.itemId].also {
-                onItemSelectedListener(item, it)
-                fragmentManager.beginTransaction()
-                    .replace(containerId, it)
-                    .commit()
+            screens[item.itemId].apply {
+                onItemSelectedListener(item)
+                openScreen(first, second)
             }
         }
 
