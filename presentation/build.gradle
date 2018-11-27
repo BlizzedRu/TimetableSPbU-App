@@ -55,8 +55,6 @@ dependencies {
 
     implementation libraries.timetablespbu
     implementation libraries.jodatime
-
-    implementation'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
 }
 
 androidExtensions {

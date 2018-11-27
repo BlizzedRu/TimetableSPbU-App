@@ -23,61 +23,7 @@
                     android:layout_height="wrap_content"
                     app:layout_collapseMode="pin"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/searchContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginEnd="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:background="@drawable/background_search">
-
-                <ImageView
-                        android:id="@+id/searchStatusButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/margin_medium"
-                        android:paddingEnd="@dimen/margin_small"
-                        android:paddingTop="@dimen/margin_small"
-                        android:paddingBottom="@dimen/margin_small"
-                        android:src="@drawable/ic_search"
-                        android:tint="@color/divider"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
-
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/searchInput"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="@dimen/margin_medium"
-                        android:layout_marginEnd="@dimen/margin_medium"
-                        android:background="@null"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/searchCloseButton"
-                        app:layout_constraintStart_toEndOf="@id/searchStatusButton"
-                        app:layout_constraintTop_toTopOf="parent"/>
-
-                <ImageView
-                        android:id="@+id/searchCloseButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingEnd="@dimen/margin_medium"
-                        android:paddingStart="@dimen/margin_small"
-                        android:paddingTop="@dimen/margin_small"
-                        android:paddingBottom="@dimen/margin_small"
-                        android:visibility="gone"
-                        android:src="@drawable/ic_search_close"
-                        android:tint="@color/divider"
-                        android:background="?selectableItemBackgroundBorderless"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <include layout="@layout/common_search"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

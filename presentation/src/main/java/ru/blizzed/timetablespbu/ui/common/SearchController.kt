@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.search
+package ru.blizzed.timetablespbu.ui.common
 
 import android.app.Activity
 import android.content.Context
@@ -7,11 +7,9 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
-import androidx.core.view.isVisible
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import ru.blizzed.timetablespbu.R
+import ru.blizzed.timetablespbu.extensions.isVisibleAnimated
 import ru.blizzed.timetablespbu.extensions.setOnRippleClickListener
-import ru.blizzed.timetablespbu.ui.common.DefaultTextWatcher
 
 class SearchController(
     private val activity: Activity,
@@ -38,13 +36,6 @@ class SearchController(
             hideSearchCloseButton()
             searchInput.text = null
         }
-
-        KeyboardVisibilityEvent.setEventListener(activity) {
-            if (!it) {
-                searchInput.clearFocus()
-                rootView.requestFocus()
-            }
-        }
     }
 
     private fun showSearchSoftInput() {
@@ -55,11 +46,11 @@ class SearchController(
     }
 
     private fun showSearchCloseButton() {
-        searchCloseButton.isVisible = true
+        searchCloseButton.isVisibleAnimated = true
     }
 
     private fun hideSearchCloseButton() {
-        searchCloseButton.isVisible = false
+        searchCloseButton.isVisibleAnimated = false
     }
 
 }
