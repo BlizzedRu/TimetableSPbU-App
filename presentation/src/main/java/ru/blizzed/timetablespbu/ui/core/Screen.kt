@@ -9,7 +9,7 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
-import ru.blizzed.timetablespbu.viewmodel.ViewModelsProvider
+import ru.blizzed.timetablespbu.viewmodel.system.ViewModelsProvider
 import timber.log.Timber
 import kotlin.reflect.KClass
 

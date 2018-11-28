@@ -2,38 +2,38 @@ package ru.blizzed.timetablespbu.di.modules
 
 import dagger.Module
 import dagger.Provides
-import ru.blizzed.timetablespbu.di.scopes.Screens
+import ru.blizzed.timetablespbu.di.scopes.App
 import ru.blizzed.timetablespbulib.TimeTableApi
 import ru.blizzed.timetablespbulib.methods.*
 
 @Module
 class TimetableApiModule {
 
-    @Screens
+    @App
     @Provides
     fun provideAddressesApiMethod(): AddressesApiMethod {
         return TimeTableApi.addresses()
     }
 
-    @Screens
+    @App
     @Provides
     fun provideEducatorsApiMethod(): EducatorsApiMethod {
         return TimeTableApi.educators()
     }
 
-    @Screens
+    @App
     @Provides
     fun provideExtracurDivisionsApiMethod(): ExtracurDivisionsApiMethod {
         return TimeTableApi.extracurDivisions()
     }
 
-    @Screens
+    @App
     @Provides
     fun provideGroupsApiMethod(): GroupsApiMethod {
         return TimeTableApi.groups()
     }
 
-    @Screens
+    @App
     @Provides
     fun provideDivisionsApiMethod(): DivisionsApiMethod {
         return TimeTableApi.divisions()

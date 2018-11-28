@@ -13,6 +13,7 @@ class AppModule(private val context: Context) {
     fun provideContext() = context
 
     @Provides
-    fun provideDefaultSharedPreferences(context: Context): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+    fun provideDefaultSharedPreferences(context: Context): SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(context)
 
 }

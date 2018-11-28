@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.viewmodel
+package ru.blizzed.timetablespbu.viewmodel.system
 
 interface ViewModelFactoryProvider {
 

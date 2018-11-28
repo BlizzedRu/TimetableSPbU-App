@@ -1,15 +1,24 @@
 package ru.blizzed.timetablespbu.di.components
 
-import android.content.Context
 import dagger.Component
-import ru.blizzed.timetablespbu.di.modules.AppModule
-import ru.blizzed.timetablespbu.di.modules.UtilsModule
+import ru.blizzed.timetablespbu.TimetableSPbUApp
+import ru.blizzed.timetablespbu.di.modules.*
 import ru.blizzed.timetablespbu.di.scopes.App
+import ru.blizzed.timetablespbu.di.viewmodel.ViewModelsModule
 
 @App
-@Component(modules = [AppModule::class, UtilsModule::class])
+@Component(
+    modules = [
+        AppModule::class,
+        UtilsModule::class,
+        RxModule::class,
+        ViewModelsModule::class,
+        PersistenceModule::class,
+        TimetableApiModule::class
+    ]
+)
 interface AppComponent {
 
-    fun context(): Context
+    fun inject(into: TimetableSPbUApp)
 
 }

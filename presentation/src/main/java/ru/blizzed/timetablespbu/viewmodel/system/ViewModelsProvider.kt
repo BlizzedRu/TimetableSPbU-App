@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.viewmodel
+package ru.blizzed.timetablespbu.viewmodel.system
 
 import android.app.Activity
 import androidx.fragment.app.Fragment
@@ -21,8 +21,12 @@ object ViewModelsProvider {
     private fun getViewModelProvider(lifecycleOwner: Any?): ViewModelFactoryProvider =
         when (lifecycleOwner) {
             is ViewModelFactoryProvider -> lifecycleOwner
-            is Activity -> getViewModelProvider(lifecycleOwner.application)
-            is Fragment -> getViewModelProvider(lifecycleOwner.parentFragment ?: lifecycleOwner.activity)
+            is Activity -> getViewModelProvider(
+                lifecycleOwner.application
+            )
+            is Fragment -> getViewModelProvider(
+                lifecycleOwner.parentFragment ?: lifecycleOwner.activity
+            )
             else -> throw IllegalArgumentException("ViewModel factory provider is unreachable.")
         }
 
