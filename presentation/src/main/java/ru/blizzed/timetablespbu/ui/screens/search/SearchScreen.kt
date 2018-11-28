@@ -3,6 +3,7 @@ package ru.blizzed.timetablespbu.ui.screens.search
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import ru.blizzed.timetablespbu.R
+import ru.blizzed.timetablespbu.ui.common.SearchController
 import ru.blizzed.timetablespbu.ui.core.InjectViewModel
 import ru.blizzed.timetablespbu.ui.core.Screen
 import ru.blizzed.timetablespbu.ui.core.ScreenParams

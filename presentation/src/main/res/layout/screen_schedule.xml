@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <include layout="@layout/common_main_appbar"/>
 
-    <TextView
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    <ru.blizzed.timetablespbu.ui.common.LoadableContentLayout
+            android:id="@+id/loadableContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:status="content"
+            app:emptyViewId="@id/empty">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="100dp"
+                android:layout_gravity="center"
+                android:text="Content"/>
+
+        <TextView
+                android:id="@+id/empty"
+                android:layout_gravity="center"
+                android:paddingBottom="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Empty"/>
+
+    </ru.blizzed.timetablespbu.ui.common.LoadableContentLayout>
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Schedule"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:text="Button"
+    />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

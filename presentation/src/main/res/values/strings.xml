@@ -6,4 +6,7 @@
 
     <string name="screen_search_educators_tab_title">Преподаватели</string>
     <string name="screen_search_classrooms_tab_title">Аудитории</string>
+
+    <string name="common_error_retry">Повторить</string>
+    <string name="common_loading_error_message">Ошибка загрузки</string>
 </resources>
