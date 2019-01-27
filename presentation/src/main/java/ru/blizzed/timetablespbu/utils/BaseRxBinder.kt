@@ -30,7 +30,7 @@ class BaseRxBinder(
             .also { subscriptions.add(it) }
     }
 
-    override fun <T> Flowable<out T>.bindTo(liveData: MutableLiveData<Event<T>>): Disposable {
+    override fun <T> Flowable<out T>.bindTo(liveData: LiveData<Event<T>>): Disposable {
         return observeOn(observeScheduler)
             .subscribeOn(subscribeScheduler)
             .doOnSubscribe { postEvent(liveData, Loading()) }
@@ -44,7 +44,7 @@ class BaseRxBinder(
             .also { subscriptions.add(it) }
     }
 
-    override fun <T> Single<out T>.bindTo(liveData: MutableLiveData<Event<T>>): Disposable {
+    override fun <T> Single<out T>.bindTo(liveData: LiveData<Event<T>>): Disposable {
         return observeOn(observeScheduler)
             .subscribeOn(subscribeScheduler)
             .doOnSubscribe { postEvent(liveData, Loading()) }
@@ -56,7 +56,7 @@ class BaseRxBinder(
             .also { subscriptions.add(it) }
     }
 
-    override fun <T> Maybe<out T>.bindTo(liveData: MutableLiveData<Event<T>>): Disposable {
+    override fun <T> Maybe<out T>.bindTo(liveData: LiveData<Event<T>>): Disposable {
         return observeOn(observeScheduler)
             .subscribeOn(subscribeScheduler)
             .doOnSubscribe { postEvent(liveData, Loading()) }
@@ -70,7 +70,7 @@ class BaseRxBinder(
             .also { subscriptions.add(it) }
     }
 
-    override fun <T> Completable.bindTo(liveData: MutableLiveData<Event<T>>): Disposable {
+    override fun <T> Completable.bindTo(liveData: LiveData<Event<T>>): Disposable {
         return observeOn(observeScheduler)
             .subscribeOn(subscribeScheduler)
             .doOnSubscribe { postEvent(liveData, Loading()) }
