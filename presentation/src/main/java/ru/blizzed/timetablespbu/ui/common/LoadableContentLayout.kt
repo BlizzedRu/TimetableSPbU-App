@@ -27,8 +27,8 @@ class LoadableContentLayout @JvmOverloads constructor(
         private const val DEFAULT_ERROR_VIEW_LAYOUT_ID = R.layout.common_error
     }
 
-    private var loadingView: View? = null
-    private var errorView: View? = null
+    private lateinit var loadingView: View
+    private lateinit var errorView: View
     private var emptyView: View? = null
 
     @IdRes
@@ -70,10 +70,10 @@ class LoadableContentLayout @JvmOverloads constructor(
             emptyView = child
         }
 
-        child.isVisible = when (child) {
-            loadingView -> status == Status.LOADING
-            errorView -> status == Status.ERROR
-            emptyView -> status == Status.EMPTY
+        child.isVisible = when {
+            ::loadingView.isInitialized && child == loadingView -> status == Status.LOADING
+            ::errorView.isInitialized && child == errorView -> status == Status.ERROR
+            emptyView != null && child == emptyView -> status == Status.EMPTY
             else -> {
                 contentViewIndexes += indexOfChild(child)
                 status == Status.CONTENT
