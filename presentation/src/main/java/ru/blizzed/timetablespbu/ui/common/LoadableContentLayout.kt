@@ -10,12 +10,13 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.extensions.isVisibleAnimated
+import ru.blizzed.timetablespbu.utils.Event
 import kotlin.properties.Delegates
 
 class LoadableContentLayout @JvmOverloads constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyle: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyle: Int = 0
 ) : FrameLayout(context, attrs, defStyle) {
 
     enum class Status(val statusCode: Int) {
@@ -61,6 +62,13 @@ class LoadableContentLayout @JvmOverloads constructor(
             getInt(R.styleable.LoadableContentLayout_status, Status.CONTENT.statusCode).also { code ->
                 status = Status.values()[code]
             }
+        }
+    }
+
+    fun setStatusByEvent(event: Event<*>) {
+        when (event) {
+            is Event.Loading -> status = Status.LOADING
+            is Event.Error -> status = Status.ERROR
         }
     }
 
