@@ -2,19 +2,19 @@
   {
     "name": "Биология",
     "alias": "BIOL",
-    "logo": "logo/BIOL.jpg",
+    "logo": "logo/BIOL.png",
     "addresses": []
   },
   {
     "name": "Востоковедение",
     "alias": "ORIS",
-    "logo": "logo/ORIS.jpg",
+    "logo": "logo/ORIS.png",
     "addresses": []
   },
   {
     "name": "Журналистика, Прикладные коммуникации",
     "alias": "JOUR",
-    "logo": "logo/JOUR.jpg",
+    "logo": "logo/JOUR.png",
     "addresses": [
       {
         "name": "",
@@ -25,7 +25,7 @@
   {
     "name": "Искусства",
     "alias": "ARTS",
-    "logo": "logo/ARTS.jpg",
+    "logo": "logo/ARTS.png",
     "addresses": [
       {
         "name": "",
@@ -36,7 +36,7 @@
   {
     "name": "История",
     "alias": "HIST",
-    "logo": "logo/HIST.jpg",
+    "logo": "logo/HIST.png",
     "addresses": [
       {
         "name": "",
@@ -47,7 +47,7 @@
   {
     "name": "Колледж физической культуры и спорта, экономики и технологии",
     "alias": "SC",
-    "logo": "logo/SC.jpg",
+    "logo": "logo/SC.png",
     "addresses": [
       {
         "name": "Измайловский пр., д. 27",
@@ -62,7 +62,7 @@
   {
     "name": "Матмех",
     "alias": "MATH",
-    "logo": "logo/MATH.jpg",
+    "logo": "logo/MATH.png",
     "addresses": [
       {
         "name": "Университетский просп., д. 28",
@@ -77,7 +77,7 @@
   {
     "name": "Медицина",
     "alias": "MEDI",
-    "logo": "logo/MEDI.jpg",
+    "logo": "logo/MEDI.png",
     "addresses": [
       {
         "name": "В.О., 22 линия, д. 7, лит. А",
@@ -92,7 +92,7 @@
   {
     "name": "Международные отношения",
     "alias": "INTR",
-    "logo": "logo/INTR.jpg",
+    "logo": "logo/INTR.png",
     "addresses": [
       {
         "name": "",
@@ -103,7 +103,7 @@
   {
     "name": "Менеджмент",
     "alias": "GSOM",
-    "logo": "logo/GSOM.jpg",
+    "logo": "logo/GSOM.png",
     "addresses": [
       {
         "name": "",
@@ -114,7 +114,7 @@
   {
     "name": "Науки о Земле",
     "alias": "EARTH",
-    "logo": "logo/EARTH.jpg",
+    "logo": "logo/EARTH.png",
     "addresses": [
       {
         "name": "",
@@ -125,7 +125,7 @@
   {
     "name": "Политология",
     "alias": "POLS",
-    "logo": "logo/POLS.jpg",
+    "logo": "logo/POLS.png",
     "addresses": [
       {
         "name": "",
@@ -136,7 +136,7 @@
   {
     "name": "ПМ-ПУ",
     "alias": "AMCP",
-    "logo": "logo/AMCP.jpg",
+    "logo": "logo/AMCP.png",
     "addresses": [
       {
         "name": "Корпус А",
@@ -155,7 +155,7 @@
   {
     "name": "Психология",
     "alias": "PSYC",
-    "logo": "logo/PSYC.jpg",
+    "logo": "logo/PSYC.png",
     "addresses": [
       {
         "name": "",
@@ -166,7 +166,7 @@
   {
     "name": "Свободные искусства и науки",
     "alias": "LIAS",
-    "logo": "logo/LIAS.jpg",
+    "logo": "logo/LIAS.png",
     "addresses": [
       {
         "name": "Корпус 1",
@@ -193,7 +193,7 @@
   {
     "name": "Социология",
     "alias": "SOCL",
-    "logo": "logo/SOCL.jpg",
+    "logo": "logo/SOCL.png",
     "addresses": [
       {
         "name": "",
@@ -204,7 +204,7 @@
   {
     "name": "Стоматология и медицинские технологии",
     "alias": "DENT",
-    "logo": "logo/DENT.jpg",
+    "logo": "logo/DENT.png",
     "addresses": [
       {
         "name": "21 линия В.О., д. 8",
@@ -219,7 +219,7 @@
   {
     "name": "Физика",
     "alias": "PHYS",
-    "logo": "logo/PHYS.jpg",
+    "logo": "logo/PHYS.png",
     "addresses": [
       {
         "name": "Корпус А",
@@ -254,7 +254,7 @@
   {
     "name": "Филология",
     "alias": "LETT",
-    "logo": "logo/LETT.jpg",
+    "logo": "logo/LETT.png",
     "addresses": [
       {
         "name": "",
@@ -265,7 +265,7 @@
   {
     "name": "Философия",
     "alias": "PHIL",
-    "logo": "logo/PHIL.jpg",
+    "logo": "logo/PHIL.png",
     "addresses": [
       {
         "name": "",
@@ -276,7 +276,7 @@
   {
     "name": "Химия",
     "alias": "CHEM",
-    "logo": "logo/CHEM.jpg",
+    "logo": "logo/CHEM.png",
     "addresses": [
       {
         "name": "Корпус Д",
@@ -307,7 +307,7 @@
   {
     "name": "Экономика",
     "alias": "ECON",
-    "logo": "logo/ECON.jpg",
+    "logo": "logo/ECON.png",
     "addresses": [
       {
         "name": "",
@@ -318,7 +318,7 @@
   {
     "name": "Юриспруденция",
     "alias": "LAWS",
-    "logo": "logo/LAWS.jpg",
+    "logo": "logo/LAWS.png",
     "addresses": [
       {
         "name": "",
