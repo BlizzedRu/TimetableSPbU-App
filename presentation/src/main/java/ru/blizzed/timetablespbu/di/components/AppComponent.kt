@@ -10,9 +10,10 @@ import ru.blizzed.timetablespbu.di.viewmodel.ViewModelsModule
 @Component(
     modules = [
         AppModule::class,
+        ViewModelsModule::class,
+        RepositoriesModule::class,
         UtilsModule::class,
         RxModule::class,
-        ViewModelsModule::class,
         PersistenceModule::class,
         TimetableApiModule::class
     ]
