@@ -28,31 +28,24 @@ android {
 
 dependencies {
     implementation project(':domain')
-    implementation project(':data')
-
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-
     implementation 'androidx.core:core-ktx:1.0.1'
-    implementation "androidx.appcompat:appcompat:1.0.2"
-    implementation "androidx.recyclerview:recyclerview:1.0.0"
-    implementation "androidx.cardview:cardview:1.0.0"
-    implementation "androidx.constraintlayout:constraintlayout:2.0.0-alpha2"
-    implementation "com.google.android.material:material:1.0.0"
-
+    implementation project(':data')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation 'com.google.android.material:material:1.0.0'
     def lifecycleVersion = "2.0.0"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycleVersion"
-
     implementation libraries.rxJava
     implementation libraries.rxAndroid
-
     implementation libraries.dagger
     kapt libraries.daggerCompiler
-
     implementation libraries.timber
-
     implementation libraries.timetablespbu
     implementation libraries.jodatime
 }

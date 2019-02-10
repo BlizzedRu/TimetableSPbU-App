@@ -24,6 +24,8 @@ android {
 dependencies {
     implementation project(':domain')
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     implementation libraries.rxJava
     implementation libraries.rxAndroid
 
@@ -40,4 +42,6 @@ dependencies {
     implementation libraries.timetablespbu
 
     implementation libraries.timber
+
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
