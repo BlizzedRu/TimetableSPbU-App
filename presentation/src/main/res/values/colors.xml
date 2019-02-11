@@ -11,4 +11,5 @@
     <color name="divider">#BDBDBD</color>
     
     <color name="search_background">#0f00061e</color>
+    <color name="search_background_accent">#FFFFFF</color>
 </resources>

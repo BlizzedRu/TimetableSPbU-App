@@ -2,19 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/searchContainer"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/margin_medium"
-    android:layout_marginTop="@dimen/margin_small"
-    android:layout_marginEnd="@dimen/margin_medium"
-    android:layout_marginBottom="@dimen/margin_small"
     android:background="@drawable/background_search"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
     <ImageView
-        android:id="@+id/searchStatusButton"
+        android:id="@+id/statusButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/margin_medium"
@@ -28,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ru.blizzed.timetablespbu.ui.common.ClearFocusOnKeyboardBackOrDoneTextInput
-        android:id="@+id/searchInput"
+        android:id="@+id/textInput"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/margin_medium"
@@ -39,12 +35,12 @@
         android:imeOptions="actionDone"
         android:inputType="text|textAutoComplete"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/searchCloseButton"
-        app:layout_constraintStart_toEndOf="@id/searchStatusButton"
+        app:layout_constraintEnd_toStartOf="@id/closeButton"
+        app:layout_constraintStart_toEndOf="@id/statusButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/searchCloseButton"
+        android:id="@+id/closeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?selectableItemBackgroundBorderless"

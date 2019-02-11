@@ -13,4 +13,12 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="SearchView">
+        <attr name="iconsColor" format="color"/>
+        <attr name="searchBackground" format="reference"/>
+        <attr name="searchTextColor" format="color"/>
+        <attr name="searchHintColor" format="color"/>
+        <attr name="disabled" format="boolean"/>
+    </declare-styleable>
+
 </resources>
