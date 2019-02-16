@@ -13,6 +13,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.StyleRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.isVisible
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.extensions.isVisibleAnimated
 import ru.blizzed.timetablespbu.extensions.setOnRippleClickListener
@@ -32,6 +33,7 @@ class SearchView @JvmOverloads constructor(
     private val textInput: EditText
     private val statusButton: ImageView
     private val closeButton : ImageView
+    private val phantomView : View
 
     init {
         inflate(context, R.layout.view_search, this)
@@ -39,6 +41,7 @@ class SearchView @JvmOverloads constructor(
         textInput = findViewById(R.id.textInput)
         statusButton = findViewById(R.id.statusButton)
         closeButton = findViewById(R.id.closeButton)
+        phantomView = findViewById(R.id.phantomView)
 
         context.withStyledAttributes(attrs, R.styleable.SearchView, defStyleAttr, defStyleRes) {
             getColor(R.styleable.SearchView_iconsColor, NO_COLOR).takeIf(::isColorSet)?.let(::setIconsColor)
@@ -88,15 +91,10 @@ class SearchView @JvmOverloads constructor(
         textInput.setHintTextColor(color)
     }
 
-    fun setDisabled(isDisabled: Boolean) {
-        setViewDisabled(textInput, isDisabled)
-        setViewDisabled(closeButton, isDisabled)
-        setViewDisabled(statusButton, isDisabled)
-    }
+    override fun setOnClickListener(listener: OnClickListener?) = phantomView.setOnClickListener(listener)
 
-    private fun setViewDisabled(view: View, isDisabled: Boolean) = view.apply {
-        isFocusable = !isDisabled
-        isEnabled = !isDisabled
+    fun setDisabled(isDisabled: Boolean) {
+        phantomView.isVisible = isDisabled
     }
 
     private fun showSearchSoftInput() {
