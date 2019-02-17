@@ -1,119 +1,85 @@
 package ru.blizzed.timetablespbu.ui.core
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ru.blizzed.timetablespbu.ui.core.Screen.ScreenContext
+import androidx.lifecycle.LifecycleOwner
+import ru.blizzed.timetablespbu.viewmodel.system.ViewModelsProvider
+import timber.log.Timber
 import kotlin.reflect.KClass
 import kotlin.reflect.full.findAnnotation
-import kotlin.reflect.full.primaryConstructor
 
-class ScreenFragment<State : Parcelable> : Fragment() {
-
-    companion object {
-        fun <State : Parcelable> newInstance(
-            screenClass: KClass<out Screen<out State>>,
-            state: Parcelable?
-        ): ScreenFragment<State> {
-            val args = Bundle().apply {
-                putSerializable(ARGS_SCREEN_CLASS_KEY, screenClass.java)
-                putParcelable(ARGS_STATE_KEY, state)
-            }
-            return ScreenFragment<State>().apply { arguments = args }
-        }
-
-        private const val ARGS_SCREEN_CLASS_KEY = "screen_class"
-        private const val ARGS_STATE_KEY = "state"
-    }
-
-    internal lateinit var state: State
-
-    private lateinit var screenClass: KClass<out Screen<State>>
-
-    private lateinit var screen: Screen<State>
+abstract class ScreenFragment<TState : Parcelable> : Fragment() {
 
     @Suppress("UNCHECKED_CAST")
+    companion object {
+        fun <TScreen : ScreenFragment<TState>, TState : Parcelable> create(
+                context: Context,
+                screenClass: KClass<out ScreenFragment<TState>>,
+                state: TState
+        ): TScreen = Fragment.instantiate(context, screenClass.java.name, args(state)) as TScreen
+
+        fun instantiate(
+                context: Context,
+                screenClass: KClass<out ScreenFragment<*>>,
+                state: Parcelable?
+        ): ScreenFragment<*> = Fragment.instantiate(context, screenClass.java.name, args(state)) as ScreenFragment<*>
+
+        fun args(state: Parcelable?) = Bundle().also {
+            it.putParcelable(STATE_KEY_EXTRA, state)
+        }
+
+        private const val STATE_KEY_EXTRA = "state"
+    }
+
+    protected lateinit var state: TState
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        state = savedInstanceState?.getParcelable<TState>(STATE_KEY_EXTRA)
+                ?: arguments?.getParcelable(STATE_KEY_EXTRA)
+                        ?: throw IllegalStateException("State must be not null")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val stateFetched = savedInstanceState?.let {
-            state = it.getParcelable(ARGS_STATE_KEY) as State
-            true
-        } ?: false
-
-        arguments?.apply {
-            getSerializable(ARGS_SCREEN_CLASS_KEY)?.let {
-                screenClass = (it as Class<Screen<State>>).kotlin
-            } ?: throw ScreenCreationException("Property $ARGS_SCREEN_CLASS_KEY not found.")
-
-            if (!stateFetched) state = getParcelable(ARGS_STATE_KEY) as State
-        }
+        injectViewModels()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val params = screenClass.findAnnotation<ScreenParams>()
-            ?: throw ScreenCreationException("Annotation ${ScreenParams::class.simpleName} in ${screenClass.simpleName} must be set.")
-
-        val screenContext = ScreenContext(this, inflater, params.layoutRes, container)
-
-        screen = createScreen(screenContext)?.apply {
-            onCreate()
-        } ?: throw ScreenCreationException("Can't create screen ${screenClass.simpleName}.")
-
-        return screen.view
-    }
-
-    private fun createScreen(screenContext: ScreenContext): Screen<State>? =
-        screenClass.primaryConstructor?.run {
-            if (parameters.size != 1) throw ScreenCreationException(
-                "Screen class ${screenClass.simpleName} must have only one single constructor with ScreenContext param."
-            )
-            call(screenContext)
-        }
-
-    override fun onStart() {
-        super.onStart()
-        screen.onStart()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        screen.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return screen.onOptionsItemSelected(item)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        screen.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        screen.onPause()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        screen.onStop()
+        val params = javaClass.kotlin.findAnnotation<ScreenParams>()
+                ?: throw IllegalStateException("Screen fragment must have ${ScreenParams::class.java} annotation.")
+        return inflater.inflate(params.layoutRes, container, false)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putParcelable(ARGS_STATE_KEY, state)
+        outState.putParcelable(STATE_KEY_EXTRA, state)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        screen.onDestroy()
+    private fun injectViewModels() {
+        javaClass.declaredFields
+                .filter { it.isAnnotationPresent(InjectViewModel::class.java) }
+                .map { it to it.getAnnotation(InjectViewModel::class.java) }
+                .forEach { (field, annotation) ->
+                    field.isAccessible = true
+                    field.set(
+                            this,
+                            ViewModelsProvider.of(getLifecycleOwnerByType(annotation.lifecycleOwner)).get(annotation.viewModelClass.java)
+                    )
+                    Timber.d("ViewModel ${annotation.viewModelClass.simpleName} successfully injected into ${javaClass.simpleName}.")
+                }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        screen.onActivityResult(requestCode, resultCode, data)
-    }
+    private fun getLifecycleOwnerByType(lifecycleOwnerType: LifecycleOwnerType): LifecycleOwner =
+            when (lifecycleOwnerType) {
+                LifecycleOwnerType.THIS -> this
+                LifecycleOwnerType.PARENT -> parentFragment!!
+                LifecycleOwnerType.ACTIVITY -> requireActivity()
+            }
 
 }
