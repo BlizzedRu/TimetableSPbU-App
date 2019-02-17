@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ru.blizzed.timetablespbu.R
+import ru.blizzed.timetablespbu.extensions.hideKeyboard
 import ru.blizzed.timetablespbu.extensions.isVisibleAnimated
 import ru.blizzed.timetablespbu.extensions.openKeyboard
 import ru.blizzed.timetablespbu.extensions.setOnRippleClickListener
@@ -62,21 +63,15 @@ class SearchView @JvmOverloads constructor(
             override fun afterTextChanged(text: Editable) {
                 text.toString().takeIf(String::isNotBlank)?.let {
                     showSearchCloseButton()
-                }
+                } ?: hideSearchCloseButton()
             }
         })
 
-        statusButton.setOnRippleClickListener(::startSearch)
+        statusButton.setOnRippleClickListener(::openSearch)
 
         closeButton.setOnRippleClickListener {
             hideSearchCloseButton()
-            textInput.text = null
-        }
-
-        textInput.setOnFocusChangeListener { _, hasFocus ->
-            if (textInput.text.isEmpty()) {
-                closeButton.isVisibleAnimated = hasFocus
-            }
+            clearInput()
         }
 
     }
@@ -89,7 +84,13 @@ class SearchView @JvmOverloads constructor(
         }.also(textInput::addTextChangedListener)
     }
 
-    fun startSearch() = textInput.openKeyboard()
+    fun openSearch() = textInput.openKeyboard()
+
+    fun closeSearch() {
+        textInput.hideKeyboard()
+        if (textInput.text.isNotEmpty()) clearInput()
+        closeButton.isVisibleAnimated = false
+    }
 
     fun setIconsColor(@ColorInt color: Int) {
         statusButton.drawable.setTint(color)
@@ -124,6 +125,10 @@ class SearchView @JvmOverloads constructor(
 
     private fun isColorSet(value: Int): Boolean {
         return value != NO_COLOR
+    }
+
+    private fun clearInput() {
+        textInput.text = null
     }
 
 }
