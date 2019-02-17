@@ -2,27 +2,22 @@ package ru.blizzed.timetablespbu.ui
 
 import android.os.Bundle
 import android.os.Parcelable
-import android.util.SparseArray
 import android.view.Menu
 import android.view.MenuItem
-import androidx.core.util.contains
+import androidx.annotation.IdRes
+import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.navigationView
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.ui.core.NoState
-import ru.blizzed.timetablespbu.ui.core.Screen
-import ru.blizzed.timetablespbu.ui.core.ScreenActivity
+import ru.blizzed.timetablespbu.ui.core.ScreenFragment
 import ru.blizzed.timetablespbu.ui.screens.bookmarks.BookmarksScreen
 import ru.blizzed.timetablespbu.ui.screens.schedule.ScheduleScreen
 import ru.blizzed.timetablespbu.ui.screens.search.SearchScreen
 import ru.blizzed.timetablespbu.ui.screens.search.SearchScreenState
 import kotlin.reflect.KClass
 
-class MainActivity : ScreenActivity() {
-
-    companion object {
-        private const val DEFAULT_NAVIGATION_ITEM_ID = R.id.main_navigation_schedule
-    }
+class MainActivity : FragmentActivity() {
 
     private lateinit var bottomNavigationController: BottomNavigationController
 
@@ -34,33 +29,30 @@ class MainActivity : ScreenActivity() {
     }
 
     private fun initializeBottomNavigation() {
-        val screens = SparseArray<Pair<KClass<out Screen<out Parcelable>>, Parcelable>>().apply {
-            put(R.id.main_navigation_search, SearchScreen::class to SearchScreenState())
-            put(R.id.main_navigation_schedule, ScheduleScreen::class to NoState)
-            put(R.id.main_navigation_bookmarks, BookmarksScreen::class to NoState)
-        }
-
         bottomNavigationController = BottomNavigationController(
-            screens = screens,
-            defaultItemId = DEFAULT_NAVIGATION_ITEM_ID,
-            onItemSelectedListener = ::onNavigationItemSelected
+                defaultItemId = R.id.main_navigation_schedule,
+                onItemSelectedListener = ::onNavigationItemSelected
         ).apply { startUpWithNavigationView(navigationView) }
     }
 
     private fun onNavigationItemSelected(menuItem: MenuItem) {
-        supportActionBar?.title = menuItem.title
+        actionBar?.title = menuItem.title
+    }
+
+    private fun openScreen(screen: Screens) {
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.screen_container, ScreenFragment.instantiate(this, screen.screenClass, screen.state))
+                .commit()
     }
 
     private inner class BottomNavigationController(
-        private val screens: SparseArray<Pair<KClass<out Screen<out Parcelable>>, Parcelable>>,
-        private val defaultItemId: Int? = null,
-        private val onItemSelectedListener: (MenuItem) -> Unit
+            private val defaultItemId: Int? = null,
+            private val onItemSelectedListener: (MenuItem) -> Unit
     ) {
 
         private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            screens.contains(item.itemId).also {
-                if (it) onItemSelected(item)
-            }
+            onItemSelected(item)
+            true
         }
 
         private lateinit var navigationMenu: Menu
@@ -75,12 +67,19 @@ class MainActivity : ScreenActivity() {
         }
 
         private fun onItemSelected(item: MenuItem) {
-            screens[item.itemId].apply {
-                onItemSelectedListener(item)
-                openScreen(first, second)
-            }
+            Screens.values().first { screen ->
+                screen.navigationId == item.itemId
+            }.also(::openScreen)
+
+            onItemSelectedListener.invoke(item)
         }
 
+    }
+
+    private enum class Screens(@IdRes val navigationId: Int, val screenClass: KClass<out ScreenFragment<*>>, val state: Parcelable) {
+        SEARCH(R.id.main_navigation_search, SearchScreen::class, SearchScreenState()),
+        SCHEDULE(R.id.main_navigation_schedule, ScheduleScreen::class, NoState),
+        BOOKMARKS(R.id.main_navigation_bookmarks, BookmarksScreen::class, NoState)
     }
 
 }

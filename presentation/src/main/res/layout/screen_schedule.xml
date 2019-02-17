@@ -6,7 +6,7 @@
 
     <include layout="@layout/common_main_appbar"/>
 
-    <ru.blizzed.timetablespbu.ui.common.LoadableContentLayout
+    <ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout
             android:id="@+id/loadableContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:text="Empty"/>
 
-    </ru.blizzed.timetablespbu.ui.common.LoadableContentLayout>
+    </ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout>
 
     <com.google.android.material.button.MaterialButton
             android:id="@+id/button"

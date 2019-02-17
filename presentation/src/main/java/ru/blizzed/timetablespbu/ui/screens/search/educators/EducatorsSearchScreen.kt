@@ -1,44 +1,46 @@
 package ru.blizzed.timetablespbu.ui.screens.search.educators
 
-import android.widget.Button
+import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.screen_search_educators.educatorsLoadableContentLayout
+import kotlinx.android.synthetic.main.screen_search_educators.educatorsSearchRecycler
 import ru.blizzed.timetablespbu.R
-import ru.blizzed.timetablespbu.ui.common.LoadableContentLayout
-import ru.blizzed.timetablespbu.ui.core.*
+import ru.blizzed.timetablespbu.ui.core.InjectViewModel
+import ru.blizzed.timetablespbu.ui.core.NoState
+import ru.blizzed.timetablespbu.ui.core.ScreenFragment
+import ru.blizzed.timetablespbu.ui.core.ScreenParams
+import ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout
 import ru.blizzed.timetablespbu.utils.Event
-import ru.blizzed.timetablespbu.viewmodel.SearchViewModel
+import ru.blizzed.timetablespbu.viewmodel.EducatorSearchViewModel
 
 @ScreenParams(R.layout.screen_search_educators)
-class EducatorsSearchScreen(screenContext: ScreenContext) : Screen<NoState>(screenContext) {
+class EducatorsSearchScreen : ScreenFragment<NoState>() {
 
-    @field:InjectViewModel(SearchViewModel::class, lifecycleOwner = LifecycleOwnerType.PARENT)
-    private lateinit var viewModel: SearchViewModel
+    @field:InjectViewModel(EducatorSearchViewModel::class)
+    private lateinit var viewModel: EducatorSearchViewModel
 
-    private val loadableLayout: LoadableContentLayout = view as LoadableContentLayout
-    private val educatorsRecycler: RecyclerView = findViewById(R.id.educatorsSearchRecycler)
     private var educatorsAdapter = EducatorsSearchAdapter()
-    private val retryButton: Button = findViewById(R.id.retryButton)
 
-    init {
-        viewModel.searchProcess.observe(this, Observer { event ->
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.educatorsSearchProcess.observe(this, Observer { event ->
             when (event) {
-                is Event.Loading -> loadableLayout.status = LoadableContentLayout.Status.LOADING
-                is Event.Error -> loadableLayout.status = LoadableContentLayout.Status.ERROR
                 is Event.Success -> {
-                    educatorsAdapter.aducators = event.data
+                    educatorsAdapter.submitItems(event.data)
                     if (event.data.isEmpty()) {
-                        loadableLayout.status = LoadableContentLayout.Status.EMPTY
+                        educatorsLoadableContentLayout.status = LoadableContentLayout.Status.EMPTY
                     } else {
-                        loadableLayout.status = LoadableContentLayout.Status.CONTENT
+                        educatorsLoadableContentLayout.status = LoadableContentLayout.Status.CONTENT
                     }
                 }
             }
+
+            educatorsLoadableContentLayout.setStatusByEvent(event)
         })
 
-        educatorsRecycler.adapter = educatorsAdapter
-        educatorsRecycler.layoutManager = LinearLayoutManager(activity)
+        educatorsSearchRecycler.adapter = educatorsAdapter
     }
 
 }
