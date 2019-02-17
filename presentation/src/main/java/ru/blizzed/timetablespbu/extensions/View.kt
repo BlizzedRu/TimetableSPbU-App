@@ -1,10 +1,12 @@
 package ru.blizzed.timetablespbu.extensions
 
+import android.content.Context
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
 
 fun View.setOnRippleClickListener(listener: () -> Unit) {
-    setOnClickListener { postDelayed({ if (hasWindowFocus()) listener() }, 150L) }
+    setOnClickListener { postDelayed({ if (hasWindowFocus()) listener.invoke() }, 150L) }
 }
 
 inline var View.isVisibleAnimated: Boolean
@@ -22,3 +24,10 @@ inline var View.isVisibleAnimated: Boolean
                 }
                 .start()
     }
+
+fun View.openKeyboard() {
+    (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).let {
+        requestFocus()
+        it.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+    }
+}

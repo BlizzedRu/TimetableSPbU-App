@@ -3,9 +3,9 @@ package ru.blizzed.timetablespbu.ui.widget
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.text.Editable
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.annotation.AttrRes
@@ -16,6 +16,7 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.extensions.isVisibleAnimated
+import ru.blizzed.timetablespbu.extensions.openKeyboard
 import ru.blizzed.timetablespbu.extensions.setOnRippleClickListener
 import ru.blizzed.timetablespbu.ui.common.DefaultTextWatcher
 
@@ -32,8 +33,10 @@ class SearchView @JvmOverloads constructor(
 
     private val textInput: EditText
     private val statusButton: ImageView
-    private val closeButton : ImageView
-    private val phantomView : View
+    private val closeButton: ImageView
+    private val phantomView: View
+
+    private var queryObserverWatcher: TextWatcher? = null
 
     init {
         inflate(context, R.layout.view_search, this)
@@ -54,25 +57,39 @@ class SearchView @JvmOverloads constructor(
 
             getBoolean(R.styleable.SearchView_disabled, false).let(::setDisabled)
         }
-    }
 
-    fun observe(queryObserver: (String) -> Unit) {
         textInput.addTextChangedListener(object : DefaultTextWatcher() {
             override fun afterTextChanged(text: Editable) {
-                text.toString().apply {
-                    if (isNotBlank()) showSearchCloseButton()
-                    queryObserver(this)
+                text.toString().takeIf(String::isNotBlank)?.let {
+                    showSearchCloseButton()
                 }
             }
         })
 
-        statusButton.setOnRippleClickListener(::showSearchSoftInput)
+        statusButton.setOnRippleClickListener(::startSearch)
 
         closeButton.setOnRippleClickListener {
             hideSearchCloseButton()
             textInput.text = null
         }
+
+        textInput.setOnFocusChangeListener { _, hasFocus ->
+            if (textInput.text.isEmpty()) {
+                closeButton.isVisibleAnimated = hasFocus
+            }
+        }
+
     }
+
+    fun observe(queryObserver: (String) -> Unit) {
+        queryObserverWatcher?.let(textInput::removeTextChangedListener)
+
+        queryObserverWatcher = object : DefaultTextWatcher() {
+            override fun afterTextChanged(text: Editable) = queryObserver(text.toString())
+        }.also(textInput::addTextChangedListener)
+    }
+
+    fun startSearch() = textInput.openKeyboard()
 
     fun setIconsColor(@ColorInt color: Int) {
         statusButton.drawable.setTint(color)
@@ -95,13 +112,6 @@ class SearchView @JvmOverloads constructor(
 
     fun setDisabled(isDisabled: Boolean) {
         phantomView.isVisible = isDisabled
-    }
-
-    private fun showSearchSoftInput() {
-        (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).apply {
-            showSoftInput(textInput, InputMethodManager.SHOW_IMPLICIT)
-            textInput.requestFocus()
-        }
     }
 
     private fun showSearchCloseButton() {

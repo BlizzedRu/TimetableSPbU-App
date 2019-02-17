@@ -5,9 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_search"
-    android:focusable="false"
-    android:focusableInTouchMode="false">
+    android:background="@drawable/background_search">
 
     <ImageView
         android:id="@+id/statusButton"
@@ -19,11 +17,13 @@
         android:paddingBottom="@dimen/margin_small"
         android:src="@drawable/ic_search"
         android:tint="@color/divider"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <ru.blizzed.timetablespbu.ui.common.ClearFocusOnKeyboardBackOrDoneTextInput
+    <ru.blizzed.timetablespbu.ui.widget.ClearFocusOnKeyboardBackOrDoneTextInput
         android:id="@+id/textInput"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -59,8 +59,6 @@
         android:id="@+id/phantomView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
