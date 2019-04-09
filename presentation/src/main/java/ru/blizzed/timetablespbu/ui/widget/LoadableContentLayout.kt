@@ -23,11 +23,6 @@ class LoadableContentLayout @JvmOverloads constructor(
         LOADING(0), ERROR(1), CONTENT(2), EMPTY(3)
     }
 
-    companion object {
-        private const val DEFAULT_LOADING_VIEW_LAYOUT_ID = R.layout.common_loading
-        private const val DEFAULT_ERROR_VIEW_LAYOUT_ID = R.layout.common_error
-    }
-
     private lateinit var loadingView: View
     private lateinit var errorView: View
     private var emptyView: View? = null
@@ -35,7 +30,7 @@ class LoadableContentLayout @JvmOverloads constructor(
     @IdRes
     private var emptyViewId: Int = View.NO_ID
 
-    private val contentViewIndexes: MutableList<Int> = ArrayList()
+    private val contentViewIds = mutableListOf<@IdRes Int>()
 
     var status: Status by Delegates.observable(Status.CONTENT) { _, oldValue, newValue ->
         if (oldValue != newValue) {
@@ -46,8 +41,8 @@ class LoadableContentLayout @JvmOverloads constructor(
 
     init {
         context.withStyledAttributes(attrs, R.styleable.LoadableContentLayout, 0) {
-            val loadingViewLayoutRes = getResourceId(R.styleable.LoadableContentLayout_loadingView, DEFAULT_LOADING_VIEW_LAYOUT_ID)
-            val errorViewLayoutRes = getResourceId(R.styleable.LoadableContentLayout_errorView, DEFAULT_ERROR_VIEW_LAYOUT_ID)
+            val loadingViewLayoutRes = getResourceId(R.styleable.LoadableContentLayout_loadingView, R.layout.common_loading)
+            val errorViewLayoutRes = getResourceId(R.styleable.LoadableContentLayout_errorView, R.layout.common_error)
             LayoutInflater.from(context).apply {
                 // I don't use 'true' as attachToRoot parameter because onViewAdded needs to be called strictly after view initialization
                 loadingView = inflate(loadingViewLayoutRes, this@LoadableContentLayout, false)
@@ -66,10 +61,10 @@ class LoadableContentLayout @JvmOverloads constructor(
     }
 
     fun setStatusByEvent(event: Event<*>) {
-        when (event) {
-            is Event.Loading -> status = Status.LOADING
-            is Event.Error -> status = Status.ERROR
-            else -> status = Status.CONTENT
+        status = when (event) {
+            is Event.Loading -> Status.LOADING
+            is Event.Error -> Status.ERROR
+            else -> Status.CONTENT
         }
     }
 
@@ -84,15 +79,15 @@ class LoadableContentLayout @JvmOverloads constructor(
             ::errorView.isInitialized && child == errorView -> status == Status.ERROR
             emptyView != null && child == emptyView -> status == Status.EMPTY
             else -> {
-                contentViewIndexes += indexOfChild(child)
+                if (child.id != View.NO_ID) contentViewIds += child.id
                 status == Status.CONTENT
             }
         }
     }
 
     override fun onViewRemoved(child: View) {
-        if (child != loadingView && child != emptyView && child != errorView) {
-            contentViewIndexes -= indexOfChild(child)
+        if (child.id != View.NO_ID && child != loadingView && child != emptyView && child != errorView) {
+            contentViewIds -= child.id
         }
         super.onViewRemoved(child)
     }
@@ -101,7 +96,7 @@ class LoadableContentLayout @JvmOverloads constructor(
         when (status) {
             Status.LOADING -> listOf(loadingView)
             Status.ERROR -> listOf(errorView)
-            Status.CONTENT -> contentViewIndexes.map(::getChildAt)
+            Status.CONTENT -> contentViewIds.map(::findViewById)
             Status.EMPTY -> listOf(emptyView)
         }
 
