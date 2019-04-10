@@ -25,7 +25,7 @@ class BaseRxBinder(
             }, {
                 postEvent(liveData, Error(it))
             }, {
-                postEvent(liveData, Completed())
+                postEvent(liveData, Complete())
             })
             .also { subscriptions.add(it) }
     }
@@ -39,7 +39,7 @@ class BaseRxBinder(
             }, {
                 postEvent(liveData, Error(it))
             }, {
-                postEvent(liveData, Completed())
+                postEvent(liveData, Complete())
             })
             .also { subscriptions.add(it) }
     }
@@ -65,7 +65,7 @@ class BaseRxBinder(
             }, {
                 postEvent(liveData, Error(it))
             }, {
-                postEvent(liveData, Completed())
+                postEvent(liveData, Complete())
             })
             .also { subscriptions.add(it) }
     }
@@ -75,7 +75,7 @@ class BaseRxBinder(
             .subscribeOn(subscribeScheduler)
             .doOnSubscribe { postEvent(liveData, Loading()) }
             .subscribe({
-                postEvent(liveData, Completed())
+                postEvent(liveData, Complete())
             }, {
                 postEvent(liveData, Error(it))
             })
