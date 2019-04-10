@@ -1,13 +1,15 @@
-package ru.blizzed.timetablespbu.domain.mappers
+package ru.blizzed.timetablespbu.data.persistance.mappers.data
 
+import ru.blizzed.timetablespbu.data.persistance.entities.EducatorData
 import ru.blizzed.timetablespbu.domain.entities.Educator
+import ru.blizzed.timetablespbu.domain.mappers.Mapper
 import javax.inject.Inject
 
 class EducatorMapper @Inject constructor(
         private val employmentMapper: EducatorEmploymentMapper
-) : Mapper<ru.blizzed.timetablespbulib.model.educators.Educator, Educator> {
+) : Mapper<Educator, EducatorData> {
 
-    override fun apply(input: ru.blizzed.timetablespbulib.model.educators.Educator) = Educator(
+    override fun apply(input: Educator) = EducatorData(
             input.id,
             input.fullName,
             employmentMapper.apply(input.employments)
