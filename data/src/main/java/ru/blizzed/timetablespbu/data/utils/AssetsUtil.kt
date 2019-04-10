@@ -7,8 +7,9 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.InputStream
 import java.io.InputStreamReader
+import javax.inject.Inject
 
-class AssetsUtil(private val context: Context) {
+class AssetsUtil @Inject constructor(private val context: Context) {
 
     fun <T> getModel(folderName: String = "", fileName: String): T = openAsset(folderName, fileName)
         .let {
