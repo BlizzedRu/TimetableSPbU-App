@@ -14,7 +14,7 @@ class EducatorDataMapper @Inject constructor(
         employmentMapper.mapToEntity(input.employments),
         input.isFavorite,
         input.isViewed,
-        input.lastViewTime
+        input.lastInteractionTime
     )
 
     override fun mapToData(input: Educator) = EducatorData(
@@ -23,7 +23,7 @@ class EducatorDataMapper @Inject constructor(
         employmentMapper.mapToData(input.employments),
         input.isFavorite,
         input.isViewed,
-        input.lastViewTime
+        input.lastInteractionTime
     )
 
 }

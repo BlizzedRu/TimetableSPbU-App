@@ -8,8 +8,8 @@ class Educator(
         val employments: List<EducatorEmployment>,
         isFavorite: Boolean = false,
         isViewed: Boolean = false,
-        lastViewTime: Long = 0L
-): Interactable(isFavorite, isViewed, lastViewTime) {
+        lastInteractionTime: Long = 0L
+) : Interactable(isFavorite, isViewed, lastInteractionTime) {
 
     override fun equals(other: Any?): Boolean {
         if (other == null || other.javaClass != javaClass) return false

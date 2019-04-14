@@ -1,20 +1,28 @@
 package ru.blizzed.timetablespbu.domain.entities
 
 open class Interactable(
-    var isFavorite: Boolean = false,
-    isViewed: Boolean = false,
-    lastViewTime: Long = 0L
+        isFavorite: Boolean = false,
+        isViewed: Boolean = false,
+        lastInteractionTime: Long = 0L
 ) {
 
-    var lastViewTime: Long = lastViewTime
+    var lastInteractionTime: Long = lastInteractionTime
         private set
 
     var isViewed: Boolean = isViewed
         private set
 
+    var isFavorite: Boolean = isFavorite
+        private set
+
     fun view(time: Long) {
         isViewed = true
-        lastViewTime = time
+        lastInteractionTime = time
+    }
+
+    fun setFavorite(isFavorite: Boolean, time: Long = 0L) {
+        this.isFavorite = isFavorite
+        if (isFavorite) lastInteractionTime = time
     }
 
 }
