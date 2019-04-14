@@ -12,10 +12,10 @@ class UtilsModule {
 
     @App
     @Provides
-    fun provideAssetsUtil(context: Context) = AssetsUtil(context)
+    fun provideAssetsUtil(context: Context): AssetsUtil = AssetsUtil(context)
 
     @App
     @Provides
-    fun provideTimeUtils() = TimeUtils
+    fun provideTimeUtils(): TimeUtils = TimeUtils
 
 }
