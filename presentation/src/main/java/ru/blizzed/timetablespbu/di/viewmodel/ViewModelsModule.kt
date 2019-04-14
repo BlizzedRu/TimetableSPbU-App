@@ -4,14 +4,20 @@ import androidx.lifecycle.ViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import ru.blizzed.timetablespbu.viewmodel.SearchViewModel
+import ru.blizzed.timetablespbu.viewmodel.EducatorSearchViewModel
+import ru.blizzed.timetablespbu.viewmodel.FacultiesViewModel
 
 @Module
 interface ViewModelsModule {
 
     @Binds
     @IntoMap
-    @ViewModelLink(SearchViewModel::class)
-    fun bindSearchViewModel(searchViewModel: SearchViewModel): ViewModel
+    @ViewModelLink(EducatorSearchViewModel::class)
+    fun bindSearchViewModel(searchViewModel: EducatorSearchViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelLink(FacultiesViewModel::class)
+    fun bindFacultiesViewModel(searchViewModel: FacultiesViewModel): ViewModel
 
 }

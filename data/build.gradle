@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -29,15 +30,14 @@ dependencies {
     implementation libraries.rxJava
     implementation libraries.rxAndroid
 
-    def roomVersion = "2.0.0"
-    annotationProcessor "androidx.room:room-compiler:$roomVersion"
-    implementation "androidx.room:room-rxjava2:$roomVersion"
-    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt libraries.roomCompiler
+    implementation libraries.room
+    implementation libraries.roomRx
 
     implementation libraries.daggerAndroid
-    annotationProcessor libraries.daggerAndroidProcessor
+    kapt libraries.daggerAndroidProcessor
     implementation libraries.dagger
-    annotationProcessor libraries.daggerCompiler
+    kapt libraries.daggerCompiler
 
     implementation libraries.timetablespbu
 

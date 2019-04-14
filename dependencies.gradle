@@ -14,7 +14,10 @@ ext.versions = [
         rxJava             : '2.2.2',
         timber             : '4.7.1',
         timetablespbu      : '1.0.1',
-        jodatime           : '2.10'
+        jodatime           : '2.10',
+        room               : '2.0.0',
+
+        lifecycle          : '2.0.0'
 ]
 
 ext.libraries = [
@@ -27,4 +30,10 @@ ext.libraries = [
         timber                : "com.jakewharton.timber:timber:$versions.timber",
         timetablespbu         : "ru.blizzed:timetablespbu-lib:$versions.timetablespbu",
         jodatime              : "joda-time:joda-time:$versions.jodatime",
+        room                  : "androidx.room:room-runtime:$versions.room",
+        roomRx                : "androidx.room:room-rxjava2:$versions.room",
+        roomCompiler          : "androidx.room:room-compiler:$versions.room",
+        lifecycle             : "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle",
+        lifecycleExtensions   : "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle",
+        lifecycleReactive     : "androidx.lifecycle:lifecycle-reactivestreams-ktx:$versions.lifecycle"
 ]
