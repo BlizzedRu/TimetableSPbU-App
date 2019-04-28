@@ -1,10 +1,15 @@
 package ru.blizzed.timetablespbu.domain.repositories
 
+import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
 import ru.blizzed.timetablespbu.domain.entities.Educator
 
 interface EducatorsRepository {
+
+    fun observeFavorites(): Flowable<List<Educator>>
+
+    fun observeNonFavorites(): Flowable<List<Educator>>
 
     fun search(query: String): Single<List<Educator>>
 
