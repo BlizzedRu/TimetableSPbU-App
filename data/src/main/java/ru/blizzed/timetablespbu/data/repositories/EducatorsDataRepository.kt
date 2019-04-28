@@ -1,8 +1,9 @@
 package ru.blizzed.timetablespbu.data.repositories
 
+import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
-import io.reactivex.functions.Function3
+import io.reactivex.functions.BiFunction
 import ru.blizzed.timetablespbu.data.datasources.EducatorsLocalDataSource
 import ru.blizzed.timetablespbu.data.datasources.EducatorsRemoteDataSource
 import ru.blizzed.timetablespbu.data.utils.TimeUtils
@@ -16,19 +17,35 @@ class EducatorsDataRepository @Inject constructor(
         private val timeUtils: TimeUtils
 ) : EducatorsRepository {
 
+    companion object {
+        private const val MIN_QUERY_LENGTH_FOR_REMOTE_REQUEST = 2
+    }
+
+    override fun observeFavorites(): Flowable<List<Educator>> = localDataSource
+            .observeAll()
+            .map { educators ->
+                educators
+                        .filter(Educator::isFavorite)
+                        .sortedByDescending(Educator::lastInteractionTime)
+            }
+
+    override fun observeNonFavorites(): Flowable<List<Educator>> = localDataSource
+            .observeAll()
+            .map { educators ->
+                educators
+                        .filter { educator -> educator.isViewed && !educator.isFavorite }
+                        .sortedByDescending(Educator::lastInteractionTime)
+            }
+
     override fun search(query: String): Single<List<Educator>> = Single.zip(
-            remoteDataSource.search(query),
-            localDataSource.getFavorites().toSingle(emptyList()),
-            localDataSource.getViewed().toSingle(emptyList()),
-            Function3 { remoteList, favoritesList, viewedList ->
-                val localList = (favoritesList + viewedList)
-                        .filter { it.fullName.contains(query, ignoreCase = true) }
-                        .toSet()
-                        .sortedBy(Educator::lastViewTime)
+            if (query.length >= MIN_QUERY_LENGTH_FOR_REMOTE_REQUEST) remoteDataSource.search(query) else Single.just(emptyList()),
+            localDataSource.getAll(query),
+            BiFunction { remoteList, localList ->
+                val sortedLocalList = localList.sortedByDescending(Educator::lastInteractionTime)
 
-                // TODO may be update cached educators
+                // TODO may be updateOrAdd cached educators
 
-                localList + remoteList.toMutableList().also { it.removeAll(localList) }
+                sortedLocalList + remoteList.toMutableList().also { it.removeAll(sortedLocalList) }
             }
     )
 
@@ -37,13 +54,18 @@ class EducatorsDataRepository @Inject constructor(
     override fun getFavorites(): Maybe<List<Educator>> = localDataSource.getFavorites()
 
     override fun setFavorite(educator: Educator, isFavorite: Boolean): Single<Educator> = localDataSource
-            .update(educator.also { it.isFavorite = isFavorite })
-            .andThen(Single.just(educator))
+            .run {
+                if (isFavorite || educator.isViewed) {
+                    updateOrAdd(educator.also { it.setFavorite(isFavorite, timeUtils.getCurrentTime()) })
+                } else {
+                    delete(educator)
+                }
+            }.andThen(Single.just(educator))
 
     override fun getViewed(): Maybe<List<Educator>> = localDataSource.getViewed()
 
     override fun setViewed(educator: Educator): Single<Educator> = localDataSource
-            .update(educator.also { it.view(timeUtils.getCurrentTime()) })
+            .updateOrAdd(educator.also { it.view(timeUtils.getCurrentTime()) })
             .andThen(Single.just(educator))
 
 }

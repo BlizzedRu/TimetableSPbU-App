@@ -19,6 +19,11 @@ class EducatorsLocalDataSource @Inject constructor(
         @DBScheduler dbScheduler: Scheduler
 ) : DatabaseDataSource(dbScheduler), RxDataMapper<EducatorData, Educator> by educatorDataMapper {
 
+    fun getAll(query: String): Single<List<Educator>> = educatorsDao
+        .getAll(query)
+        .mapToEntity()
+        .onDbScheduler()
+
     fun observeAll(): Flowable<List<Educator>> = educatorsDao
             .observeAll()
             .mapToEntity()
@@ -34,8 +39,12 @@ class EducatorsLocalDataSource @Inject constructor(
             .mapToEntity()
             .onDbScheduler()
 
-    fun update(educator: Educator): Completable = Completable
-            .fromAction { educatorsDao.update(educatorDataMapper.mapToData(educator)) }
+    fun updateOrAdd(educator: Educator): Completable = Completable
+            .fromAction { educatorsDao.updateOrAdd(educatorDataMapper.mapToData(educator)) }
+            .onDbScheduler()
+
+    fun delete(educator: Educator): Completable = Completable
+            .fromAction { educatorsDao.delete(educatorDataMapper.mapToData(educator)) }
             .onDbScheduler()
 
     fun isFavorite(educator: Educator): Single<Boolean> = educatorsDao
