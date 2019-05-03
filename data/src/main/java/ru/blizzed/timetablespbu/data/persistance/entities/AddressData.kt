@@ -1,6 +1,10 @@
 package ru.blizzed.timetablespbu.data.persistance.entities
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "addresses")
 data class AddressData(
-        val oid: String,
+        @PrimaryKey val oid: String,
         val name: String
 )
