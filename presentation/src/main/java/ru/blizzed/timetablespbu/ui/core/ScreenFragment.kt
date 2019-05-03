@@ -6,6 +6,7 @@ import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import ru.blizzed.timetablespbu.viewmodel.system.ViewModelsProvider
@@ -29,11 +30,9 @@ abstract class ScreenFragment<TState : Parcelable> : Fragment() {
                 state: Parcelable?
         ): ScreenFragment<*> = Fragment.instantiate(context, screenClass.java.name, args(state)) as ScreenFragment<*>
 
-        fun args(state: Parcelable?) = Bundle().also {
-            it.putParcelable(STATE_KEY_EXTRA, state)
-        }
+        fun args(state: Parcelable?) = bundleOf(STATE_KEY_EXTRA to state)
 
-        private const val STATE_KEY_EXTRA = "state"
+        private const val STATE_KEY_EXTRA = "STATE_KEY_EXTRA"
     }
 
     protected lateinit var state: TState

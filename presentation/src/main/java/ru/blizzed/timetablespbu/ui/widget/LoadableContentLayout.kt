@@ -10,10 +10,9 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.extensions.isVisibleAnimated
-import ru.blizzed.timetablespbu.utils.Event
 import kotlin.properties.Delegates
 
-class LoadableContentLayout @JvmOverloads constructor(
+open class LoadableContentLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
@@ -23,14 +22,14 @@ class LoadableContentLayout @JvmOverloads constructor(
         LOADING(0), ERROR(1), CONTENT(2), EMPTY(3)
     }
 
-    private lateinit var loadingView: View
-    private lateinit var errorView: View
-    private var emptyView: View? = null
+    protected lateinit var loadingView: View
+    protected lateinit var errorView: View
+    protected var emptyView: View? = null
 
     @IdRes
     private var emptyViewId: Int = View.NO_ID
 
-    private val contentViewIds = mutableListOf<@IdRes Int>()
+    protected val contentViewIds = mutableListOf<@IdRes Int>()
 
     var status: Status by Delegates.observable(Status.CONTENT) { _, oldValue, newValue ->
         if (oldValue != newValue) {
@@ -41,7 +40,8 @@ class LoadableContentLayout @JvmOverloads constructor(
 
     init {
         context.withStyledAttributes(attrs, R.styleable.LoadableContentLayout, 0) {
-            val loadingViewLayoutRes = getResourceId(R.styleable.LoadableContentLayout_loadingView, R.layout.common_loading)
+            val loadingViewLayoutRes =
+                getResourceId(R.styleable.LoadableContentLayout_loadingView, R.layout.common_loading)
             val errorViewLayoutRes = getResourceId(R.styleable.LoadableContentLayout_errorView, R.layout.common_error)
             LayoutInflater.from(context).apply {
                 // I don't use 'true' as attachToRoot parameter because onViewAdded needs to be called strictly after view initialization
@@ -57,14 +57,6 @@ class LoadableContentLayout @JvmOverloads constructor(
             getInt(R.styleable.LoadableContentLayout_status, Status.CONTENT.statusCode).also { code ->
                 status = Status.values()[code]
             }
-        }
-    }
-
-    fun setStatusByEvent(event: Event<*>) {
-        status = when (event) {
-            is Event.Loading -> Status.LOADING
-            is Event.Error -> Status.ERROR
-            else -> Status.CONTENT
         }
     }
 

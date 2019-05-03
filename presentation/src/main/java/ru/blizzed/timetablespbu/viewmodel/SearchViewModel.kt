@@ -8,8 +8,8 @@ import ru.blizzed.timetablespbu.viewmodel.system.RxViewModel
 import java.util.concurrent.TimeUnit
 
 open class SearchViewModel(
-        queryDebounceMillis: Int = SEARCH_QUERY_DEBOUNCE_MILLIS,
-        rxBinder: RxBinder
+        rxBinder: RxBinder,
+        queryDebounceMillis: Int = SEARCH_QUERY_DEBOUNCE_MILLIS
 ) : RxViewModel(rxBinder) {
 
     companion object {

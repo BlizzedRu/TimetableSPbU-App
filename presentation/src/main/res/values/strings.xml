@@ -4,9 +4,15 @@
     <string name="common_main_navigation_schedule_title">Расписание</string>
     <string name="common_main_navigation_bookmarks_title">Закладки</string>
 
+    <string name="common_error_retry">Повторить</string>
+    <string name="common_loading_error_message">Ошибка загрузки</string>
+
     <string name="screen_search_educators_tab_title">Преподаватели</string>
     <string name="screen_search_classrooms_tab_title">Аудитории</string>
 
-    <string name="common_error_retry">Повторить</string>
-    <string name="common_loading_error_message">Ошибка загрузки</string>
+    <string name="screen_search_educators_favorite_title">Избранные</string>
+    <string name="screen_search_educators_last_viewed_title">Недавно просмотренные</string>
+    <string name="screen_search_educators_last_viewed_empty_title">Здесь будут отображаться преподаватели, профили которых вы недавно просматривали</string>
+    <string name="screen_search_educators_favorite_empty_title">У вас пока нет избранных преподавателей :(</string>
+
 </resources>

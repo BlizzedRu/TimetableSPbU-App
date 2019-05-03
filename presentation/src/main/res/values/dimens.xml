@@ -6,4 +6,13 @@
 
     <dimen name="title">18sp</dimen>
     <dimen name="pre_title">16sp</dimen>
+
+    <dimen name="view_circle_title_size">64dp</dimen>
+    <dimen name="view_circle_name_text_size">23sp</dimen>
+
+    <dimen name="card_elevation">1dp</dimen>
+
+    <dimen name="mock_rectangle_corner_radius">3dp</dimen>
+    <dimen name="mock_margin">2dp</dimen>
+
 </resources>
