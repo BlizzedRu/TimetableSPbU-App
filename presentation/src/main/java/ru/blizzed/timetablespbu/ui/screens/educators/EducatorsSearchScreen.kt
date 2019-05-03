@@ -15,7 +15,11 @@ import ru.blizzed.timetablespbu.ui.core.ScreenParams
 import ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout
 import ru.blizzed.timetablespbu.utils.Event
 import ru.blizzed.timetablespbu.viewmodel.EducatorsSearchViewModel
+import timber.log.Timber
 
+/**
+ * Temp screen
+ */
 @ScreenParams(R.layout.screen_search_modal)
 class EducatorsSearchScreen : ScreenFragment<NoState>() {
 
@@ -46,7 +50,7 @@ class EducatorsSearchScreen : ScreenFragment<NoState>() {
                     }
                 }
                 is Event.Error -> {
-                    event.throwable.printStackTrace()
+                    Timber.e(event.throwable)
                 }
             }
 

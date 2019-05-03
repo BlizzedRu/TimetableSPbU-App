@@ -13,20 +13,27 @@ class CircularEducatorsAdapter : BaseSingleTypeListAdapter<Educator, CircularEdu
         private val DIFF_CALLBACK = object : SimpleDiffCallback<Educator>() {
             override fun areItemsTheSame(oldItem: Educator, newItem: Educator): Boolean = oldItem == newItem
 
-            override fun areContentsTheSame(oldItem: Educator, newItem: Educator): Boolean = oldItem.isFavorite == newItem.isFavorite
+            override fun areContentsTheSame(oldItem: Educator, newItem: Educator): Boolean =
+                    oldItem.circleColor == newItem.circleColor && oldItem.fullName == newItem.fullName
         }
     }
 
     var onEducatorClickListener: ((Educator) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CircularEducatorViewHolder =
-        CircularEducatorViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_list_educator_circular, parent, false))
+            CircularEducatorViewHolder(
+                    LayoutInflater.from(parent.context).inflate(
+                            R.layout.item_list_educator_circular,
+                            parent,
+                            false
+                    )
+            )
 
     override fun onBindViewHolder(holder: CircularEducatorViewHolder, position: Int, payloads: List<Any>) {
         super.onBindViewHolder(holder, position, payloads)
         holder.bind(
-            getItems()[position],
-            onEducatorClickListener
+                getItems()[position],
+                onEducatorClickListener
         )
     }
 

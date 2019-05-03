@@ -15,7 +15,7 @@ class EducatorsAdapter : BaseSingleTypeListAdapter<Educator, EducatorViewHolder>
                     oldItem == newItem
 
             override fun areContentsTheSame(oldItem: Educator, newItem: Educator): Boolean =
-                    oldItem.isFavorite == newItem.isFavorite
+                    oldItem.fullName == newItem.fullName
         }
     }
 

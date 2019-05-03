@@ -26,7 +26,7 @@ class SearchView @JvmOverloads constructor(
         attrs: AttributeSet? = null,
         @AttrRes defStyleAttr: Int = 0,
         @StyleRes defStyleRes: Int = 0
-) : ConstraintLayout(context, attrs, defStyleAttr) {
+) : ConstraintLayout(context, attrs, defStyleAttr, defStyleRes) {
 
     companion object {
         private const val NO_COLOR = -1
@@ -67,7 +67,7 @@ class SearchView @JvmOverloads constructor(
             }
         })
 
-        statusButton.setOnRippleClickListener(::openSearch)
+        statusButton.setOnRippleClickListener(::start)
 
         closeButton.setOnRippleClickListener {
             hideSearchCloseButton()
@@ -75,6 +75,8 @@ class SearchView @JvmOverloads constructor(
         }
 
     }
+
+    override fun setOnClickListener(listener: OnClickListener?) = phantomView.setOnClickListener(listener)
 
     fun observe(queryObserver: (String) -> Unit) {
         queryObserverWatcher?.let(textInput::removeTextChangedListener)
@@ -84,7 +86,7 @@ class SearchView @JvmOverloads constructor(
         }.also(textInput::addTextChangedListener)
     }
 
-    fun openSearch() = textInput.openKeyboard()
+    fun start() = textInput.openKeyboard()
 
     fun closeSearch() {
         textInput.hideKeyboard()
@@ -108,8 +110,6 @@ class SearchView @JvmOverloads constructor(
     fun setSearchHintColor(@ColorInt color: Int) {
         textInput.setHintTextColor(color)
     }
-
-    override fun setOnClickListener(listener: OnClickListener?) = phantomView.setOnClickListener(listener)
 
     fun setDisabled(isDisabled: Boolean) {
         phantomView.isVisible = isDisabled
