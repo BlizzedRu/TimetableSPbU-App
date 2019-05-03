@@ -24,7 +24,6 @@ class RxModule {
     @Provides
     fun provideUiScheduler() = AndroidSchedulers.mainThread()
 
-    @App
     @Provides
     fun provideRxBinder(
         @UIScheduler uiScheduler: Scheduler,

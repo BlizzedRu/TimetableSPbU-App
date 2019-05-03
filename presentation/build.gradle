@@ -59,6 +59,8 @@ dependencies {
     implementation libraries.timber
     implementation libraries.timetablespbu
     implementation libraries.jodatime
+
+    implementation 'me.grantland:autofittextview:0.2.1'
 }
 
 androidExtensions {

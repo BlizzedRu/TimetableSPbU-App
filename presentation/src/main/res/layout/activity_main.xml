@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="?android:attr/windowBackground"
+            android:background="@color/app_bar"
             app:menu="@menu/main_navigation"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ru.blizzed.timetablespbu.ui.widget.DefaultLoadableContentLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loadableContentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/educatorsScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/margin_large">
+
+        <LinearLayout
+            style="@style/CardContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/CardHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/screen_search_educators_favorite_title"/>
+
+            <ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout
+                android:id="@+id/favoriteLoadableContentLayout"
+                style="@style/Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:measureAllChildren="true"
+                app:emptyViewId="@id/favoriteEmptyStub">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/favoriteRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:overScrollMode="never"
+                    android:paddingStart="@dimen/margin_medium"
+                    android:paddingEnd="@dimen/margin_medium"
+                    android:clipToPadding="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_list_educator_circular"/>
+
+                <include
+                    android:id="@+id/favoriteEmptyStub"
+                    layout="@layout/empty_educators_favorite"/>
+
+            </ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout>
+
+            <TextView
+                style="@style/CardHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/screen_search_educators_last_viewed_title"/>
+
+            <ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout
+                android:id="@+id/viewedLoadableContentLayout"
+                style="@style/Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:emptyViewId="@id/viewedEmptyStub">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/viewedRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_list_educator"/>
+
+                <include
+                    android:id="@+id/viewedEmptyStub"
+                    layout="@layout/empty_educators_viewed"/>
+
+            </ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</ru.blizzed.timetablespbu.ui.widget.DefaultLoadableContentLayout>
+

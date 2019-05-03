@@ -21,4 +21,9 @@
         <attr name="disabled" format="boolean"/>
     </declare-styleable>
 
+    <declare-styleable name="CircleTitleView">
+        <attr name="circleColor" format="color"/>
+    </declare-styleable>
+
+
 </resources>

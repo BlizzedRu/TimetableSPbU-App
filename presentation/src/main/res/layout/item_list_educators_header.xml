@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CardContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/CardHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_search_educators_favorite_title"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favoriteEducatorsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_list_educator_circular"/>
+
+    <include
+        android:id="@+id/favoriteEducatorsEmptyStub"
+        layout="@layout/empty_educators_favorite"/>
+
+    <TextView
+        style="@style/CardHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_search_educators_last_viewed_title"/>
+
+    <include
+        android:id="@+id/viewedEducatorsEmptyStub"
+        layout="@layout/empty_educators_viewed"/>
+
+</LinearLayout>
