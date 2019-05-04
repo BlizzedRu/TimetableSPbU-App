@@ -23,13 +23,7 @@ class EducatorsDataRepository @Inject constructor(
 
     override fun observeFavorites(): Flowable<List<Educator>> = localDataSource.observeFavorites()
 
-    override fun observeNonFavorites(): Flowable<List<Educator>> = localDataSource
-            .observeAll()
-            .map { educators ->
-                educators
-                        .filter { educator -> educator.isViewed && !educator.isFavorite }
-                        .sortedByDescending(Educator::lastInteractionTime)
-            }
+    override fun observeNonFavoritesViewed(): Flowable<List<Educator>> = localDataSource.observeNonFavoriteViewed()
 
     override fun search(query: String): Single<List<Educator>> = Single.zip(
             if (query.length >= MIN_QUERY_LENGTH_FOR_REMOTE_REQUEST) remoteDataSource.search(query) else Single.just(emptyList()),

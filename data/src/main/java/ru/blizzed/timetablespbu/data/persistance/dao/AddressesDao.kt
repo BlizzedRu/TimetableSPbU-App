@@ -26,6 +26,9 @@ abstract class AddressesDao {
     @Query("SELECT * FROM addresses WHERE isViewed ORDER BY lastInteractionTime DESC")
     abstract fun observeViewed(): Flowable<List<AddressData>>
 
+    @Query("SELECT * FROM addresses WHERE isViewed AND NOT isFavorite ORDER BY lastInteractionTime DESC")
+    abstract fun observeNonFavoriteViewed(): Flowable<List<AddressData>>
+
     @Query("SELECT * FROM addresses WHERE oid = :addressOid LIMIT 1")
     abstract fun getById(addressOid: String): AddressData?
 

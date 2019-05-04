@@ -9,7 +9,7 @@ interface EducatorsRepository {
 
     fun observeFavorites(): Flowable<List<Educator>>
 
-    fun observeNonFavorites(): Flowable<List<Educator>>
+    fun observeNonFavoritesViewed(): Flowable<List<Educator>>
 
     fun search(query: String): Single<List<Educator>>
 

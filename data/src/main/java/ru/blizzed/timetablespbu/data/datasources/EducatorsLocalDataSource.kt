@@ -39,6 +39,11 @@ class EducatorsLocalDataSource @Inject constructor(
             .mapToEntity()
             .onDbScheduler()
 
+    fun observeNonFavoriteViewed() : Flowable<List<Educator>> = educatorsDao
+            .observeNonFavoriteViewed()
+            .mapToEntity()
+            .onDbScheduler()
+
     fun updateOrAdd(educator: Educator): Completable = Completable
             .fromAction { educatorsDao.updateOrAdd(educatorDataMapper.mapToData(educator)) }
             .onDbScheduler()

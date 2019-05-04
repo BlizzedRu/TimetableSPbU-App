@@ -10,7 +10,7 @@ interface AddressesRepository {
 
     fun observeFavorites(): Flowable<List<Address>>
 
-    fun observeNonFavorites(): Flowable<List<Address>>
+    fun observeNonFavoritesViewed(): Flowable<List<Address>>
 
     fun search(query: String): Single<List<Address>>
 

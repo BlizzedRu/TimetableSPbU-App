@@ -39,6 +39,11 @@ class AddressesLocalDataSource @Inject constructor(
             .mapToEntity()
             .onDbScheduler()
 
+    fun observeNonFavoriteViewed(): Flowable<List<Address>> = addressesDao
+            .observeNonFavoriteViewed()
+            .mapToEntity()
+            .onDbScheduler()
+
     fun update(address: Address): Completable = Completable
             .fromAction { addressesDao.update(addressMapper.mapToData(address)) }
             .onDbScheduler()

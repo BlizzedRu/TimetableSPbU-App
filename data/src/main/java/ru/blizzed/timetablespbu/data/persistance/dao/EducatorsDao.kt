@@ -27,6 +27,9 @@ abstract class EducatorsDao {
     @Query("SELECT * FROM educators WHERE isViewed ORDER BY lastInteractionTime DESC")
     abstract fun observeViewed(): Flowable<List<EducatorData>>
 
+    @Query("SELECT * FROM educators WHERE isViewed AND NOT isFavorite ORDER BY lastInteractionTime DESC")
+    abstract fun observeNonFavoriteViewed(): Flowable<List<EducatorData>>
+
     @Query("SELECT * FROM educators WHERE id = :educatorId LIMIT 1")
     abstract fun getById(educatorId: Int): EducatorData?
 

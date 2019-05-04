@@ -18,13 +18,7 @@ class AddressesDataRepository(
 
     override fun observeFavorites(): Flowable<List<Address>> = localDataSource.observeFavorites()
 
-    override fun observeNonFavorites(): Flowable<List<Address>> = localDataSource
-            .observeAll()
-            .map { addresses ->
-                addresses
-                        .filter { address -> address.isViewed && !address.isFavorite }
-                        .sortedByDescending(Address::lastInteractionTime)
-            }
+    override fun observeNonFavoritesViewed(): Flowable<List<Address>> = localDataSource.observeNonFavoriteViewed()
 
     override fun search(query: String): Single<List<Address>> = localDataSource.getAll(query)
 
