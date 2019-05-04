@@ -7,12 +7,18 @@ class AddressDataMapper : RxDataMapper<Address, AddressData> {
 
     override fun mapToEntity(input: Address): AddressData = AddressData(
             input.oid,
-            input.name
+            input.name,
+            input.isFavorite,
+            input.isViewed,
+            input.lastInteractionTime
     )
 
     override fun mapToData(input: AddressData): Address = Address(
             input.oid,
-            input.name
+            input.name,
+            input.isFavorite,
+            input.isViewed,
+            input.lastInteractionTime
     )
 
 }

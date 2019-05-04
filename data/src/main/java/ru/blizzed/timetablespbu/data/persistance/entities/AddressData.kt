@@ -6,5 +6,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "addresses")
 data class AddressData(
         @PrimaryKey val oid: String,
-        val name: String
+        val name: String,
+        val isFavorite: Boolean = false,
+        val isViewed: Boolean = false,
+        val lastInteractionTime: Long = 0L
 )
