@@ -3,9 +3,9 @@ package ru.blizzed.timetablespbu.data.persistance.mappers
 import ru.blizzed.timetablespbu.data.persistance.entities.AddressData
 import ru.blizzed.timetablespbu.domain.entities.Address
 
-class AddressDataMapper : RxDataMapper<Address, AddressData> {
+class AddressDataMapper : RxDataMapper<AddressData, Address> {
 
-    override fun mapToEntity(input: Address): AddressData = AddressData(
+    override fun mapToData(input: Address): AddressData = AddressData(
             input.oid,
             input.name,
             input.isFavorite,
@@ -13,7 +13,7 @@ class AddressDataMapper : RxDataMapper<Address, AddressData> {
             input.lastInteractionTime
     )
 
-    override fun mapToData(input: AddressData): Address = Address(
+    override fun mapToEntity(input: AddressData): Address = Address(
             input.oid,
             input.name,
             input.isFavorite,

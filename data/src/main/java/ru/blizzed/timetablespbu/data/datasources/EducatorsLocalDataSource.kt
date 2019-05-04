@@ -35,7 +35,7 @@ class EducatorsLocalDataSource @Inject constructor(
             .onDbScheduler()
 
     fun observeViewed(): Flowable<List<Educator>> = educatorsDao
-            .observeFavorites()
+            .observeViewed()
             .mapToEntity()
             .onDbScheduler()
 

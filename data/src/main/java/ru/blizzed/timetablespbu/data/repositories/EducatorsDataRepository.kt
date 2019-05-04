@@ -21,13 +21,7 @@ class EducatorsDataRepository @Inject constructor(
         private const val MIN_QUERY_LENGTH_FOR_REMOTE_REQUEST = 2
     }
 
-    override fun observeFavorites(): Flowable<List<Educator>> = localDataSource
-            .observeAll()
-            .map { educators ->
-                educators
-                        .filter(Educator::isFavorite)
-                        .sortedByDescending(Educator::lastInteractionTime)
-            }
+    override fun observeFavorites(): Flowable<List<Educator>> = localDataSource.observeFavorites()
 
     override fun observeNonFavorites(): Flowable<List<Educator>> = localDataSource
             .observeAll()
