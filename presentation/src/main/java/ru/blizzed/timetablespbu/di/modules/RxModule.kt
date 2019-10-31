@@ -5,7 +5,7 @@ import dagger.Provides
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import ru.blizzed.timetablespbu.di.qualifiers.IOScheduler
+import ru.blizzed.timetablespbu.data.IOScheduler
 import ru.blizzed.timetablespbu.di.qualifiers.UIScheduler
 import ru.blizzed.timetablespbu.di.scopes.App
 import ru.blizzed.timetablespbu.utils.BaseRxBinder
@@ -17,12 +17,12 @@ class RxModule {
     @App
     @IOScheduler
     @Provides
-    fun provideIoScheduler() = Schedulers.io()
+    fun provideIoScheduler(): Scheduler = Schedulers.io()
 
     @App
     @UIScheduler
     @Provides
-    fun provideUiScheduler() = AndroidSchedulers.mainThread()
+    fun provideUiScheduler(): Scheduler = AndroidSchedulers.mainThread()
 
     @Provides
     fun provideRxBinder(
