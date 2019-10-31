@@ -7,29 +7,29 @@ import androidx.fragment.app.FragmentPagerAdapter
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.ui.core.NoState
 import ru.blizzed.timetablespbu.ui.core.ScreenFragment
-import ru.blizzed.timetablespbu.ui.screens.search.classrooms.ClassroomsSearchScreen
-import ru.blizzed.timetablespbu.ui.screens.search.educators.EducatorsSearchScreen
+import ru.blizzed.timetablespbu.ui.screens.search.classrooms.ClassroomsScreen
+import ru.blizzed.timetablespbu.ui.screens.educators.EducatorsScreen
 import kotlin.reflect.KClass
 
 class SearchTabsAdapter(private val fragment: Fragment) : FragmentPagerAdapter(fragment.childFragmentManager) {
 
     override fun getItem(position: Int): Fragment = ScreenFragment.instantiate(
             fragment.requireContext(),
-            Tabs.values()[position].screenClass,
-            Tabs.values()[position].state
+            SearchTabs.values()[position].screenClass,
+            SearchTabs.values()[position].state
     )
 
-    override fun getCount() = Tabs.values().size
+    override fun getCount() = SearchTabs.values().size
 
-    override fun getPageTitle(position: Int): String = fragment.getString(Tabs.values()[position].titleRes)
+    override fun getPageTitle(position: Int): String = fragment.getString(SearchTabs.values()[position].titleRes)
 
-    private enum class Tabs(
-            val screenClass: KClass<out ScreenFragment<*>>,
-            @StringRes val titleRes: Int,
-            val state: Parcelable
-    ) {
-        EDUCATORS(EducatorsSearchScreen::class, R.string.screen_search_educators_tab_title, NoState),
-        CLASSROOMS(ClassroomsSearchScreen::class, R.string.screen_search_classrooms_tab_title, NoState)
-    }
+}
 
+enum class SearchTabs(
+        val screenClass: KClass<out ScreenFragment<*>>,
+        @StringRes val titleRes: Int,
+        val state: Parcelable
+) {
+    EDUCATORS(EducatorsScreen::class, R.string.screen_search_educators_tab_title, NoState),
+    CLASSROOMS(ClassroomsScreen::class, R.string.screen_search_classrooms_tab_title, NoState)
 }

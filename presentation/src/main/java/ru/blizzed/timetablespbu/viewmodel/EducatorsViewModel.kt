@@ -21,7 +21,7 @@ class EducatorsViewModel @Inject constructor(
     init {
         Flowable.zip(
                 educatorsRepository.observeFavorites(),
-                educatorsRepository.observeNonFavorites(),
+                educatorsRepository.observeNonFavoritesViewed(),
                 BiFunction { favoriteList: List<Educator>, viewedList: List<Educator> ->
                     Educators(favoriteList, viewedList)
                 }
