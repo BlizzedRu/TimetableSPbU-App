@@ -9,8 +9,8 @@ import ru.blizzed.timetablespbu.domain.entities.Faculty
 import javax.inject.Inject
 
 class FacultiesAssetsDataSource @Inject constructor(
-        private val assetsUtil: AssetsUtil,
-        @IOScheduler private val ioScheduler: Scheduler
+    private val assetsUtil: AssetsUtil,
+    @IOScheduler private val ioScheduler: Scheduler
 ) {
 
     companion object {
@@ -29,13 +29,16 @@ class FacultiesAssetsDataSource @Inject constructor(
     }
 
     private fun fetch(): Single<List<Faculty>> = Single
-            .fromCallable {
-                assetsUtil
-                        .getListModel(FACULTIES_FOLDER_NAME, FACULTIES_INFO_FILE_NAME, Faculty::class.java)
-                        .also { faculties ->
-                            faculties.forEach { faculty -> faculty.logo = faculty.logo.prependIndent("$FACULTIES_FOLDER_NAME/") }
-                            facultiesSubject.onNext(faculties)
-                        }
-            }.subscribeOn(ioScheduler)
+        .fromCallable {
+            assetsUtil
+                .getListModel(FACULTIES_FOLDER_NAME, FACULTIES_INFO_FILE_NAME, Faculty::class.java)
+                .also { faculties ->
+                    faculties.forEach { faculty ->
+                        faculty.logo = faculty.logo.prependIndent("$FACULTIES_FOLDER_NAME/")
+                    }
+                    facultiesSubject.onNext(faculties)
+                }
+        }
+        .subscribeOn(ioScheduler)
 
 }

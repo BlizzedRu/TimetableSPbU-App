@@ -51,7 +51,7 @@ abstract class AddressesDao {
     abstract fun insert(address: AddressData): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insert(addresses: List<AddressData>): Long
+    abstract fun insert(addresses: List<AddressData>): List<Long>
 
     @Delete
     abstract fun delete(address: AddressData): Int
