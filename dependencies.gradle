@@ -9,15 +9,15 @@ ext.versions = [
 
         androidGradlePlugin: '3.2.1',
 
-        dagger             : '2.17',
-        rxAndroid          : '2.1.0',
-        rxJava             : '2.2.2',
+        dagger             : '2.25.2',
+        rxAndroid          : '2.1.1',
+        rxJava             : '2.2.13',
         timber             : '4.7.1',
         timetablespbu      : '1.0.1',
-        jodatime           : '2.10',
-        room               : '2.0.0',
+        jodatime           : '2.10.5',
+        room               : '2.2.1',
 
-        lifecycle          : '2.0.0'
+        lifecycle          : '2.1.0'
 ]
 
 ext.libraries = [
