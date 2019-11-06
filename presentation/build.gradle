@@ -48,6 +48,7 @@ dependencies {
 
     implementation libraries.rxJava
     implementation libraries.rxAndroid
+    implementation libraries.rxKotlin
 
     kapt libraries.roomCompiler
     implementation libraries.room
@@ -59,6 +60,9 @@ dependencies {
     implementation libraries.timber
     implementation libraries.timetablespbu
     implementation libraries.jodatime
+
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    implementation 'com.hannesdorfmann.mosby3:mvi:3.1.1'
 }
 
 androidExtensions {
