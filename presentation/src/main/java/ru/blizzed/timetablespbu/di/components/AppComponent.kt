@@ -10,6 +10,7 @@ import ru.blizzed.timetablespbu.di.modules.TimetableApiModule
 import ru.blizzed.timetablespbu.di.modules.UtilsModule
 import ru.blizzed.timetablespbu.di.scopes.App
 import ru.blizzed.timetablespbu.di.viewmodel.ViewModelsModule
+import ru.blizzed.timetablespbu.ui.screens.faculties.FacultiesSearchFragment
 
 @App
 @Component(modules = [
@@ -24,5 +25,7 @@ import ru.blizzed.timetablespbu.di.viewmodel.ViewModelsModule
 interface AppComponent {
 
     fun inject(into: TimetableSPbUApp)
+
+    fun inject(into: FacultiesSearchFragment)
 
 }

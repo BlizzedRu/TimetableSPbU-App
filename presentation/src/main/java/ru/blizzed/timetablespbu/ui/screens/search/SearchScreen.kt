@@ -11,6 +11,7 @@ import ru.blizzed.timetablespbu.ui.core.ScreenFragment
 import ru.blizzed.timetablespbu.ui.core.ScreenParams
 import ru.blizzed.timetablespbu.ui.screens.faculties.FacultiesSearchScreen
 import ru.blizzed.timetablespbu.ui.screens.educators.EducatorsSearchScreen
+import ru.blizzed.timetablespbu.ui.screens.faculties.FacultiesSearchFragment
 
 @ScreenParams(R.layout.screen_search)
 class SearchScreen : ScreenFragment<SearchScreenState>() {
@@ -28,7 +29,7 @@ class SearchScreen : ScreenFragment<SearchScreenState>() {
                         ?.commit()
                 SearchTabs.CLASSROOMS.ordinal -> activity?.supportFragmentManager
                         ?.beginTransaction()
-                        ?.replace(R.id.screen_container, ScreenFragment.create(context!!, FacultiesSearchScreen::class, NoState))
+                        ?.replace(R.id.screen_container, FacultiesSearchFragment() /*ScreenFragment.create(context!!, FacultiesSearchScreen::class, NoState)*/)
                         ?.commit()
             }
         }
