@@ -22,7 +22,7 @@ abstract class BaseSingleTypeListAdapter<Item, ItemViewHolder : RecyclerView.Vie
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int, payloads: List<Any>) {
         if (onItemClickListener != null) {
-            holder.itemView.setOnRippleClickListener { onItemClickListener?.invoke(getItems()[position], holder) }
+            holder.itemView.setOnRippleClickListener { onItemClickListener?.invoke(getItems()[holder.adapterPosition], holder) }
         } else {
             holder.itemView.setOnClickListener(null)
         }
