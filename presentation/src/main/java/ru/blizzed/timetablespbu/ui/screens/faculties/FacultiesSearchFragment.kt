@@ -19,7 +19,7 @@ class FacultiesSearchFragment : Fragment() {
 
     private val facultiesAdapter = FacultiesAdapter().also {
         it.onItemClickListener = { item, _ ->
-            viewModel.dispatchEvent(Event.Select(item))
+            viewModel.dispatchEvent(ViewEvent.Select(item))
         }
     }
 
@@ -42,9 +42,9 @@ class FacultiesSearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         facultiesRecycler.adapter = facultiesAdapter
-        search.observe { query -> viewModel.dispatchEvent(Event.Search(query)) }
+        search.observe { query -> viewModel.dispatchEvent(ViewEvent.Search(query)) }
 
-        viewModel.dispatchEvent(Event.Load)
+        viewModel.dispatchEvent(ViewEvent.Load)
     }
 
     private fun render(state: ViewState) {

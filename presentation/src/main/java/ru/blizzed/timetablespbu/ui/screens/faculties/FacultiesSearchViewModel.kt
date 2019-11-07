@@ -9,15 +9,15 @@ import javax.inject.Inject
 
 class FacultiesSearchViewModel @Inject constructor(
         private val facultiesRepository: FacultiesRepository
-) : MviViewModel<ViewState, Event, Change>() {
+) : MviViewModel<ViewState, ViewEvent, StateChange>() {
 
     override val initialState: ViewState = ViewState(isIdle = true)
 
-    override val stateReducer: Reducer<ViewState, Change> = { oldState, change ->
+    override val stateReducer: Reducer<ViewState, StateChange> = { oldState, change ->
         when (change) {
-            is Change.Loading -> oldState.copy(isIdle = false, isLoading = true, isError = false)
-            is Change.Loaded -> oldState.copy(isIdle = false, isLoading = false, isError = false, faculties = change.faculties)
-            is Change.Error -> oldState.copy(isIdle = false, isLoading = false, isError = true, error = change.error)
+            is StateChange.Loading -> oldState.copy(isIdle = false, isLoading = true, isError = false)
+            is StateChange.Loaded -> oldState.copy(isIdle = false, isLoading = false, isError = false, faculties = change.faculties)
+            is StateChange.Error -> oldState.copy(isIdle = false, isLoading = false, isError = true, error = change.error)
         }
     }
 
@@ -25,28 +25,28 @@ class FacultiesSearchViewModel @Inject constructor(
         onInitialized()
     }
 
-    override fun bindEvents(events: Observable<Event>): Observable<Change> {
-        val loadChange = events.ofType<Event.Load>()
+    override fun subscribeOnViewEvents(events: Observable<ViewEvent>): Observable<StateChange> {
+        val loadChange = events.ofType<ViewEvent.Load>()
                 .flatMapSingle {
                     facultiesRepository.getAll()
-                            .map<Change>(Change::Loaded)
-                            .onErrorReturn(Change::Error)
+                            .map<StateChange>(StateChange::Loaded)
+                            .onErrorReturn(StateChange::Error)
                 }
 
-        val searchChange = events.ofType<Event.Search>()
-                .map(Event.Search::query)
+        val searchChange = events.ofType<ViewEvent.Search>()
+                .map(ViewEvent.Search::query)
                 .flatMapSingle { query ->
                     facultiesRepository.search(query)
-                            .map<Change>(Change::Loaded)
-                            .onErrorReturn(Change::Error)
+                            .map<StateChange>(StateChange::Loaded)
+                            .onErrorReturn(StateChange::Error)
                 }
 
-        val selectChange = events.ofType<Event.Select>()
-                .map<Change> { Change.Loading }
-                .flatMap { Observable.error<Change>(Throwable()).onErrorReturn(Change::Error) }
+        val selectChange = events.ofType<ViewEvent.Select>()
+                .map<StateChange> { StateChange.Loading }
+                .flatMap { Observable.error<StateChange>(Throwable()).onErrorReturn(StateChange::Error) }
 
 
         return Observable.merge(loadChange, searchChange, selectChange)
-                .startWith(Change.Loading)
+                .startWith(StateChange.Loading)
     }
 }

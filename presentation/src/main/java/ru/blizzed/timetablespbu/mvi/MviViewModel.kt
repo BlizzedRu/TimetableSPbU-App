@@ -18,20 +18,20 @@ abstract class MviViewModel<State, Event, Change> : ViewModel() {
 
     protected val disposables = CompositeDisposable()
 
-    private val events: PublishSubject<Event> = PublishSubject.create()
+    private val viewEvents: PublishSubject<Event> = PublishSubject.create()
 
-    private val state: MutableLiveData<State> = MutableLiveData()
+    private val viewState: MutableLiveData<State> = MutableLiveData()
 
     fun onInitialized() {
-        disposables += bindEvents(events)
+        disposables += subscribeOnViewEvents(viewEvents)
                 .scan(initialState, stateReducer)
-                .subscribe(state::postValue, Timber::e)
+                .subscribe(viewState::postValue, Timber::e)
     }
 
-    fun dispatchEvent(event: Event) = events.onNext(event)
+    fun dispatchEvent(event: Event) = viewEvents.onNext(event)
 
     fun observeState(lifecycleOwner: LifecycleOwner, stateObserver: (State) -> Unit) {
-        state.observe(lifecycleOwner, Observer(stateObserver))
+        viewState.observe(lifecycleOwner, Observer(stateObserver))
     }
 
     override fun onCleared() {
@@ -39,6 +39,6 @@ abstract class MviViewModel<State, Event, Change> : ViewModel() {
         disposables.clear()
     }
 
-    protected open fun bindEvents(events: Observable<Event>): Observable<Change> = Observable.empty()
+    protected open fun subscribeOnViewEvents(events: Observable<Event>): Observable<Change> = Observable.empty()
 
 }
