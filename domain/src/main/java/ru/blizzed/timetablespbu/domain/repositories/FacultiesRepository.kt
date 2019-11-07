@@ -5,6 +5,8 @@ import ru.blizzed.timetablespbu.domain.entities.Faculty
 
 interface FacultiesRepository {
 
-    fun getFaculties(): Single<List<Faculty>>
+    fun getAll(): Single<List<Faculty>>
+
+    fun search(query: String): Single<List<Faculty>>
 
 }
