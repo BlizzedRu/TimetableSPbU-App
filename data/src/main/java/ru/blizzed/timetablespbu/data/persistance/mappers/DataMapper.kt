@@ -2,12 +2,12 @@ package ru.blizzed.timetablespbu.data.persistance.mappers
 
 interface DataMapper<DataType, EntityType> {
 
-    fun mapToEntity(input: DataType): EntityType
+    fun DataType.mapToEntity(): EntityType
 
-    fun mapToData(input: EntityType): DataType
+    fun EntityType.mapToData(): DataType
 
-    fun mapToEntity(inputList: List<DataType>): List<EntityType> = inputList.map(::mapToEntity)
+    fun List<DataType>.mapToEntity(): List<EntityType> = map { it.mapToEntity() }
 
-    fun mapToData(inputList: List<EntityType>): List<DataType> = inputList.map(::mapToData)
+    fun List<EntityType>.mapToData(): List<DataType> = map { it.mapToData() }
 
 }
