@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui
+package ru.blizzed.timetablespbu.ui.screens.main
 
 import android.os.Bundle
 import android.os.Parcelable
@@ -7,14 +7,14 @@ import android.view.MenuItem
 import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.navigationView
+import kotlinx.android.synthetic.main.activity_main.*
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.ui.core.NoState
 import ru.blizzed.timetablespbu.ui.core.ScreenFragment
-import ru.blizzed.timetablespbu.ui.screens.bookmarks.BookmarksScreen
-import ru.blizzed.timetablespbu.ui.screens.schedule.ScheduleScreen
-import ru.blizzed.timetablespbu.ui.screens.search.SearchScreen
-import ru.blizzed.timetablespbu.ui.screens.search.SearchScreenState
+import ru.blizzed.timetablespbu.ui.screens.main.bookmarks.BookmarksScreen
+import ru.blizzed.timetablespbu.ui.screens.main.schedule.ScheduleScreen
+import ru.blizzed.timetablespbu.ui.screens.main.search.SearchScreen
+import ru.blizzed.timetablespbu.ui.screens.main.search.SearchScreenState
 import kotlin.reflect.KClass
 
 class MainActivity : FragmentActivity() {

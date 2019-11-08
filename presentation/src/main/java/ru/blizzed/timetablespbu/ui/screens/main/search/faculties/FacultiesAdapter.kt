@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.search.faculties
+package ru.blizzed.timetablespbu.ui.screens.main.search.faculties
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -12,7 +12,7 @@ import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.domain.entities.Faculty
 import ru.blizzed.timetablespbu.ui.common.adapters.BaseSingleTypeListAdapter
 import ru.blizzed.timetablespbu.ui.common.adapters.SimpleDiffCallback
-import ru.blizzed.timetablespbu.ui.screens.search.faculties.FacultiesAdapter.FacultyViewHolder
+import ru.blizzed.timetablespbu.ui.screens.main.search.faculties.FacultiesAdapter.FacultyViewHolder
 
 class FacultiesAdapter : BaseSingleTypeListAdapter<Faculty, FacultyViewHolder>(DIFF_CALLBACK) {
 

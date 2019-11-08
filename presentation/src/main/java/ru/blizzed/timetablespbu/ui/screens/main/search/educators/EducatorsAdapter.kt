@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.search.educators
+package ru.blizzed.timetablespbu.ui.screens.main.search.educators
 
 import android.view.ViewGroup
 import ru.blizzed.timetablespbu.R

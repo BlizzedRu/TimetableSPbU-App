@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.search.faculties
+package ru.blizzed.timetablespbu.ui.screens.main.search.faculties
 
 import android.content.Context
 import android.os.Bundle
