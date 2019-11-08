@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.di.koin
+package ru.blizzed.timetablespbu.di
 
 import android.preference.PreferenceManager
 import androidx.arch.core.executor.ArchTaskExecutor
@@ -15,6 +15,7 @@ import ru.blizzed.timetablespbu.data.utils.ColorGenerator
 import ru.blizzed.timetablespbu.data.utils.TimeUtils
 import ru.blizzed.timetablespbu.extensions.getColorCompat
 import ru.blizzed.timetablespbu.utils.BaseRxBinder
+import ru.blizzed.timetablespbu.utils.RxBinder
 import ru.blizzed.timetablespbulib.TimeTableApi
 
 val applicationModule = module {
@@ -46,7 +47,7 @@ val uiScheduler = named("UIScheduler")
 val rxModule = module {
     single(ioScheduler) { Schedulers.io() }
     single(uiScheduler) { AndroidSchedulers.mainThread() }
-    factory { BaseRxBinder(get(uiScheduler), get(ioScheduler)) }
+    factory<RxBinder> { BaseRxBinder(get(uiScheduler), get(ioScheduler)) }
 }
 
 val timeTableApiModule = module {

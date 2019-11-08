@@ -1,16 +1,14 @@
 package ru.blizzed.timetablespbu.data.datasources
 
 import io.reactivex.*
-import ru.blizzed.timetablespbu.data.DBScheduler
 import ru.blizzed.timetablespbu.data.persistance.dao.EducatorsDao
 import ru.blizzed.timetablespbu.data.persistance.mappers.EducatorDataMapper.mapToData
 import ru.blizzed.timetablespbu.data.persistance.mappers.EducatorDataMapper.mapToEntity
 import ru.blizzed.timetablespbu.domain.entities.Educator
-import javax.inject.Inject
 
-class EducatorsLocalDataSource @Inject constructor(
+class EducatorsLocalDataSource(
         private val educatorsDao: EducatorsDao,
-        @DBScheduler dbScheduler: Scheduler
+        dbScheduler: Scheduler
 ) : DatabaseDataSource(dbScheduler) {
 
     fun getAll(query: String): Single<List<Educator>> = educatorsDao

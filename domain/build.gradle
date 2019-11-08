@@ -8,7 +8,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation libraries.rxJava
     implementation libraries.rxKotlin
-    implementation libraries.dagger
     implementation libraries.timetablespbu
     implementation libraries.jodatime
 }

@@ -6,9 +6,8 @@ import ru.blizzed.timetablespbu.domain.entities.Educator
 import ru.blizzed.timetablespbu.domain.mappers.EducatorMapper.mapToEntity
 import ru.blizzed.timetablespbulib.methods.EducatorsApiMethod
 import ru.blizzed.timetablespbulib.model.educators.EducatorSearchResult
-import javax.inject.Inject
 
-class EducatorsRemoteDataSource @Inject constructor(
+class EducatorsRemoteDataSource(
         private val educatorsApi: EducatorsApiMethod
 ) {
 

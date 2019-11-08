@@ -8,7 +8,7 @@ import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.ui.core.NoState
 import ru.blizzed.timetablespbu.ui.core.ScreenFragment
 import ru.blizzed.timetablespbu.ui.screens.search.classrooms.ClassroomsScreen
-import ru.blizzed.timetablespbu.ui.screens.educators.EducatorsScreen
+import ru.blizzed.timetablespbu.ui.screens.search.educators.EducatorsScreen
 import kotlin.reflect.KClass
 
 class SearchTabsAdapter(private val fragment: Fragment) : FragmentPagerAdapter(fragment.childFragmentManager) {

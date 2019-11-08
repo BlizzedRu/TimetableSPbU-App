@@ -34,11 +34,6 @@ dependencies {
     implementation libraries.room
     implementation libraries.roomRx
 
-    implementation libraries.daggerAndroid
-    kapt libraries.daggerAndroidProcessor
-    implementation libraries.dagger
-    kapt libraries.daggerCompiler
-
     implementation libraries.timetablespbu
 
     implementation libraries.timber

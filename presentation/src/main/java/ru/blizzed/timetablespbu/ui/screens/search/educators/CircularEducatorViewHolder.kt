@@ -1,11 +1,9 @@
-package ru.blizzed.timetablespbu.ui.screens.educators
+package ru.blizzed.timetablespbu.ui.screens.search.educators
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_list_educator_circular.view.educatorInitials
-import kotlinx.android.synthetic.main.item_list_educator_circular.view.educatorLastName
-import kotlinx.android.synthetic.main.item_list_educator_circular.view.educatorTitle
+import kotlinx.android.synthetic.main.item_list_educator_circular.view.*
 import ru.blizzed.timetablespbu.domain.entities.Educator
 import ru.blizzed.timetablespbu.extensions.getShortInitials
 import ru.blizzed.timetablespbu.ui.widget.CircleTitleView

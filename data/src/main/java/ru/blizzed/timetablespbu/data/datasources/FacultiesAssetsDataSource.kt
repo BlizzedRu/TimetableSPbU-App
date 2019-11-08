@@ -2,14 +2,12 @@ package ru.blizzed.timetablespbu.data.datasources
 
 import io.reactivex.Scheduler
 import io.reactivex.Single
-import ru.blizzed.timetablespbu.data.IOScheduler
 import ru.blizzed.timetablespbu.data.utils.AssetsUtil
 import ru.blizzed.timetablespbu.domain.entities.Faculty
-import javax.inject.Inject
 
-class FacultiesAssetsDataSource @Inject constructor(
+class FacultiesAssetsDataSource(
         private val assetsUtil: AssetsUtil,
-        @IOScheduler private val ioScheduler: Scheduler
+        private val ioScheduler: Scheduler
 ) {
 
     companion object {

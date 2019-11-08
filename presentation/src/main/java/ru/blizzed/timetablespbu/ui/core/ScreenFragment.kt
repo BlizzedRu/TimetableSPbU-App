@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
-import ru.blizzed.timetablespbu.viewmodel.system.ViewModelsProvider
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import timber.log.Timber
 import kotlin.reflect.KClass
 import kotlin.reflect.full.findAnnotation
@@ -68,7 +68,7 @@ abstract class ScreenFragment<TState : Parcelable> : Fragment() {
                     field.isAccessible = true
                     field.set(
                             this,
-                            ViewModelsProvider.of(getLifecycleOwnerByType(annotation.lifecycleOwner)).get(annotation.viewModelClass.java)
+                            getViewModel(annotation.viewModelClass)
                     )
                     Timber.d("ViewModel ${annotation.viewModelClass.simpleName} successfully injected into ${javaClass.simpleName}.")
                 }

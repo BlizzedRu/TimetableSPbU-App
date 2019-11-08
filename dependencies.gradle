@@ -9,7 +9,6 @@ ext.versions = [
 
         androidGradlePlugin: '3.2.1',
 
-        dagger             : '2.25.2',
         rxAndroid          : '2.1.1',
         rxJava             : '2.2.13',
         rxKotlin           : '2.4.0',
@@ -23,10 +22,6 @@ ext.versions = [
 ]
 
 ext.libraries = [
-        dagger                : "com.google.dagger:dagger:$versions.dagger",
-        daggerCompiler        : "com.google.dagger:dagger-compiler:$versions.dagger",
-        daggerAndroid         : "com.google.dagger:dagger-android:$versions.dagger",
-        daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:$versions.dagger",
         koin                  : "org.koin:koin-android:$versions.koin",
         koinTest              : "org.koin:koin-test:$versions.koin",
         koinScope             : "org.koin:koin-androidx-scope:$versions.koin",

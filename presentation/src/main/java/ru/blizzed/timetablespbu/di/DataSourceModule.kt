@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.di.koin
+package ru.blizzed.timetablespbu.di
 
 import org.koin.dsl.module
 import ru.blizzed.timetablespbu.data.datasources.*

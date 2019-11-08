@@ -1,16 +1,14 @@
 package ru.blizzed.timetablespbu.data.datasources
 
 import io.reactivex.*
-import ru.blizzed.timetablespbu.data.DBScheduler
 import ru.blizzed.timetablespbu.data.persistance.dao.AddressesDao
 import ru.blizzed.timetablespbu.data.persistance.mappers.AddressDataMapper.mapToData
 import ru.blizzed.timetablespbu.data.persistance.mappers.AddressDataMapper.mapToEntity
 import ru.blizzed.timetablespbu.domain.entities.Address
-import javax.inject.Inject
 
-class AddressesLocalDataSource @Inject constructor(
+class AddressesLocalDataSource(
         private val addressesDao: AddressesDao,
-        @DBScheduler dbScheduler: Scheduler
+        dbScheduler: Scheduler
 ) : DatabaseDataSource(dbScheduler) {
 
     fun getAll(query: String): Single<List<Address>> = addressesDao

@@ -2,16 +2,13 @@ package ru.blizzed.timetablespbu.ui.screens.search
 
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.screen_search.search
-import kotlinx.android.synthetic.main.screen_search.tabLayout
-import kotlinx.android.synthetic.main.screen_search.viewPager
+import kotlinx.android.synthetic.main.screen_search.*
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.ui.core.NoState
 import ru.blizzed.timetablespbu.ui.core.ScreenFragment
 import ru.blizzed.timetablespbu.ui.core.ScreenParams
-import ru.blizzed.timetablespbu.ui.screens.faculties.FacultiesSearchScreen
-import ru.blizzed.timetablespbu.ui.screens.educators.EducatorsSearchScreen
-import ru.blizzed.timetablespbu.ui.screens.faculties.FacultiesSearchFragment
+import ru.blizzed.timetablespbu.ui.screens.search.educators.EducatorsSearchScreen
+import ru.blizzed.timetablespbu.ui.screens.search.faculties.FacultiesSearchFragment
 
 @ScreenParams(R.layout.screen_search)
 class SearchScreen : ScreenFragment<SearchScreenState>() {

@@ -54,8 +54,10 @@ dependencies {
     implementation libraries.room
     implementation libraries.roomRx
 
-    implementation libraries.dagger
-    kapt libraries.daggerCompiler
+    implementation libraries.koin
+    implementation libraries.koinTest
+    implementation libraries.koinScope
+    implementation libraries.koinViewModel
 
     implementation libraries.timber
     implementation libraries.timetablespbu
