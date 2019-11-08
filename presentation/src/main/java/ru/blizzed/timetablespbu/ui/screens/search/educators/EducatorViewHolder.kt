@@ -1,12 +1,9 @@
-package ru.blizzed.timetablespbu.ui.screens.educators
+package ru.blizzed.timetablespbu.ui.screens.search.educators
 
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_list_educator.view.educatorEmployment
-import kotlinx.android.synthetic.main.item_list_educator.view.educatorName
-import kotlinx.android.synthetic.main.item_list_educator.view.favoriteButton
-import kotlinx.android.synthetic.main.item_list_educator.view.favoriteCheckBox
+import kotlinx.android.synthetic.main.item_list_educator.view.*
 import ru.blizzed.timetablespbu.domain.entities.Educator
 
 class EducatorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

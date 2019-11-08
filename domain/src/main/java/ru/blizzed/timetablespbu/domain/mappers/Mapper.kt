@@ -2,8 +2,8 @@ package ru.blizzed.timetablespbu.domain.mappers
 
 interface Mapper<I, O> {
 
-    fun apply(input: I) : O
+    fun I.mapToEntity() : O
 
-    fun apply(inputList: List<I>): List<O>  = inputList.map(::apply)
+    fun List<I>.mapToEntity(): List<O>  = map { it.mapToEntity() }
 
 }

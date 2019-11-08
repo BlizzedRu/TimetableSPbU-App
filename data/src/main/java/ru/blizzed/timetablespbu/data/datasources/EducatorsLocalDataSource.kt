@@ -1,28 +1,20 @@
 package ru.blizzed.timetablespbu.data.datasources
 
-import io.reactivex.Completable
-import io.reactivex.Flowable
-import io.reactivex.Maybe
-import io.reactivex.Scheduler
-import io.reactivex.Single
-import ru.blizzed.timetablespbu.data.DBScheduler
+import io.reactivex.*
 import ru.blizzed.timetablespbu.data.persistance.dao.EducatorsDao
-import ru.blizzed.timetablespbu.data.persistance.entities.EducatorData
-import ru.blizzed.timetablespbu.data.persistance.mappers.EducatorDataMapper
-import ru.blizzed.timetablespbu.data.persistance.mappers.RxDataMapper
+import ru.blizzed.timetablespbu.data.persistance.mappers.EducatorDataMapper.mapToData
+import ru.blizzed.timetablespbu.data.persistance.mappers.EducatorDataMapper.mapToEntity
 import ru.blizzed.timetablespbu.domain.entities.Educator
-import javax.inject.Inject
 
-class EducatorsLocalDataSource @Inject constructor(
+class EducatorsLocalDataSource(
         private val educatorsDao: EducatorsDao,
-        private val educatorDataMapper: EducatorDataMapper,
-        @DBScheduler dbScheduler: Scheduler
-) : DatabaseDataSource(dbScheduler), RxDataMapper<EducatorData, Educator> by educatorDataMapper {
+        dbScheduler: Scheduler
+) : DatabaseDataSource(dbScheduler) {
 
     fun getAll(query: String): Single<List<Educator>> = educatorsDao
-        .getAll(query)
-        .mapToEntity()
-        .onDbScheduler()
+            .getAll(query)
+            .mapToEntity()
+            .onDbScheduler()
 
     fun observeAll(): Flowable<List<Educator>> = educatorsDao
             .observeAll()
@@ -39,17 +31,17 @@ class EducatorsLocalDataSource @Inject constructor(
             .mapToEntity()
             .onDbScheduler()
 
-    fun observeNonFavoriteViewed() : Flowable<List<Educator>> = educatorsDao
+    fun observeNonFavoriteViewed(): Flowable<List<Educator>> = educatorsDao
             .observeNonFavoriteViewed()
             .mapToEntity()
             .onDbScheduler()
 
     fun updateOrAdd(educator: Educator): Completable = Completable
-            .fromAction { educatorsDao.updateOrAdd(educatorDataMapper.mapToData(educator)) }
+            .fromAction { educatorsDao.updateOrAdd(educator.mapToData()) }
             .onDbScheduler()
 
     fun delete(educator: Educator): Completable = Completable
-            .fromAction { educatorsDao.delete(educatorDataMapper.mapToData(educator)) }
+            .fromAction { educatorsDao.delete(educator.mapToData()) }
             .onDbScheduler()
 
     fun isFavorite(educator: Educator): Single<Boolean> = educatorsDao

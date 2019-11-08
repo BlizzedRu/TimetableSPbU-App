@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.educators
+package ru.blizzed.timetablespbu.ui.screens.search.educators
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

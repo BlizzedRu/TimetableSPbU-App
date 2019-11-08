@@ -9,9 +9,8 @@ import ru.blizzed.timetablespbu.domain.repositories.EducatorsRepository
 import ru.blizzed.timetablespbu.utils.Event
 import ru.blizzed.timetablespbu.utils.RxBinder
 import ru.blizzed.timetablespbu.viewmodel.system.RxViewModel
-import javax.inject.Inject
 
-class EducatorsViewModel @Inject constructor(
+class EducatorsViewModel(
         rxBinder: RxBinder,
         private val educatorsRepository: EducatorsRepository
 ) : RxViewModel(rxBinder) {

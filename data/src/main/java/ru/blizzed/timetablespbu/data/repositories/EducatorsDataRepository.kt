@@ -9,9 +9,8 @@ import ru.blizzed.timetablespbu.data.datasources.EducatorsRemoteDataSource
 import ru.blizzed.timetablespbu.data.utils.TimeUtils
 import ru.blizzed.timetablespbu.domain.entities.Educator
 import ru.blizzed.timetablespbu.domain.repositories.EducatorsRepository
-import javax.inject.Inject
 
-class EducatorsDataRepository @Inject constructor(
+class EducatorsDataRepository(
         private val localDataSource: EducatorsLocalDataSource,
         private val remoteDataSource: EducatorsRemoteDataSource,
         private val timeUtils: TimeUtils

@@ -1,13 +1,12 @@
-package ru.blizzed.timetablespbu.ui.screens.faculties
+package ru.blizzed.timetablespbu.ui.screens.search.faculties
 
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.ofType
 import ru.blizzed.timetablespbu.domain.repositories.FacultiesRepository
 import ru.blizzed.timetablespbu.mvi.MviViewModel
 import ru.blizzed.timetablespbu.mvi.Reducer
-import javax.inject.Inject
 
-class FacultiesSearchViewModel @Inject constructor(
+class FacultiesSearchViewModel(
         private val facultiesRepository: FacultiesRepository
 ) : MviViewModel<ViewState, ViewEvent, StateChange>() {
 
@@ -15,9 +14,23 @@ class FacultiesSearchViewModel @Inject constructor(
 
     override val stateReducer: Reducer<ViewState, StateChange> = { oldState, change ->
         when (change) {
-            is StateChange.Loading -> oldState.copy(isIdle = false, isLoading = true, isError = false)
-            is StateChange.Loaded -> oldState.copy(isIdle = false, isLoading = false, isError = false, faculties = change.faculties)
-            is StateChange.Error -> oldState.copy(isIdle = false, isLoading = false, isError = true, error = change.error)
+            is StateChange.Loading -> oldState.copy(
+                    isIdle = false,
+                    isLoading = true,
+                    isError = false
+            )
+            is StateChange.Loaded -> oldState.copy(
+                    isIdle = false,
+                    isLoading = false,
+                    isError = false,
+                    faculties = change.faculties
+            )
+            is StateChange.Error -> oldState.copy(
+                    isIdle = false,
+                    isLoading = false,
+                    isError = true,
+                    error = change.error
+            )
         }
     }
 
@@ -43,7 +56,9 @@ class FacultiesSearchViewModel @Inject constructor(
 
         val selectChange = events.ofType<ViewEvent.Select>()
                 .map<StateChange> { StateChange.Loading }
-                .flatMap { Observable.error<StateChange>(Throwable()).onErrorReturn(StateChange::Error) }
+                .flatMap {
+                    Observable.error<StateChange>(Throwable()).onErrorReturn(StateChange::Error)
+                }
 
 
         return Observable.merge(loadChange, searchChange, selectChange)

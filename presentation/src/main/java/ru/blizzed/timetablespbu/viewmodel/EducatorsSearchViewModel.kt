@@ -6,9 +6,8 @@ import ru.blizzed.timetablespbu.domain.entities.Educator
 import ru.blizzed.timetablespbu.domain.repositories.EducatorsRepository
 import ru.blizzed.timetablespbu.utils.Event
 import ru.blizzed.timetablespbu.utils.RxBinder
-import javax.inject.Inject
 
-class EducatorsSearchViewModel @Inject constructor(
+class EducatorsSearchViewModel(
         rxBinder: RxBinder,
         private val educatorsRepository: EducatorsRepository
 ) : SearchViewModel(rxBinder) {

@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.faculties
+package ru.blizzed.timetablespbu.ui.screens.search.faculties
 
 import android.content.Context
 import android.os.Bundle
@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.screen_search_faculties.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.domain.entities.Faculty
 import ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout
-import ru.blizzed.timetablespbu.viewmodel.system.ViewModelsProvider
 
 class FacultiesSearchFragment : Fragment() {
 
-    lateinit var viewModel: FacultiesSearchViewModel
+    private val viewModel: FacultiesSearchViewModel by viewModel()
 
     private val facultiesAdapter = FacultiesAdapter().also {
         it.onItemClickListener = { item, _ ->
@@ -25,8 +25,6 @@ class FacultiesSearchFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
-        viewModel = ViewModelsProvider.of(this).get(FacultiesSearchViewModel::class.java)
         viewModel.observeState(this, ::render)
     }
 

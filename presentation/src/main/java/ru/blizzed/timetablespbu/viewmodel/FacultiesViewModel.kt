@@ -6,9 +6,8 @@ import ru.blizzed.timetablespbu.domain.entities.Faculty
 import ru.blizzed.timetablespbu.domain.repositories.FacultiesRepository
 import ru.blizzed.timetablespbu.utils.Event
 import ru.blizzed.timetablespbu.utils.RxBinder
-import javax.inject.Inject
 
-class FacultiesViewModel @Inject constructor(
+class FacultiesViewModel(
         rxBinder: RxBinder,
         facultiesRepository: FacultiesRepository
 ) : SearchViewModel(
@@ -20,7 +19,7 @@ class FacultiesViewModel @Inject constructor(
 
     init {
         searchQueryObservable.switchMapSingle {
-            facultiesRepository.getFaculties()
+            facultiesRepository.getAll()
         }.map { faculties ->
             faculties.filter { faculty ->
                 faculty.name.contains(getSearchQuery(), true)

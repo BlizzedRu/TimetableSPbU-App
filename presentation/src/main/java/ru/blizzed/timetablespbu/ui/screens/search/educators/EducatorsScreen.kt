@@ -1,13 +1,9 @@
-package ru.blizzed.timetablespbu.ui.screens.educators
+package ru.blizzed.timetablespbu.ui.screens.search.educators
 
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.screen_educators.educatorsScroll
-import kotlinx.android.synthetic.main.screen_educators.favoriteLoadableContentLayout
-import kotlinx.android.synthetic.main.screen_educators.favoriteRecycler
-import kotlinx.android.synthetic.main.screen_educators.viewedLoadableContentLayout
-import kotlinx.android.synthetic.main.screen_educators.viewedRecycler
+import kotlinx.android.synthetic.main.screen_educators.*
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.extensions.disableTouchEvents
 import ru.blizzed.timetablespbu.extensions.enableTouchEvents

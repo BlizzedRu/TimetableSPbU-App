@@ -1,17 +1,11 @@
-package ru.blizzed.timetablespbu.ui.screens.educators
+package ru.blizzed.timetablespbu.ui.screens.search.educators
 
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.screen_search_modal.loadableContentLayout
-import kotlinx.android.synthetic.main.screen_search_modal.recycler
-import kotlinx.android.synthetic.main.screen_search_modal.search
+import kotlinx.android.synthetic.main.screen_search_modal.*
 import ru.blizzed.timetablespbu.R
-import ru.blizzed.timetablespbu.ui.core.InjectViewModel
-import ru.blizzed.timetablespbu.ui.core.LifecycleOwnerType
-import ru.blizzed.timetablespbu.ui.core.NoState
-import ru.blizzed.timetablespbu.ui.core.ScreenFragment
-import ru.blizzed.timetablespbu.ui.core.ScreenParams
+import ru.blizzed.timetablespbu.ui.core.*
 import ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout
 import ru.blizzed.timetablespbu.utils.Event
 import ru.blizzed.timetablespbu.viewmodel.EducatorsSearchViewModel
