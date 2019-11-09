@@ -37,6 +37,7 @@ val persistenceModule = module {
     single { get<TTDatabase>().addressesDao }
     single { get<TTDatabase>().educatorsDao }
     single { get<TTDatabase>().classroomsDao }
+    single { get<TTDatabase>().userInfoDao }
 
 }
 

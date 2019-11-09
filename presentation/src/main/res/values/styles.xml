@@ -11,6 +11,13 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <!-- Launcher theme -->
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+        <item name="colorPrimaryDark">@color/window_background</item>
+        <item name="launcherCredentialsColor">?android:textColorSecondary</item>
+    </style>
+
     <style name="Search">
         <item name="iconsColor">@color/divider</item>
         <item name="searchBackground">@drawable/background_search</item>

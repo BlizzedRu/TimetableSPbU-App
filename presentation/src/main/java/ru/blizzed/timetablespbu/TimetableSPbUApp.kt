@@ -24,7 +24,8 @@ class TimetableSPbUApp : Application() {
                             utilsModule,
                             dataSourceModule,
                             repositoriesModule,
-                            viewModelModule
+                            viewModelModule,
+                            useCaseModule
                     )
             )
         }
