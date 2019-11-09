@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "user_info")
 data class UserInfoData(
         @PrimaryKey(autoGenerate = true)
-        val id: String = ""
+        val id: Int = -1
         // TODO user type
 )
