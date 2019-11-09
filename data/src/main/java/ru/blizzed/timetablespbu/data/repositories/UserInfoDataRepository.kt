@@ -9,7 +9,7 @@ import ru.blizzed.timetablespbu.domain.repositories.UserInfoRepository
 
 class UserInfoDataRepository(private val userInfoDataSource: UserInfoDataSource) : UserInfoRepository {
 
-    override fun isLoggedIn(): Single<Boolean> = userInfoDataSource.isEmpty().map { !it }
+    override fun hasInfo(): Single<Boolean> = userInfoDataSource.isEmpty().map { !it }
 
     override fun getInfo(): Maybe<UserInfo> = userInfoDataSource.get()
 

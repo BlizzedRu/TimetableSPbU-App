@@ -2,7 +2,7 @@ package ru.blizzed.timetablespbu.ui.screens.launch
 
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.ofType
-import ru.blizzed.timetablespbu.domain.repositories.UserInfoRepository
+import ru.blizzed.timetablespbu.domain.usecases.UserInfoUseCase
 import ru.blizzed.timetablespbu.mvi.MviViewModel
 import ru.blizzed.timetablespbu.mvi.Reducer
 import ru.blizzed.timetablespbu.mvi.SingleDataStateChange
@@ -15,7 +15,7 @@ typealias LoadedStateChange = SingleDataStateChange.Loaded<Boolean>
 typealias ErrorStateChange = SingleDataStateChange.Error<Boolean>
 
 class LauncherViewModel(
-        private val userInfoRepository: UserInfoRepository
+        private val userInfoUseCase: UserInfoUseCase
 ) : MviViewModel<ViewState, ViewEvent, StateChange>() {
 
     override val initialState = ViewState(isLoading = true)
@@ -35,7 +35,7 @@ class LauncherViewModel(
     override fun subscribeOnViewEvents(events: Observable<ViewEvent>): Observable<StateChange> {
         return events.ofType<ViewEvent.AppStarted>()
                 .flatMapSingle {
-                    userInfoRepository.isLoggedIn()
+                    userInfoUseCase.isLoggedIn()
                             .map<StateChange>(::LoadedStateChange)
                             .onErrorReturn { ErrorStateChange(it) }
                 }

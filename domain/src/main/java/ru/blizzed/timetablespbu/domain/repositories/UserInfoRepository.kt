@@ -7,10 +7,7 @@ import ru.blizzed.timetablespbu.domain.entities.UserInfo
 
 interface UserInfoRepository {
 
-    /**
-     * Tells if somebody ever logged the app in
-     */
-    fun isLoggedIn(): Single<Boolean>
+    fun hasInfo(): Single<Boolean>
 
     fun getInfo(): Maybe<UserInfo>
 
