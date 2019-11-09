@@ -1,5 +1,7 @@
 package ru.blizzed.timetablespbu.ui.screens.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.Menu
@@ -18,6 +20,14 @@ import ru.blizzed.timetablespbu.ui.screens.main.search.SearchScreenState
 import kotlin.reflect.KClass
 
 class MainActivity : FragmentActivity() {
+
+    companion object {
+        fun start(context: Context) {
+            context.startActivity(
+                    Intent(context, MainActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            )
+        }
+    }
 
     private lateinit var bottomNavigationController: BottomNavigationController
 
