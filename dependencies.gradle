@@ -18,24 +18,26 @@ ext.versions = [
         room               : '2.2.1',
         koin               : '2.0.1',
 
-        lifecycle          : '2.1.0'
+        lifecycle          : '2.1.0',
+
+        navigation         : '2.1.0'
 ]
 
 ext.libraries = [
-        koin                  : "org.koin:koin-android:$versions.koin",
-        koinTest              : "org.koin:koin-test:$versions.koin",
-        koinScope             : "org.koin:koin-androidx-scope:$versions.koin",
-        koinViewModel         : "org.koin:koin-androidx-viewmodel:$versions.koin",
-        rxAndroid             : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
-        rxJava                : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
-        rxKotlin              : "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin",
-        timber                : "com.jakewharton.timber:timber:$versions.timber",
-        timetablespbu         : "ru.blizzed:timetablespbu-lib:$versions.timetablespbu",
-        jodatime              : "joda-time:joda-time:$versions.jodatime",
-        room                  : "androidx.room:room-runtime:$versions.room",
-        roomRx                : "androidx.room:room-rxjava2:$versions.room",
-        roomCompiler          : "androidx.room:room-compiler:$versions.room",
-        lifecycle             : "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle",
-        lifecycleExtensions   : "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle",
-        lifecycleReactive     : "androidx.lifecycle:lifecycle-reactivestreams-ktx:$versions.lifecycle"
+        koin               : "org.koin:koin-android:$versions.koin",
+        koinTest           : "org.koin:koin-test:$versions.koin",
+        koinScope          : "org.koin:koin-androidx-scope:$versions.koin",
+        koinViewModel      : "org.koin:koin-androidx-viewmodel:$versions.koin",
+        rxAndroid          : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
+        rxJava             : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
+        rxKotlin           : "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin",
+        timber             : "com.jakewharton.timber:timber:$versions.timber",
+        timetablespbu      : "ru.blizzed:timetablespbu-lib:$versions.timetablespbu",
+        jodatime           : "joda-time:joda-time:$versions.jodatime",
+        room               : "androidx.room:room-runtime:$versions.room",
+        roomRx             : "androidx.room:room-rxjava2:$versions.room",
+        roomCompiler       : "androidx.room:room-compiler:$versions.room",
+        lifecycle          : "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle",
+        lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle",
+        lifecycleReactive  : "androidx.lifecycle:lifecycle-reactivestreams-ktx:$versions.lifecycle"
 ]
