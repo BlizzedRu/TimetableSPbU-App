@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.mvi
+package ru.blizzed.timetablespbu.core.mvi
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData

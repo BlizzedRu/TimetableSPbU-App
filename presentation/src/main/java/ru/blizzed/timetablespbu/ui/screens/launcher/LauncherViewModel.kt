@@ -1,12 +1,12 @@
-package ru.blizzed.timetablespbu.ui.screens.launch
+package ru.blizzed.timetablespbu.ui.screens.launcher
 
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.ofType
+import ru.blizzed.timetablespbu.core.mvi.MviViewModel
+import ru.blizzed.timetablespbu.core.mvi.Reducer
+import ru.blizzed.timetablespbu.core.mvi.SingleDataStateChange
+import ru.blizzed.timetablespbu.core.mvi.SingleDataViewState
 import ru.blizzed.timetablespbu.domain.usecases.UserInfoUseCase
-import ru.blizzed.timetablespbu.mvi.MviViewModel
-import ru.blizzed.timetablespbu.mvi.Reducer
-import ru.blizzed.timetablespbu.mvi.SingleDataStateChange
-import ru.blizzed.timetablespbu.mvi.SingleDataViewState
 
 typealias ViewState = SingleDataViewState<Boolean>
 typealias StateChange = SingleDataStateChange<Boolean>

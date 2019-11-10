@@ -2,28 +2,34 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_welcome"
-    app:startDestination="@id/userTypeSelectionFragment">
+    app:startDestination="@id/userTypeSelection">
 
     <fragment
-        android:id="@+id/userTypeSelectionFragment"
-        android:name="ru.blizzed.timetablespbu.ui.screens.welcome.UserTypeSelectionFragment"
+        android:id="@+id/userTypeSelection"
+        android:name="ru.blizzed.timetablespbu.ui.screens.welcome.user.UserTypeSelectionFragment"
         android:label="fragment_user_type_selection"
         tools:layout="@layout/fragment_user_type_selection" >
+
         <action
-            android:id="@+id/action_userTypeSelectionFragment_to_educatorSelfSelectionFragment"
-            app:destination="@id/educatorSelfSelectionFragment" />
+            android:id="@+id/action_userTypeSelection_to_educatorSelfSelection"
+            app:destination="@id/educatorSelfSelection" />
+
         <action
-            android:id="@+id/action_userTypeSelectionFragment_to_studentGroupSelectionFragment"
-            app:destination="@id/studentGroupSelectionFragment" />
+            android:id="@+id/action_userTypeSelection_to_studentGroupSelection"
+            app:destination="@id/studentGroupSelection" />
+
     </fragment>
+
     <fragment
-        android:id="@+id/studentGroupSelectionFragment"
-        android:name="ru.blizzed.timetablespbu.ui.screens.welcome.StudentGroupSelectionFragment"
+        android:id="@+id/studentGroupSelection"
+        android:name="ru.blizzed.timetablespbu.ui.screens.welcome.student.StudentGroupSelectionFragment"
         android:label="fragment_student_group_selection"
         tools:layout="@layout/fragment_student_group_selection" />
+
     <fragment
-        android:id="@+id/educatorSelfSelectionFragment"
-        android:name="ru.blizzed.timetablespbu.ui.screens.welcome.EducatorSelfSelectionFragment"
+        android:id="@+id/educatorSelfSelection"
+        android:name="ru.blizzed.timetablespbu.ui.screens.welcome.educator.EducatorSelfSelectionFragment"
         android:label="fragment_educator_self_selection"
         tools:layout="@layout/fragment_educator_self_selection" />
+
 </navigation>

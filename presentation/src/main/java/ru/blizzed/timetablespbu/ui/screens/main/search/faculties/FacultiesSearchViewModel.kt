@@ -2,9 +2,9 @@ package ru.blizzed.timetablespbu.ui.screens.main.search.faculties
 
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.ofType
+import ru.blizzed.timetablespbu.core.mvi.MviViewModel
+import ru.blizzed.timetablespbu.core.mvi.Reducer
 import ru.blizzed.timetablespbu.domain.repositories.FacultiesRepository
-import ru.blizzed.timetablespbu.mvi.MviViewModel
-import ru.blizzed.timetablespbu.mvi.Reducer
 
 class FacultiesSearchViewModel(
         private val facultiesRepository: FacultiesRepository

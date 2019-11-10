@@ -1,13 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.blizzed.timetablespbu.ui.screens.welcome.UserTypeSelectionFragment">
+    tools:context="ru.blizzed.timetablespbu.ui.screens.welcome.user.UserTypeSelectionFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/spbuLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/spbu_emblem_144dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
 
-</FrameLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/studentButton"
+        style="@style/Button.Rounded"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="normal"
+        android:text="@string/welcome_user_type_selection_student"
+        app:layout_constraintBottom_toTopOf="@id/educatorButton"
+        app:layout_constraintEnd_toEndOf="@id/educatorButton"
+        app:layout_constraintStart_toStartOf="@id/educatorButton"
+        app:layout_constraintTop_toBottomOf="@id/spbuLogo"
+        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/educatorButton"
+        style="@style/Button.Rounded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_user_type_selection_educator"
+        android:layout_marginTop="@dimen/margin_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/studentButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
