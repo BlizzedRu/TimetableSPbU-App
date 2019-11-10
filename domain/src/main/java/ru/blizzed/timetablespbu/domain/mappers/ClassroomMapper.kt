@@ -1,9 +1,10 @@
 package ru.blizzed.timetablespbu.domain.mappers
 
 import ru.blizzed.timetablespbu.domain.entities.Classroom
+import ru.blizzed.timetablespbulib.model.addresses.Classroom as ApiClassroom
 
-object ClassroomMapper : Mapper<ru.blizzed.timetablespbulib.model.addresses.Classroom, Classroom> {
+object ClassroomMapper : Mapper<ApiClassroom, Classroom> {
 
-    override fun ru.blizzed.timetablespbulib.model.addresses.Classroom.mapToEntity(): Classroom = Classroom(oid, displayName, capacity, additionalInfo)
+    override fun ApiClassroom.mapToEntity(): Classroom = Classroom(oid, displayName, capacity, additionalInfo)
 
 }

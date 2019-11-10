@@ -1,9 +1,10 @@
 package ru.blizzed.timetablespbu.domain.mappers
 
 import ru.blizzed.timetablespbu.domain.entities.Address
+import ru.blizzed.timetablespbulib.model.addresses.Address as ApiAddress
 
-object AddressMapper : Mapper<ru.blizzed.timetablespbulib.model.addresses.Address, Address> {
+object AddressMapper : Mapper<ApiAddress, Address> {
 
-    override fun ru.blizzed.timetablespbulib.model.addresses.Address.mapToEntity(): Address = Address(oid, displayName)
+    override fun ApiAddress.mapToEntity(): Address = Address(oid, displayName)
 
 }

@@ -2,9 +2,10 @@ package ru.blizzed.timetablespbu.domain.mappers
 
 import ru.blizzed.timetablespbu.domain.entities.Educator
 import ru.blizzed.timetablespbu.domain.mappers.EducatorEmploymentMapper.mapToEntity
+import ru.blizzed.timetablespbulib.model.educators.Educator as ApiEducator
 
-object EducatorMapper : Mapper<ru.blizzed.timetablespbulib.model.educators.Educator, Educator> {
+object EducatorMapper : Mapper<ApiEducator, Educator> {
 
-    override fun ru.blizzed.timetablespbulib.model.educators.Educator.mapToEntity() = Educator(id, fullName, employments.mapToEntity())
+    override fun ApiEducator.mapToEntity() = Educator(id, fullName, employments.mapToEntity())
 
 }
