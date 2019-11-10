@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.mvi
+package ru.blizzed.timetablespbu.core.mvi
 
 sealed class SingleDataStateChange<Data> {
     class Loading<Data>(val lastData: Data? = null): SingleDataStateChange<Data>()

@@ -1,13 +1,12 @@
 package ru.blizzed.timetablespbu.ui.screens.welcome
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import ru.blizzed.timetablespbu.R
+import ru.blizzed.timetablespbu.core.NavigationActivity
 
-class WelcomeActivity : AppCompatActivity() {
+class WelcomeActivity : NavigationActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
-    }
+    override val layoutRes: Int = R.layout.activity_welcome
+
+    override val navigationControllerId: Int = R.id.navigationHostFragment
+
 }

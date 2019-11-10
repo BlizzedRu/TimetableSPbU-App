@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.mvi
+package ru.blizzed.timetablespbu.core.mvi
 
 data class SingleDataViewState<Data>(
         val isLoading: Boolean,

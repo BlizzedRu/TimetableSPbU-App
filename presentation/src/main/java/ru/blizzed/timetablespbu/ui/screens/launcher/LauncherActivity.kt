@@ -2,19 +2,20 @@ package ru.blizzed.timetablespbu.ui.screens.launcher
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.blizzed.timetablespbu.R
+import ru.blizzed.timetablespbu.core.BaseActivity
 import ru.blizzed.timetablespbu.ui.screens.main.MainActivity
 import ru.blizzed.timetablespbu.ui.screens.welcome.WelcomeActivity
 
-class LauncherActivity : AppCompatActivity() {
+class LauncherActivity : BaseActivity() {
 
     private val viewModel: LauncherViewModel by viewModel()
 
+    override val layoutRes: Int = R.layout.activity_launcher
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launcher)
 
         viewModel.dispatchEvent(ViewEvent.AppStarted)
 
