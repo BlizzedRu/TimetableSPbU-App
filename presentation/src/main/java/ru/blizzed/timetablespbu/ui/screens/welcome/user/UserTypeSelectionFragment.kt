@@ -15,7 +15,7 @@ class UserTypeSelectionFragment : BaseFragment<NavigationActivity>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        studentButton.setOnRippleClickListener { hostActivity.navigation.navigate(R.id.studentGroupSelection) }
+        studentButton.setOnRippleClickListener { hostActivity.navigation.navigate(R.id.studentGroupsSelection) }
 
         educatorButton.setOnRippleClickListener { hostActivity.navigation.navigate(R.id.educatorSelfSelection) }
     }

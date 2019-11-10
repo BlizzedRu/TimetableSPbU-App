@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.main.search.faculties
+package ru.blizzed.timetablespbu.ui.screens.common.faculty_selection
 
 import ru.blizzed.timetablespbu.domain.entities.Faculty
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="welcome_user_type_selection_student">Я студент</string>
+    <string name="welcome_user_type_selection_educator">Я преподаватель</string>
+
+    <string name="welcome_student_group_selection_many_groups_hint">Вы можете выбрать несколько групп для отслеживания</string>
+    <string name="welcome_student_group_selection_add_group">Добавить группу</string>
+
+</resources>

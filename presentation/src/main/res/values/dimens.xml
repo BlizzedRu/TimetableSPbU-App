@@ -4,8 +4,9 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_half_medium">5dp</dimen>
 
-    <dimen name="title">18sp</dimen>
-    <dimen name="pre_title">16sp</dimen>
+    <dimen name="text_size_header">24sp</dimen>
+    <dimen name="text_size_title">20sp</dimen>
+    <dimen name="text_size_subtitle">16sp</dimen>
 
     <dimen name="view_circle_title_size">64dp</dimen>
     <dimen name="view_circle_name_text_size">23sp</dimen>
@@ -14,5 +15,9 @@
 
     <dimen name="mock_rectangle_corner_radius">3dp</dimen>
     <dimen name="mock_margin">2dp</dimen>
+
+    <dimen name="common_stroke">1dp</dimen>
+    <dimen name="corner_radius_common">32dp</dimen>
+    <dimen name="corner_radius_small">10dp</dimen>
 
 </resources>

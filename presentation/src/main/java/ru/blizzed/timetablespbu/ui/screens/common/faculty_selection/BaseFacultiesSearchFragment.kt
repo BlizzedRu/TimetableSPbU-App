@@ -1,39 +1,35 @@
-package ru.blizzed.timetablespbu.ui.screens.main.search.faculties
+package ru.blizzed.timetablespbu.ui.screens.common.faculty_selection
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.common_search_appbar_layout.*
 import kotlinx.android.synthetic.main.screen_search_faculties.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.blizzed.timetablespbu.R
+import ru.blizzed.timetablespbu.core.BaseFragment
+import ru.blizzed.timetablespbu.core.NavigationActivity
 import ru.blizzed.timetablespbu.domain.entities.Faculty
 import ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout
 
-class FacultiesSearchFragment : Fragment() {
+abstract class BaseFacultiesSearchFragment : BaseFragment<NavigationActivity>() {
 
     private val viewModel: FacultiesSearchViewModel by viewModel()
 
-    private val facultiesAdapter = FacultiesAdapter().also {
-        it.onItemClickListener = { item, _ ->
-            viewModel.dispatchEvent(ViewEvent.Select(item))
+    private val facultiesAdapter by lazy {
+        FacultiesAdapter().also {
+            it.onItemClickListener = { faculty, _ ->
+                onFacultySelected(faculty)
+            }
         }
     }
 
+    override val layoutRes: Int = R.layout.screen_search_faculties
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        viewModel.observeState(this, ::render)
-    }
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.screen_search_faculties, container, false)
+        viewModel.observeState(this, ::render)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,6 +40,8 @@ class FacultiesSearchFragment : Fragment() {
 
         viewModel.dispatchEvent(ViewEvent.Load)
     }
+
+    abstract fun onFacultySelected(faculty: Faculty)
 
     private fun render(state: ViewState) {
         with(state) {
@@ -72,10 +70,5 @@ class FacultiesSearchFragment : Fragment() {
     private fun renderLoaded(faculties: List<Faculty>) {
         loadableContentLayout.status = LoadableContentLayout.Status.CONTENT
         facultiesAdapter.submitItems(faculties)
-    }
-
-    private fun renderSelected(faculty: Faculty) {
-        loadableContentLayout.status = LoadableContentLayout.Status.CONTENT
-        Snackbar.make(view!!, faculty.name, Snackbar.LENGTH_SHORT).show()
     }
 }

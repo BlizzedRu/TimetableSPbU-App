@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.main.search.faculties
+package ru.blizzed.timetablespbu.ui.screens.common.faculty_selection
 
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.ofType
@@ -54,14 +54,7 @@ class FacultiesSearchViewModel(
                             .onErrorReturn(StateChange::Error)
                 }
 
-        val selectChange = events.ofType<ViewEvent.Select>()
-                .map<StateChange> { StateChange.Loading }
-                .flatMap {
-                    Observable.error<StateChange>(Throwable()).onErrorReturn(StateChange::Error)
-                }
-
-
-        return Observable.merge(loadChange, searchChange, selectChange)
+        return Observable.merge(loadChange, searchChange)
                 .startWith(StateChange.Loading)
     }
 }
