@@ -19,7 +19,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/studentButton"
-        style="@style/Button.Rounded"
+        style="@style/Button.Rounded.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textStyle="normal"
@@ -33,7 +33,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/educatorButton"
-        style="@style/Button.Rounded"
+        style="@style/Button.Rounded.Secondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome_user_type_selection_educator"

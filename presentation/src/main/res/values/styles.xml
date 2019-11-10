@@ -31,6 +31,24 @@
         <item name="android:layout_marginBottom">@dimen/margin_small</item>
     </style>
 
+    <style name="Button" />
+
+    <style name="Button.Rounded.Primary" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">13sp</item>
+        <item name="cornerRadius">@dimen/corner_radius_common</item>
+    </style>
+
+    <style name="Button.Rounded.Secondary" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">13sp</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="cornerRadius">@dimen/corner_radius_common</item>
+        <item name="rippleColor">@color/accent</item>
+        <item name="strokeColor">@color/accent</item>
+        <item name="strokeWidth">@dimen/common_stroke</item>
+    </style>
+
     <style name="Search.Accent" parent="Search">
         <item name="searchBackground">@drawable/background_search_accent</item>
         <item name="iconsColor">@color/accent</item>
