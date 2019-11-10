@@ -1,22 +1,23 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@android:color/white</item>
         <item name="colorAccent">@color/accent</item>
-        <item name="android:textColorPrimary">@color/primary_text</item>
-        <item name="android:textColorSecondary">@color/secondary_text</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowBackground">@color/window_background</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <item name="android:textColorSecondary">@color/secondary_text</item>
     </style>
 
-    <!-- Launcher theme -->
     <style name="AppTheme.Launcher">
         <item name="android:windowBackground">@drawable/launch_screen</item>
         <item name="colorPrimaryDark">@color/window_background</item>
         <item name="launcherCredentialsColor">?android:textColorSecondary</item>
     </style>
+
+    <style name="AppTheme.Welcome" />
 
     <style name="Search">
         <item name="iconsColor">@color/divider</item>
@@ -51,12 +52,23 @@
 
     <style name="Search.Accent" parent="Search">
         <item name="searchBackground">@drawable/background_search_accent</item>
-        <item name="iconsColor">@color/accent</item>
+        <item name="iconsColor">@color/search_toolbar_background</item>
     </style>
 
-    <style name="Title">
-        <item name="android:textSize">@dimen/title</item>
-        <item name="android:textColor">@color/secondary_text</item>
+    <style name="Text" />
+
+    <style name="Text.Header">
+        <item name="android:textSize">@dimen/text_size_header</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="Text.Title" parent="Text.Header">
+        <item name="android:textSize">@dimen/text_size_title</item>
+    </style>
+
+    <style name="Text.Subtitle" parent="Text.Title">
+        <item name="android:textSize">@dimen/text_size_subtitle</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
     </style>
 
     <style name="CardHeader">
