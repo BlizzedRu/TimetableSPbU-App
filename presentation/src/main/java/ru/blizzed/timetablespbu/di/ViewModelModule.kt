@@ -2,7 +2,7 @@ package ru.blizzed.timetablespbu.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import ru.blizzed.timetablespbu.ui.screens.common.faculty_selection.FacultiesSearchViewModel
+import ru.blizzed.timetablespbu.ui.screens.common.faculty_search.FacultiesSearchViewModel
 import ru.blizzed.timetablespbu.ui.screens.launcher.LauncherViewModel
 import ru.blizzed.timetablespbu.ui.screens.welcome.student.GroupSelectionSharedViewModel
 import ru.blizzed.timetablespbu.viewmodel.EducatorsSearchViewModel

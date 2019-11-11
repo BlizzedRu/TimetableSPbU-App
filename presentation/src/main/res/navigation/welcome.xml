@@ -67,7 +67,7 @@
         </fragment>
         <fragment
             android:id="@+id/groupSearch"
-            android:name="ru.blizzed.timetablespbu.ui.screens.common.group_selection.GroupSearchFragment"
+            android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.GroupSearchFragment"
             android:label="GroupSearchFragment" >
             <action
                 android:id="@+id/action_groupSearch_to_studentGroupsSelection"

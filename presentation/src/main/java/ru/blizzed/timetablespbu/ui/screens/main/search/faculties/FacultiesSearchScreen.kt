@@ -10,7 +10,7 @@ import ru.blizzed.timetablespbu.ui.core.InjectViewModel
 import ru.blizzed.timetablespbu.ui.core.NoState
 import ru.blizzed.timetablespbu.ui.core.ScreenFragment
 import ru.blizzed.timetablespbu.ui.core.ScreenParams
-import ru.blizzed.timetablespbu.ui.screens.common.faculty_selection.FacultiesAdapter
+import ru.blizzed.timetablespbu.ui.screens.common.faculty_search.FacultiesAdapter
 import ru.blizzed.timetablespbu.utils.Event
 import ru.blizzed.timetablespbu.viewmodel.FacultiesViewModel
 

@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.common.faculty_selection
+package ru.blizzed.timetablespbu.ui.screens.common.faculty_search
 
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.ofType

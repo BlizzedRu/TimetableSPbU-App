@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.common.group_selection
+package ru.blizzed.timetablespbu.ui.screens.common.group_search
 
 import android.os.Bundle
 import android.view.View
@@ -13,7 +13,7 @@ class GroupSearchFragment : BaseFragment<NavigationActivity>() {
 
     private val sharedViewModel: GroupSelectionSharedViewModel by sharedViewModel()
 
-    override val layoutRes: Int = R.layout.fragment_common_search_group
+    override val layoutRes: Int = R.layout.common_search_screen_layout
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

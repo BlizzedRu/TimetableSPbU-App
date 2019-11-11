@@ -3,7 +3,7 @@ package ru.blizzed.timetablespbu.ui.screens.welcome.student
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.domain.entities.Faculty
-import ru.blizzed.timetablespbu.ui.screens.common.faculty_selection.BaseFacultiesSearchFragment
+import ru.blizzed.timetablespbu.ui.screens.common.faculty_search.BaseFacultiesSearchFragment
 
 class FacultiesSearchFragment : BaseFacultiesSearchFragment() {
 
