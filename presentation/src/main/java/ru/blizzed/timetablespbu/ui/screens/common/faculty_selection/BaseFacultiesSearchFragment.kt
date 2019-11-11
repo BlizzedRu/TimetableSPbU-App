@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.common_search_appbar_layout.*
-import kotlinx.android.synthetic.main.screen_search_faculties.*
+import kotlinx.android.synthetic.main.common_search_screen_layout.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.core.BaseFragment
@@ -24,7 +24,7 @@ abstract class BaseFacultiesSearchFragment : BaseFragment<NavigationActivity>() 
         }
     }
 
-    override val layoutRes: Int = R.layout.screen_search_faculties
+    override val layoutRes: Int = R.layout.common_search_screen_layout
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -35,7 +35,7 @@ abstract class BaseFacultiesSearchFragment : BaseFragment<NavigationActivity>() 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        facultiesRecycler.adapter = facultiesAdapter
+        recycler.adapter = facultiesAdapter
         search.observe { query -> viewModel.dispatchEvent(ViewEvent.Search(query)) }
 
         viewModel.dispatchEvent(ViewEvent.Load)
