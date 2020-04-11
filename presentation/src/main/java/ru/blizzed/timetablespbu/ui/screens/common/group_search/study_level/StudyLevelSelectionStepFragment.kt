@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.common.group_search
+package ru.blizzed.timetablespbu.ui.screens.common.group_search.study_level
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.blizzed.timetablespbu.R

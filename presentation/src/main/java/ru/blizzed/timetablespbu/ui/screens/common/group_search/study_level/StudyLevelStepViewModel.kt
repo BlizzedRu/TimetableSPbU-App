@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.common.group_search
+package ru.blizzed.timetablespbu.ui.screens.common.group_search.study_level
 
 import io.reactivex.Single
 import ru.blizzed.timetablespbu.domain.entities.StudyLevel

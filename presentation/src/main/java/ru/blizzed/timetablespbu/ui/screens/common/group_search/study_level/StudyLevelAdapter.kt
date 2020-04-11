@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.common.group_search
+package ru.blizzed.timetablespbu.ui.screens.common.group_search.study_level
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,12 +6,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import ru.blizzed.timetablespbu.R
+import ru.blizzed.timetablespbu.R.layout
 import ru.blizzed.timetablespbu.domain.entities.StudyLevel
 import ru.blizzed.timetablespbu.ui.common.adapters.BaseSingleTypeListAdapter
 import ru.blizzed.timetablespbu.ui.common.adapters.SimpleDiffCallback
+import ru.blizzed.timetablespbu.ui.screens.common.group_search.study_level.StudyLevelAdapter.StudyLevelViewHolder
 
-class StudyLevelAdapter : BaseSingleTypeListAdapter<StudyLevel, StudyLevelAdapter.StudyLevelViewHolder>(DIFF_CALLBACK) {
+class StudyLevelAdapter : BaseSingleTypeListAdapter<StudyLevel, StudyLevelViewHolder>(
+  DIFF_CALLBACK
+) {
 
     companion object {
         val DIFF_CALLBACK = object : SimpleDiffCallback<StudyLevel>() {
@@ -27,7 +30,9 @@ class StudyLevelAdapter : BaseSingleTypeListAdapter<StudyLevel, StudyLevelAdapte
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudyLevelViewHolder {
-        return StudyLevelViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_simple_text, parent, false))
+        return StudyLevelViewHolder(
+          LayoutInflater.from(parent.context).inflate(layout.item_simple_text, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: StudyLevelViewHolder, position: Int, payloads: List<Any>) {
