@@ -2,7 +2,7 @@ package ru.blizzed.timetablespbu.data.datasources
 
 import io.reactivex.subjects.BehaviorSubject
 
-open class SimpleCacheDataSource<Value> {
+open class SimpleCacheDataSource<Value : Any> {
 
   private val cache: BehaviorSubject<Value> = BehaviorSubject.create()
 

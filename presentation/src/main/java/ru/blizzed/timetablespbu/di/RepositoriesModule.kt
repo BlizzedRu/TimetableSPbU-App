@@ -14,5 +14,5 @@ val repositoriesModule = module {
     single<UserInfoRepository> { UserInfoDataRepository(get()) }
     single<EducatorsRepository> { EducatorsDataRepository(get(), get(), get()) }
     single<FacultiesRepository> { FacultiesDataRepository(get()) }
-    single<GroupSearchRepository> { GroupSearchDataRepository(get()) }
+    single<GroupSearchRepository> { GroupSearchDataRepository(get(), get()) }
 }
