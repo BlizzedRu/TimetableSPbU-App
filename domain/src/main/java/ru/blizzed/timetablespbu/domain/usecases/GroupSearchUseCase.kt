@@ -2,6 +2,7 @@ package ru.blizzed.timetablespbu.domain.usecases
 
 import io.reactivex.Single
 import ru.blizzed.timetablespbu.domain.entities.AdmissionYear
+import ru.blizzed.timetablespbu.domain.entities.FacultyAlias
 import ru.blizzed.timetablespbu.domain.entities.StudyLevel
 import ru.blizzed.timetablespbu.domain.repositories.FacultiesRepository
 import ru.blizzed.timetablespbu.domain.repositories.GroupSearchRepository
@@ -13,7 +14,7 @@ class GroupSearchUseCase(
 
     fun getAllFaculties() = facultiesRepository.getAll()
 
-    fun getStudyLevelsByDivisionAlias(divisionAlias: String) = groupSearchRepository.getStudyLevelsByDivisionAlias(divisionAlias)
+    fun getStudyLevelsByDivisionAlias(facultyAlias: FacultyAlias) = groupSearchRepository.getStudyLevelsByDivisionAlias(facultyAlias)
 
     fun getStudyProgramCombinationsByLevel(studyLevel: StudyLevel) = Single.just(studyLevel.studyProgramCombinations)
 
