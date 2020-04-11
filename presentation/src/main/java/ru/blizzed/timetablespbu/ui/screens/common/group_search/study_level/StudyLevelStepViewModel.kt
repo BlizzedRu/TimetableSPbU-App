@@ -21,6 +21,7 @@ class StudyLevelStepViewModel(
 
   override fun onItemSelected(item: StudyLevel) {
     item.studyProgramCombinations
+
   }
 
   override fun observeArguments(bundle: Bundle) {

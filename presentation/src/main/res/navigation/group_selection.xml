@@ -21,29 +21,15 @@
         android:id="@+id/studyLevelSelectionStep"
         android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.study_level.StudyLevelSelectionStepFragment"
         android:label="StudyLevelSelectionStep" >
-        <action
-            android:id="@+id/action_studyLevelSelectionStep_to_admissionYearStep"
-            app:destination="@id/admissionYearStep"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@+id/studyLevelSelectionStep" />
         <argument android:name="facultyAlias"
             app:argType="string"/>
-    </fragment>
-    <fragment
-        android:id="@+id/admissionYearStep"
-        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.AdmissionYearStepFragment"
-        android:label="AdmissionYearStep" >
-        <action
-            android:id="@+id/action_admissionYearStep_to_groupSelectionStep"
+        <action android:id="@+id/action_studyLevelSelectionStep_to_groupSelectionStep"
             app:destination="@id/groupSelectionStep"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@+id/admissionYearStep" />
+            app:popUpTo="@id/studyLevelSelectionStep"/>
     </fragment>
     <fragment
         android:id="@+id/groupSelectionStep"
