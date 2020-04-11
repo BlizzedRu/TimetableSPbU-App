@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/facultySelectionStep"
-        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.FacultySelectionStepFragment"
+        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.faculty.FacultySelectionStepFragment"
         android:label="FacultySelectionStep" >
         <action
             android:id="@+id/action_facultySelectionStep_to_studyLevelSelectionStep"
