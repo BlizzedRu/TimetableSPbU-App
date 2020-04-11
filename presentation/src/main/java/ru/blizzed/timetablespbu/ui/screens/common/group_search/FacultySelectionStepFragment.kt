@@ -10,13 +10,11 @@ import ru.blizzed.timetablespbu.ui.screens.common.faculty_search.FacultiesAdapte
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.base.BaseSelectionStepFragment
 
 class FacultySelectionStepFragment :
-  BaseSelectionStepFragment<Faculty, Faculty, Unit, FacultySelectionStepViewModel>() {
+  BaseSelectionStepFragment<Faculty, Faculty, FacultySelectionStepViewModel>() {
 
   override val viewModel: FacultySelectionStepViewModel by viewModel()
 
   override val titleRes: Int = R.string.welcome_student_group_search_step_faculty_title
-
-  override val param = lazy { Unit }
 
   private val adapter by lazy {
     FacultiesAdapter().also {

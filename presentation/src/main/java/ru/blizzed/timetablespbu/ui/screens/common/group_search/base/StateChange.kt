@@ -1,11 +1,11 @@
 package ru.blizzed.timetablespbu.ui.screens.common.group_search.base
 
-sealed class StateChange<out Item, out SelectionItem> {
+sealed class StateChange<Item> {
 
-    class Loading<out Item, out SelectionItem> : StateChange<Item, SelectionItem>()
+    class Loading<Item> : StateChange<Item>()
 
-    class Error<out Item, out SelectionItem>(val throwable: Throwable) : StateChange<Item, SelectionItem>()
+    data class Error<Item>(val throwable: Throwable) : StateChange<Item>()
 
-    class Loaded<out Item, out SelectionItem>(val items: List<Item>) : StateChange<Item, SelectionItem>()
+    data class Loaded<Item>(val items: List<Item>) : StateChange<Item>()
 
 }

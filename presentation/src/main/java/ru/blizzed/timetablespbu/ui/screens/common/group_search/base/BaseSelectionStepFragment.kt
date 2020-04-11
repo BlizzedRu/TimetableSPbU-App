@@ -10,16 +10,14 @@ import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.core.navigation.NavigationFragment
 import ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout
 
-abstract class BaseSelectionStepFragment<Item, SelectionItem, Param, TViewModel> : NavigationFragment<TViewModel>(
+abstract class BaseSelectionStepFragment<Item, SelectionItem, TViewModel> : NavigationFragment<TViewModel>(
   R.layout.fragment_base_group_selection_step
-) where TViewModel : BaseSelectionStepViewModel<Item, SelectionItem, Param> {
+) where TViewModel : BaseSelectionStepViewModel<Item, SelectionItem> {
 
   protected val sharedViewModel: SelectionStepsSharedViewModel by sharedViewModel()
 
   @get:StringRes
   protected abstract val titleRes: Int
-
-  protected abstract val param: Lazy<Param>
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
@@ -27,7 +25,7 @@ abstract class BaseSelectionStepFragment<Item, SelectionItem, Param, TViewModel>
     stepTitle.setText(titleRes)
 
     viewModel.observeState(this, ::render)
-    viewModel.dispatchEvent(ViewEvent.Load(param.value))
+    viewModel.dispatchEvent(ViewEvent.Load())
   }
 
   protected fun onItemSelected(item: SelectionItem) {
@@ -53,7 +51,7 @@ abstract class BaseSelectionStepFragment<Item, SelectionItem, Param, TViewModel>
 
   private fun renderError() {
     loadableContentLayout.status = LoadableContentLayout.Status.ERROR
-    loadableContentLayout.setOnRetryButtonClickListener { viewModel.dispatchEvent(ViewEvent.Load(param.value)) }
+//    loadableContentLayout.setOnRetryButtonClickListener { viewModel.dispatchEvent(ViewEvent.Load(param.value)) }
   }
 
 }
