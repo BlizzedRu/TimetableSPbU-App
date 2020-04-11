@@ -7,26 +7,24 @@ import ru.blizzed.timetablespbu.core.mvi.MviViewModel
 import ru.blizzed.timetablespbu.core.mvi.Reducer
 
 abstract class BaseSelectionStepViewModel<Item, SelectionItem, Param> :
-  MviViewModel<ViewState<Item, SelectionItem>, ViewEvent<Item, SelectionItem, Param>, StateChange<Item, SelectionItem>>() {
+  MviViewModel<ViewState<Item>, ViewEvent<Item, SelectionItem, Param>, StateChange<Item, SelectionItem>>() {
 
-  override val initialState: ViewState<Item, SelectionItem> = ViewState(isIdle = true)
+  override val initialState: ViewState<Item> = ViewState(isIdle = true)
 
-  override val stateReducer: Reducer<ViewState<Item, SelectionItem>, StateChange<Item, SelectionItem>> = { state, change ->
+  override val stateReducer: Reducer<ViewState<Item>, StateChange<Item, SelectionItem>> = { state, change ->
       when (change) {
-        is StateChange.Loading -> state.copy(isIdle = false, isLoading = true, isError = false, selectedItem = null)
-        is StateChange.Error -> state.copy(isIdle = false, isLoading = false, isError = true, selectedItem = null)
+        is StateChange.Loading -> state.copy(isIdle = false, isLoading = true, isError = false)
+        is StateChange.Error -> state.copy(isIdle = false, isLoading = false, isError = true)
         is StateChange.Loaded -> state.copy(
           isIdle = false,
           isLoading = false,
           isError = false,
-          items = change.items,
-          selectedItem = null
+          items = change.items
         )
         is StateChange.Selected -> state.copy(
           isIdle = false,
           isLoading = false,
-          isError = false,
-          selectedItem = change.item
+          isError = false
         )
       }
     }

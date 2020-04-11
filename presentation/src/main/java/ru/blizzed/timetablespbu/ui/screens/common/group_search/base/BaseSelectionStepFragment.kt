@@ -37,16 +37,12 @@ abstract class BaseSelectionStepFragment<Item, SelectionItem, Param, TViewModel>
 
   protected abstract fun renderLoaded(items: List<Item>)
 
-  protected open fun renderSelected(item: SelectionItem) {
-  }
-
-  private fun render(state: ViewState<Item, SelectionItem>) {
+  private fun render(state: ViewState<Item>) {
     with(state) {
       when {
-        isIdle || isLoading                   -> renderLoading()
-        isError                               -> renderError()
-        items != null && selectedItem == null -> renderLoaded(items)
-        selectedItem != null                  -> renderSelected(selectedItem)
+        isIdle || isLoading -> renderLoading()
+        isError             -> renderError()
+        items != null       -> renderLoaded(items)
       }
     }
   }

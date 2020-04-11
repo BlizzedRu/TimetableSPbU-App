@@ -33,7 +33,4 @@ class FacultySelectionStepFragment :
     adapter.submitItems(items)
   }
 
-  override fun renderSelected(item: Faculty) {
-
-  }
 }
