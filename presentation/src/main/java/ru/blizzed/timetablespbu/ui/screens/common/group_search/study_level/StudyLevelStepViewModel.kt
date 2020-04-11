@@ -17,8 +17,7 @@ class StudyLevelStepViewModel(
     onInitialized()
   }
 
-  override fun loadItems(): Single<List<StudyLevel>> =
-    groupSearchUseCase.getStudyLevelsByDivisionAlias(facultyAlias)
+  override fun loadItems(): Single<List<StudyLevel>> = groupSearchUseCase.getStudyLevelsByDivisionAlias(facultyAlias)
 
   override fun onItemSelected(item: StudyLevel) {
     item.studyProgramCombinations
