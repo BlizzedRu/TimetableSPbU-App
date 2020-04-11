@@ -7,6 +7,6 @@ class WelcomeActivity : NavigationActivity() {
 
     override val layoutRes: Int = R.layout.activity_welcome
 
-    override val navigationControllerId: Int = R.id.navigationHostFragment
+    override val navigationControllerId: Int = R.id.welcomeNavigationHostFragment
 
 }

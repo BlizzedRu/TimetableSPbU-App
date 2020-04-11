@@ -12,5 +12,7 @@ val dataSourceModule = module {
 
     single { FacultiesAssetsDataSource(get(), get(ioScheduler)) }
 
-    single { UserInfoDataSource(get(), get(ioScheduler)) }
+    single { UserInfoDataSource(get(), get(dbScheduler)) }
+
+    single { DivisionsRemoteDataSource(get(), get(ioScheduler)) }
 }

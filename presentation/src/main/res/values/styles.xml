@@ -68,7 +68,6 @@
 
     <style name="Text.Subtitle" parent="Text.Title">
         <item name="android:textSize">@dimen/text_size_subtitle</item>
-        <item name="android:textColor">?android:textColorSecondary</item>
     </style>
 
     <style name="CardHeader">

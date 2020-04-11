@@ -18,15 +18,14 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/userTypeSelection" />
-
         <action
             android:id="@+id/action_userTypeSelection_to_studentGroupsSelection"
-            app:destination="@id/studentGroupsSelection"
+            app:destination="@id/navigation"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/userTypeSelection"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@+id/userTypeSelection" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 
     </fragment>
 
@@ -35,48 +34,27 @@
         android:name="ru.blizzed.timetablespbu.ui.screens.welcome.educator.EducatorSelfSelectionFragment"
         android:label="fragment_educator_self_selection"
         tools:layout="@layout/fragment_educator_self_selection" />
-    <navigation
+
+    <fragment
         android:id="@+id/studentGroupsSelection"
-        app:startDestination="@id/studentGroupsSelection" >
-        <fragment
-            android:id="@+id/studentGroupsSelection"
-            android:name="ru.blizzed.timetablespbu.ui.screens.welcome.student.StudentGroupsSelectionFragment"
-            android:label="fragment_student_group_selection"
-            tools:layout="@layout/fragment_student_groups_selection" >
-            <action
-                android:id="@+id/action_studentGroupsSelection_to_facultiesSearch"
-                app:destination="@id/facultiesSearch"
-                app:enterAnim="@anim/nav_default_enter_anim"
-                app:exitAnim="@anim/nav_default_exit_anim"
-                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-                app:popExitAnim="@anim/nav_default_pop_exit_anim"
-                app:popUpTo="@+id/studentGroupsSelection" />
-        </fragment>
-        <fragment
-            android:id="@+id/facultiesSearch"
-            android:name="ru.blizzed.timetablespbu.ui.screens.welcome.student.FacultiesSearchFragment"
-            android:label="FacultiesSearchFragment" >
-            <action
-                android:id="@+id/action_facultiesSearch_to_groupSearch"
-                app:destination="@id/groupSearch"
-                app:enterAnim="@anim/nav_default_enter_anim"
-                app:exitAnim="@anim/nav_default_exit_anim"
-                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-                app:popExitAnim="@anim/nav_default_pop_exit_anim"
-                app:popUpTo="@+id/facultiesSearch" />
-        </fragment>
-        <fragment
-            android:id="@+id/groupSearch"
-            android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.GroupSearchFragment"
-            android:label="GroupSearchFragment" >
-            <action
-                android:id="@+id/action_groupSearch_to_studentGroupsSelection"
-                app:destination="@id/studentGroupsSelection"
-                app:enterAnim="@anim/nav_default_enter_anim"
-                app:exitAnim="@anim/nav_default_exit_anim"
-                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-                app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        </fragment>
-    </navigation>
+        android:name="ru.blizzed.timetablespbu.ui.screens.welcome.student.StudentGroupsSelectionFragment"
+        android:label="fragment_educator_self_selection"
+        tools:layout="@layout/fragment_student_groups_selection" >
+        <action
+            android:id="@+id/action_studentGroupsSelection_to_groupSelectionFragment"
+            app:destination="@id/groupSelectionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/studentGroupsSelection" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupSelectionFragment"
+        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.GroupSelectionFragment"
+        android:label="GroupSelectionFragment" />
+    <navigation
+        android:id="@+id/navigation"
+        app:startDestination="@id/studentGroupsSelection" />
 
 </navigation>

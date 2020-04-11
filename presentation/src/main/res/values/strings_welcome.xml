@@ -7,4 +7,8 @@
     <string name="welcome_student_group_selection_many_groups_hint">Вы можете выбрать несколько групп для отслеживания</string>
     <string name="welcome_student_group_selection_add_group">Добавить группу</string>
 
+    <string name="welcome_student_group_search_step_faculty_title">Факультет</string>
+    <string name="welcome_student_group_search_step_level_title">Уровень</string>
+    <string name="welcome_student_group_search_step_program_combination_title">Образовательная программа</string>
+    <string name="welcome_student_group_search_step_group_title">Группа</string>
 </resources>

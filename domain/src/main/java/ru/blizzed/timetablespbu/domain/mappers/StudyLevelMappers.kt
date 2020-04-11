@@ -1,6 +1,8 @@
 package ru.blizzed.timetablespbu.domain.mappers
 
+import ru.blizzed.timetablespbu.domain.entities.AdmissionYear
 import ru.blizzed.timetablespbu.domain.entities.StudyLevel
+import ru.blizzed.timetablespbu.domain.entities.StudyProgramCombination
 import ru.blizzed.timetablespbu.domain.mappers.AdmissionYearMapper.mapToEntity
 import ru.blizzed.timetablespbu.domain.mappers.StudyProgramCombinationMapper.mapToEntity
 import ru.blizzed.timetablespbulib.model.divisions.StudyLevel as ApiStudyLevel
@@ -11,14 +13,12 @@ object StudyLevelMapper : Mapper<ApiStudyLevel, StudyLevel> {
     override fun ApiStudyLevel.mapToEntity(): StudyLevel = StudyLevel(studyLevelName, studyProgramCombinations.mapToEntity())
 }
 
-object AdmissionYearMapper : Mapper<ApiAdmissionYear, StudyLevel.StudyProgramCombination.AdmissionYear> {
-    override fun ApiAdmissionYear.mapToEntity(): StudyLevel.StudyProgramCombination.AdmissionYear =
-            StudyLevel.StudyProgramCombination.AdmissionYear(studyProgramId, yearNumber)
+object AdmissionYearMapper : Mapper<ApiAdmissionYear, AdmissionYear> {
+    override fun ApiAdmissionYear.mapToEntity(): AdmissionYear = AdmissionYear(studyProgramId, yearNumber)
 }
 
-object StudyProgramCombinationMapper : Mapper<ApiStudyProgramCombination, StudyLevel.StudyProgramCombination> {
-    override fun ApiStudyProgramCombination.mapToEntity(): StudyLevel.StudyProgramCombination =
-            StudyLevel.StudyProgramCombination(name, admissionYears.mapToEntity())
+object StudyProgramCombinationMapper : Mapper<ApiStudyProgramCombination, StudyProgramCombination> {
+    override fun ApiStudyProgramCombination.mapToEntity(): StudyProgramCombination = StudyProgramCombination(name, admissionYears.mapToEntity())
 
 
 }

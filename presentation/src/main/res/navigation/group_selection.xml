@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/group_selection"
+    app:startDestination="@id/facultySelectionStep">
+
+    <fragment
+        android:id="@+id/facultySelectionStep"
+        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.FacultySelectionStepFragment"
+        android:label="FacultySelectionStep" >
+        <action
+            android:id="@+id/action_facultySelectionStep_to_studyLevelSelectionStep"
+            app:destination="@id/studyLevelSelectionStep"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/facultySelectionStep" />
+    </fragment>
+    <fragment
+        android:id="@+id/studyLevelSelectionStep"
+        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.StudyLevelSelectionStepFragment"
+        android:label="StudyLevelSelectionStep" >
+        <action
+            android:id="@+id/action_studyLevelSelectionStep_to_admissionYearStep"
+            app:destination="@id/admissionYearStep"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/studyLevelSelectionStep" />
+    </fragment>
+    <fragment
+        android:id="@+id/admissionYearStep"
+        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.AdmissionYearStepFragment"
+        android:label="AdmissionYearStep" >
+        <action
+            android:id="@+id/action_admissionYearStep_to_groupSelectionStep"
+            app:destination="@id/groupSelectionStep"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/admissionYearStep" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupSelectionStep"
+        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.GroupSelectionStepFragment"
+        android:label="GroupSelectionStep" />
+</navigation>
