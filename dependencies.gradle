@@ -20,7 +20,7 @@ ext.versions = [
 
         lifecycle          : '2.1.0',
 
-        navigation         : '2.1.0'
+        navigation         : '2.2.1'
 ]
 
 ext.libraries = [
