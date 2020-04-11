@@ -15,4 +15,7 @@ class FacultySelectionStepViewModel(
 
   override fun loadItems(param: Unit): Single<List<Faculty>> = groupSearchUseCase.getAllFaculties()
 
+  override fun onItemSelected(item: Faculty) {
+    TODO("Not yet implemented")
+  }
 }

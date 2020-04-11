@@ -21,11 +21,6 @@ abstract class BaseSelectionStepViewModel<Item, SelectionItem, Param> :
           isError = false,
           items = change.items
         )
-        is StateChange.Selected -> state.copy(
-          isIdle = false,
-          isLoading = false,
-          isError = false
-        )
       }
     }
 
@@ -40,12 +35,14 @@ abstract class BaseSelectionStepViewModel<Item, SelectionItem, Param> :
       }
       .startWith(StateChange.Loading())
 
-    val selectEvent = events.ofType<ViewEvent.Select<Item, SelectionItem, Param>>()
-      .flatMapSingle { event -> Single.just(StateChange.Selected<Item, SelectionItem>(event.item)) }
+    events.ofType<ViewEvent.Select<Item, SelectionItem, Param>>()
+      .doOnNext { event -> onItemSelected(event.item) }
+      .subscribe()
 
-    return Observable.merge(loadEvent, selectEvent)
-      .startWith(StateChange.Loading())
+    return loadEvent.startWith(StateChange.Loading())
   }
+
+  protected abstract fun onItemSelected(item: SelectionItem)
 
   protected abstract fun loadItems(param: Param): Single<List<Item>>
 

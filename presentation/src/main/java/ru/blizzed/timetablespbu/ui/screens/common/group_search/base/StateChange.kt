@@ -8,6 +8,4 @@ sealed class StateChange<out Item, out SelectionItem> {
 
     class Loaded<out Item, out SelectionItem>(val items: List<Item>) : StateChange<Item, SelectionItem>()
 
-    class Selected<out Item, out SelectionItem>(val item: SelectionItem) : StateChange<Item, SelectionItem>()
-
 }
