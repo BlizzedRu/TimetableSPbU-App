@@ -3,14 +3,14 @@ package ru.blizzed.timetablespbu.core.mvi
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.subjects.PublishSubject
+import ru.blizzed.timetablespbu.core.navigation.NavigationViewModel
 import timber.log.Timber
 
-abstract class MviViewModel<State, Event, Change> : ViewModel() {
+abstract class MviViewModel<State, Event, Change> : NavigationViewModel() {
 
     protected abstract val initialState: State
 

@@ -7,12 +7,12 @@ import ru.blizzed.timetablespbu.ui.screens.common.group_search.base.BaseSelectio
 
 class FacultySelectionStepViewModel(
   private val groupSearchUseCase: GroupSearchUseCase
-) : BaseSelectionStepViewModel<Faculty, Faculty, Any>() {
+) : BaseSelectionStepViewModel<Faculty, Faculty, Unit>() {
 
   init {
     onInitialized()
   }
 
-  override fun loadItems(param: Any): Single<List<Faculty>> = groupSearchUseCase.getAllFaculties()
+  override fun loadItems(param: Unit): Single<List<Faculty>> = groupSearchUseCase.getAllFaculties()
 
 }

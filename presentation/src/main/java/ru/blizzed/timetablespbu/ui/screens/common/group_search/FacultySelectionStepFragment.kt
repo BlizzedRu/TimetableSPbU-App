@@ -9,13 +9,14 @@ import ru.blizzed.timetablespbu.domain.entities.Faculty
 import ru.blizzed.timetablespbu.ui.screens.common.faculty_search.FacultiesAdapter
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.base.BaseSelectionStepFragment
 
-class FacultySelectionStepFragment : BaseSelectionStepFragment<Faculty, Faculty, Any, FacultySelectionStepViewModel>() {
+class FacultySelectionStepFragment :
+  BaseSelectionStepFragment<Faculty, Faculty, Unit, FacultySelectionStepViewModel>() {
 
   override val viewModel: FacultySelectionStepViewModel by viewModel()
 
   override val titleRes: Int = R.string.welcome_student_group_search_step_faculty_title
 
-  override val param = lazy { Any() }
+  override val param = lazy { Unit }
 
   private val adapter by lazy {
     FacultiesAdapter().also {
@@ -30,5 +31,9 @@ class FacultySelectionStepFragment : BaseSelectionStepFragment<Faculty, Faculty,
 
   override fun renderLoaded(items: List<Faculty>) {
     adapter.submitItems(items)
+  }
+
+  override fun renderSelected(item: Faculty) {
+
   }
 }
