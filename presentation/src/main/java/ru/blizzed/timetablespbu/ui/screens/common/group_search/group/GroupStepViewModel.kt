@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.common.group_search
+package ru.blizzed.timetablespbu.ui.screens.common.group_search.group
 
 import io.reactivex.Single
 import ru.blizzed.timetablespbu.domain.entities.Group

@@ -33,6 +33,6 @@
     </fragment>
     <fragment
         android:id="@+id/groupSelectionStep"
-        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.GroupSelectionStepFragment"
+        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.group.GroupSelectionStepFragment"
         android:label="GroupSelectionStep" />
 </navigation>

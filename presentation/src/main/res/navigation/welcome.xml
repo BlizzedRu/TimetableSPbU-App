@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/groupSelectionFragment"
-        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.GroupSelectionFragment"
+        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.group.GroupSelectionFragment"
         android:label="GroupSelectionFragment" />
     <navigation
         android:id="@+id/navigation"
