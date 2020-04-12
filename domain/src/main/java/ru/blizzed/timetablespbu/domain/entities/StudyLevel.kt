@@ -9,11 +9,22 @@ data class StudyLevel(
 data class StudyProgramCombination(
   val name: String,
   val admissionYears: List<AdmissionYear>
-)
+) {
+  val id: Int = name.hashCode()
+}
 
 data class AdmissionYear(
   val studyProgramId: StudyProgramId,
   val year: Int
-)
+) {
+  val id: Int = studyProgramId
+}
+
+data class AdmissionYearGroups(
+  val admissionYear: AdmissionYear,
+  val groups: List<Group>
+) {
+  val id: Int = admissionYear.id
+}
 
 typealias StudyProgramId = Int

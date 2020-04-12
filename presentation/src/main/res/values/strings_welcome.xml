@@ -14,4 +14,6 @@
     <string name="welcome_student_group_search_step_admission_year_title">Год поступления</string>
 
     <string name="welcome_student_group_search_selected_groups_title">Выбранные группы</string>
+
+    <string name="welcome_student_group_search_step_group_admission_year_pattern">%s год поступления</string>
 </resources>

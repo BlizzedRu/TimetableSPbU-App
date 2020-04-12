@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/card_background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_small"
+    android:elevation="2dp"
+    android:padding="@dimen/margin_large">
+
+  <TextView
+      android:id="@+id/admissionYearTitle"
+      style="@style/Text.Subtitle"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="2015 год поступления" />
+
+  <com.google.android.material.chip.ChipGroup
+      android:id="@+id/groupsChipGroup"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/margin_large"
+      app:chipSpacingHorizontal="@dimen/margin_half_medium"
+      app:layout_constraintTop_toBottomOf="@id/admissionYearTitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

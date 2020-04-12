@@ -4,6 +4,7 @@ import org.koin.dsl.module
 import ru.blizzed.timetablespbu.domain.usecases.GetFacultiesUseCase
 import ru.blizzed.timetablespbu.domain.usecases.UserInfoUseCase
 import ru.blizzed.timetablespbu.domain.usecases.timetable_browse.AddGroupUseCase
+import ru.blizzed.timetablespbu.domain.usecases.timetable_browse.GetAdmissionYearGroupsUseCase
 import ru.blizzed.timetablespbu.domain.usecases.timetable_browse.GetGroupsByProgramUseCase
 import ru.blizzed.timetablespbu.domain.usecases.timetable_browse.GetProgramCombinationsUseCase
 import ru.blizzed.timetablespbu.domain.usecases.timetable_browse.GetStudyLevelsUseCase
@@ -21,4 +22,5 @@ val useCaseModule = module {
   single { RemoveGroupUseCase(get()) }
   single { AddGroupUseCase(get()) }
   single { ObserveSelectedGroupsUseCase(get()) }
+  single { GetAdmissionYearGroupsUseCase(get()) }
 }

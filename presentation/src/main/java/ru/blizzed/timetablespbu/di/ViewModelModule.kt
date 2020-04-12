@@ -26,6 +26,6 @@ val viewModelModule = module {
     viewModel { FacultySelectionStepViewModel(get()) }
     viewModel { StudyLevelStepViewModel(get()) }
     viewModel { AdmissionYearStepViewModel(get()) }
-    viewModel { GroupStepViewModel(get(), get()) }
     viewModel { TimetableBrowseViewModel(get(), get()) }
+    viewModel { GroupStepViewModel(get(), get()) }
 }
