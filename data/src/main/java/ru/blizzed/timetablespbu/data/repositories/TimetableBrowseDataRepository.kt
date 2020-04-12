@@ -8,13 +8,13 @@ import ru.blizzed.timetablespbu.domain.entities.Group
 import ru.blizzed.timetablespbu.domain.entities.StudyLevel
 import ru.blizzed.timetablespbu.domain.entities.StudyProgramCombination
 import ru.blizzed.timetablespbu.domain.entities.StudyProgramId
-import ru.blizzed.timetablespbu.domain.repositories.GroupSearchRepository
+import ru.blizzed.timetablespbu.domain.repositories.TimetableBrowseRepository
 
-class GroupSearchDataRepository(
+class TimetableBrowseDataRepository(
   private val divisionsRemoteDataSource: DivisionsRemoteDataSource,
   private val divisionsCacheDataSource: DivisionsCacheDataSource,
   private val groupsCacheDataSource: GroupsCacheDataSource
-) : GroupSearchRepository {
+) : TimetableBrowseRepository {
 
   override fun getStudyLevelsByDivisionAlias(facultyAlias: String): Single<List<StudyLevel>> =
     divisionsCacheDataSource.getOrNull(facultyAlias)

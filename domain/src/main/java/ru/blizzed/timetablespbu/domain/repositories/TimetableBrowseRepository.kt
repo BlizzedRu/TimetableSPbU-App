@@ -7,7 +7,7 @@ import ru.blizzed.timetablespbu.domain.entities.StudyLevel
 import ru.blizzed.timetablespbu.domain.entities.StudyProgramCombination
 import ru.blizzed.timetablespbu.domain.entities.StudyProgramId
 
-interface GroupSearchRepository {
+interface TimetableBrowseRepository {
 
     fun getStudyLevelsByDivisionAlias(facultyAlias: FacultyAlias): Single<List<StudyLevel>>
 

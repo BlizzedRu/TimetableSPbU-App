@@ -4,8 +4,8 @@ import android.os.Bundle
 import io.reactivex.Single
 import ru.blizzed.timetablespbu.domain.entities.Group
 import ru.blizzed.timetablespbu.domain.entities.StudyProgramId
-import ru.blizzed.timetablespbu.domain.usecases.group_selection.GetGroupsByProgramUseCase
-import ru.blizzed.timetablespbu.domain.usecases.group_selection.SelectGroupUseCase
+import ru.blizzed.timetablespbu.domain.usecases.timetable_browse.GetGroupsByProgramUseCase
+import ru.blizzed.timetablespbu.domain.usecases.timetable_browse.SelectGroupUseCase
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.base.BaseSelectionStepViewModel
 
 class GroupStepViewModel(

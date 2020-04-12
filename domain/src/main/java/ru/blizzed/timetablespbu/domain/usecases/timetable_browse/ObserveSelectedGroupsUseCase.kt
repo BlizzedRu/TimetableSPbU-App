@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.domain.usecases.group_selection
+package ru.blizzed.timetablespbu.domain.usecases.timetable_browse
 
 import ru.blizzed.timetablespbu.domain.repositories.GroupSelectionRepository
 

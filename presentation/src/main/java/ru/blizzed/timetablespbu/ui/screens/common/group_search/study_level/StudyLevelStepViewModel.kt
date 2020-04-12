@@ -4,7 +4,7 @@ import android.os.Bundle
 import io.reactivex.Single
 import ru.blizzed.timetablespbu.domain.entities.FacultyAlias
 import ru.blizzed.timetablespbu.domain.entities.StudyLevel
-import ru.blizzed.timetablespbu.domain.usecases.group_selection.GetStudyLevelsUseCase
+import ru.blizzed.timetablespbu.domain.usecases.timetable_browse.GetStudyLevelsUseCase
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.base.BaseSelectionStepViewModel
 
 class StudyLevelStepViewModel(
