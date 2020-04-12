@@ -56,4 +56,4 @@ fun View.enableTouchEvents() = setOnTouchListener(null)
 fun View.inflate(@LayoutRes layoutRes: Int): View = LayoutInflater.from(context).inflate(layoutRes, null, false)
 
 @Suppress("UNCHECKED_CAST")
-fun <V: View> ViewGroup.inflateAsParent(@LayoutRes layoutRes: Int): View = LayoutInflater.from(context).inflate(layoutRes, this, false) as V
+fun <V: View> ViewGroup.inflateAsParent(@LayoutRes layoutRes: Int): V = LayoutInflater.from(context).inflate(layoutRes, this, false) as V
