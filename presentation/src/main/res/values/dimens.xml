@@ -20,4 +20,6 @@
     <dimen name="corner_radius_common">32dp</dimen>
     <dimen name="corner_radius_small">10dp</dimen>
 
+    <dimen name="selected_groups_view_height">110dp</dimen>
+
 </resources>

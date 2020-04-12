@@ -38,7 +38,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_list_faculty" />
+            tools:listitem="@layout/item_list_faculty"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/selected_groups_view_height"/>
 
     </ru.blizzed.timetablespbu.ui.widget.DefaultLoadableContentLayout>
 

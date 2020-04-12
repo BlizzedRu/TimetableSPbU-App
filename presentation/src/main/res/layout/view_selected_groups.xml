@@ -2,25 +2,35 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/background_card_top"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/margin_medium">
 
   <TextView
       android:id="@+id/title"
-      style="@style/Text.Subtitle"
+      style="@style/Text.Title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:gravity="center"
       android:padding="@dimen/margin_medium"
       android:text="@string/welcome_student_group_search_selected_groups_title"/>
 
-  <com.google.android.material.chip.ChipGroup
-      android:id="@+id/chipGroup"
+  <HorizontalScrollView
+      android:id="@+id/scroll"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="@dimen/margin_medium"
-      android:layout_marginEnd="@dimen/margin_medium"
-      android:layout_marginBottom="@dimen/margin_medium"/>
+      android:clipToPadding="false"
+      android:overScrollMode="never"
+      android:paddingStart="@dimen/margin_medium"
+      android:paddingEnd="@dimen/margin_medium"
+      android:scrollbars="none">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+  </HorizontalScrollView>
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package ru.blizzed.timetablespbu.di
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import ru.blizzed.timetablespbu.ui.screens.common.faculty_search.FacultiesSearchViewModel
+import ru.blizzed.timetablespbu.ui.screens.common.group_search.TimetableBrowseViewModel
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.admission_year.AdmissionYearStepViewModel
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.base.SelectionStepsSharedViewModel
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.faculty.FacultySelectionStepViewModel
@@ -26,4 +27,5 @@ val viewModelModule = module {
     viewModel { StudyLevelStepViewModel(get()) }
     viewModel { AdmissionYearStepViewModel(get()) }
     viewModel { GroupStepViewModel(get(), get()) }
+    viewModel { TimetableBrowseViewModel(get(), get()) }
 }
