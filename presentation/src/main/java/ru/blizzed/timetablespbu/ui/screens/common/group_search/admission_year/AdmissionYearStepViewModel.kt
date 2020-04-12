@@ -26,7 +26,7 @@ class AdmissionYearStepViewModel(
   }
 
   override fun observeArguments(bundle: Bundle) {
-    GroupSelectionStepFragmentArgs.fromBundle(bundle).also {
+    AdmissionYearSelectionStepFragmentArgs.fromBundle(bundle).also {
       facultyAlias = it.facultyAlias
       studyLevelId = it.studyLevelId
     }

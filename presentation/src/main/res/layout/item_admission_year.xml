@@ -6,7 +6,7 @@
     style="@style/Widget.MaterialComponents.Chip.Choice"
     android:checkable="false"
     android:textColor="@color/accent"
-    app:chipBackgroundColor="@android:color/white"
+    app:chipBackgroundColor="@android:color/transparent"
     app:chipStrokeColor="@color/accent"
     app:chipStrokeWidth="@dimen/common_stroke"
     tools:text="2015"/>
