@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.data.datasources
+package ru.blizzed.timetablespbu.data.datasources.base
 
 import io.reactivex.Completable
 import io.reactivex.Flowable
