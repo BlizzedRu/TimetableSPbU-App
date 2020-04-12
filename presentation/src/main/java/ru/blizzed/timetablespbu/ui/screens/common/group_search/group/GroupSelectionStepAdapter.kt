@@ -28,7 +28,7 @@ class GroupSelectionStepAdapter : BaseSingleTypeListAdapter<Group, ViewHolder>(D
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-    ViewHolder(parent.inflateAsParent(R.layout.item_simple_text))
+    ViewHolder(parent.inflateAsParent<View>(R.layout.item_simple_text))
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: List<Any>) {
     super.onBindViewHolder(holder, position, payloads)

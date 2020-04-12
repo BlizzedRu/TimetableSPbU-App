@@ -25,7 +25,7 @@ class MockAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MockViewHolder =
-        parent.inflateAsParent(mockLayoutResId).let(::MockViewHolder)
+        parent.inflateAsParent<View>(mockLayoutResId).let(::MockViewHolder)
 
     override fun onBindViewHolder(holder: MockViewHolder, position: Int) = Unit
 
