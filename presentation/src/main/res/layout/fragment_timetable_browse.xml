@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.blizzed.timetablespbu.ui.screens.common.group_search.GroupSearchNavigationFragment">
+    tools:context="ru.blizzed.timetablespbu.ui.screens.common.group_search.TimetableBrowseFragment">
 
     <fragment
-        android:id="@+id/groupSelectionNavigationHostFragment"
+        android:id="@+id/timetableBrowseNavigationHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

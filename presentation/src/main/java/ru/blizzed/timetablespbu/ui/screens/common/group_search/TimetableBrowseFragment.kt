@@ -7,11 +7,11 @@ import ru.blizzed.timetablespbu.core.BaseNavigationFragment
 import ru.blizzed.timetablespbu.core.NavigationActivity
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.base.SelectionStepsSharedViewModel
 
-class GroupSearchNavigationFragment: BaseNavigationFragment<NavigationActivity>() {
+class TimetableBrowseFragment: BaseNavigationFragment<NavigationActivity>() {
 
   private val sharedViewModel: SelectionStepsSharedViewModel by sharedViewModel()
 
-  override val layoutRes: Int = ru.blizzed.timetablespbu.R.layout.fragment_group_selection
+  override val layoutRes: Int = ru.blizzed.timetablespbu.R.layout.fragment_timetable_browse
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
