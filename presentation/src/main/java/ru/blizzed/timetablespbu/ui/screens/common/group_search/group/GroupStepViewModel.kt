@@ -19,6 +19,7 @@ class GroupStepViewModel(
   override fun loadItems(): Single<List<Group>> = groupSearchUseCase.getGroupsByProgramId(studyProgramId)
 
   override fun onItemSelected(item: Group) {
+    groupSearchUseCase.selectGroup(item)
   }
 
   override fun observeArguments(bundle: Bundle) {

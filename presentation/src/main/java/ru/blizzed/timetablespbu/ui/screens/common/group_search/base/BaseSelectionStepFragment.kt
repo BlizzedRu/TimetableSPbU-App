@@ -5,7 +5,6 @@ import android.view.View
 import androidx.annotation.StringRes
 import kotlinx.android.synthetic.main.fragment_base_group_selection_step.loadableContentLayout
 import kotlinx.android.synthetic.main.fragment_base_group_selection_step.stepTitle
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import ru.blizzed.timetablespbu.R
 import ru.blizzed.timetablespbu.core.navigation.NavigationFragment
 import ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout
@@ -13,8 +12,6 @@ import ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout
 abstract class BaseSelectionStepFragment<Item, SelectionItem, TViewModel> : NavigationFragment<TViewModel>(
   R.layout.fragment_base_group_selection_step
 ) where TViewModel : BaseSelectionStepViewModel<Item, SelectionItem> {
-
-  protected val sharedViewModel: SelectionStepsSharedViewModel by sharedViewModel()
 
   @get:StringRes
   protected abstract val titleRes: Int
@@ -30,7 +27,6 @@ abstract class BaseSelectionStepFragment<Item, SelectionItem, TViewModel> : Navi
 
   protected fun onItemSelected(item: SelectionItem) {
     viewModel.dispatchEvent(ViewEvent.Select(item))
-    sharedViewModel.dispatchEvent(SharedEvent.ItemSelected(item))
   }
 
   protected abstract fun submitItems(items: List<Item>)
