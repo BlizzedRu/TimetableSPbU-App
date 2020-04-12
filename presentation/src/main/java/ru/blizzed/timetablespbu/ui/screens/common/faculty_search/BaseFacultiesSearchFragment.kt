@@ -3,18 +3,18 @@ package ru.blizzed.timetablespbu.ui.screens.common.faculty_search
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.common_search_appbar_layout.*
-import kotlinx.android.synthetic.main.common_search_screen_layout.*
+import kotlinx.android.synthetic.main.common_search_appbar_layout.search
+import kotlinx.android.synthetic.main.common_search_screen_layout.loadableContentLayout
+import kotlinx.android.synthetic.main.common_search_screen_layout.recycler
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.blizzed.timetablespbu.R
-import ru.blizzed.timetablespbu.core.BaseFragment
-import ru.blizzed.timetablespbu.core.NavigationActivity
+import ru.blizzed.timetablespbu.core.navigation.NavigationFragment
 import ru.blizzed.timetablespbu.domain.entities.Faculty
 import ru.blizzed.timetablespbu.ui.widget.LoadableContentLayout
 
-abstract class BaseFacultiesSearchFragment : BaseFragment<NavigationActivity>() {
+abstract class BaseFacultiesSearchFragment : NavigationFragment<FacultiesSearchViewModel>(R.layout.common_search_screen_layout) {
 
-    private val viewModel: FacultiesSearchViewModel by viewModel()
+    override val viewModel: FacultiesSearchViewModel by viewModel()
 
     private val facultiesAdapter by lazy {
         FacultiesAdapter().also {
@@ -23,8 +23,6 @@ abstract class BaseFacultiesSearchFragment : BaseFragment<NavigationActivity>() 
             }
         }
     }
-
-    override val layoutRes: Int = R.layout.common_search_screen_layout
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
