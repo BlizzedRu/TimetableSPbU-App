@@ -4,7 +4,7 @@ import ru.blizzed.timetablespbu.domain.entities.FacultyAlias
 import ru.blizzed.timetablespbu.domain.entities.StudyLevel
 import java.util.concurrent.ConcurrentHashMap
 
-class DivisionsLocalDataSource {
+class DivisionsCacheDataSource {
 
   private val cache: ConcurrentHashMap<FacultyAlias, List<StudyLevel>> = ConcurrentHashMap()
 

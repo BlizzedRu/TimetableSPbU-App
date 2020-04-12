@@ -3,7 +3,7 @@ package ru.blizzed.timetablespbu.di
 import org.koin.dsl.module
 import ru.blizzed.timetablespbu.data.datasources.AddressesLocalDataSource
 import ru.blizzed.timetablespbu.data.datasources.AddressesRemoteDataSource
-import ru.blizzed.timetablespbu.data.datasources.DivisionsLocalDataSource
+import ru.blizzed.timetablespbu.data.datasources.DivisionsCacheDataSource
 import ru.blizzed.timetablespbu.data.datasources.DivisionsRemoteDataSource
 import ru.blizzed.timetablespbu.data.datasources.EducatorsLocalDataSource
 import ru.blizzed.timetablespbu.data.datasources.EducatorsRemoteDataSource
@@ -22,5 +22,5 @@ val dataSourceModule = module {
     single { UserInfoDataSource(get(), get(dbScheduler)) }
 
     single { DivisionsRemoteDataSource(get(), get(ioScheduler)) }
-    single { DivisionsLocalDataSource() }
+    single { DivisionsCacheDataSource() }
 }
