@@ -5,11 +5,11 @@ import io.reactivex.Single
 import ru.blizzed.timetablespbu.domain.entities.AdmissionYear
 import ru.blizzed.timetablespbu.domain.entities.FacultyAlias
 import ru.blizzed.timetablespbu.domain.entities.StudyProgramCombination
-import ru.blizzed.timetablespbu.domain.usecases.GroupSearchUseCase
+import ru.blizzed.timetablespbu.domain.usecases.group_selection.GetProgramCombinationsUseCase
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.base.BaseSelectionStepViewModel
 
 class AdmissionYearStepViewModel(
-  private val groupSearchUseCase: GroupSearchUseCase
+  private val getProgramCombinations: GetProgramCombinationsUseCase
 ) : BaseSelectionStepViewModel<StudyProgramCombination, AdmissionYear>() {
 
   private lateinit var facultyAlias: FacultyAlias
@@ -19,8 +19,7 @@ class AdmissionYearStepViewModel(
     onInitialized()
   }
 
-  override fun loadItems(): Single<List<StudyProgramCombination>> =
-    groupSearchUseCase.getProgramCombinations(facultyAlias, studyLevelId)
+  override fun loadItems(): Single<List<StudyProgramCombination>> = getProgramCombinations(facultyAlias, studyLevelId)
 
   override fun onItemSelected(item: AdmissionYear) {
     navigate(AdmissionYearSelectionStepFragmentDirections.actionAdmissionYearSelectionStepToGroupSelectionStep(item.studyProgramId))
