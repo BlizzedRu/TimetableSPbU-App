@@ -32,4 +32,6 @@ fun RecyclerView.ViewHolder.getColorStateList(@ColorRes resId: Int): ColorStateL
 
 fun RecyclerView.ViewHolder.getDrawable(@DrawableRes resId: Int): Drawable? = ContextCompat.getDrawable(context, resId)
 
-fun RecyclerView.ViewHolder.inflate(@LayoutRes layoutRes: Int): View = LayoutInflater.from(itemView.context).inflate(layoutRes, null, false)
+@Suppress("UNCHECKED_CAST")
+fun <V: View> RecyclerView.ViewHolder.inflate(@LayoutRes layoutRes: Int): View =
+    LayoutInflater.from(itemView.context).inflate(layoutRes, null, false) as V
