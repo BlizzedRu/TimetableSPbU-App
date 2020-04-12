@@ -3,11 +3,13 @@ package ru.blizzed.timetablespbu.extensions
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
+import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
+import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -29,3 +31,5 @@ fun RecyclerView.ViewHolder.getColor(@ColorRes resId: Int): Int = ContextCompat.
 fun RecyclerView.ViewHolder.getColorStateList(@ColorRes resId: Int): ColorStateList? = ContextCompat.getColorStateList(context, resId)
 
 fun RecyclerView.ViewHolder.getDrawable(@DrawableRes resId: Int): Drawable? = ContextCompat.getDrawable(context, resId)
+
+fun RecyclerView.ViewHolder.inflate(@LayoutRes layoutRes: Int): View = LayoutInflater.from(itemView.context).inflate(layoutRes, null, false)

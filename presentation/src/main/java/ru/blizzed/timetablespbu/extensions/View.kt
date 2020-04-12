@@ -53,4 +53,6 @@ fun View.disableTouchEvents() = setOnTouchListener(DisablingTouchEventsListener)
  */
 fun View.enableTouchEvents() = setOnTouchListener(null)
 
+fun View.inflate(@LayoutRes layoutRes: Int): View = LayoutInflater.from(context).inflate(layoutRes, null, false)
+
 fun ViewGroup.inflateAsParent(@LayoutRes layoutRes: Int): View = LayoutInflater.from(context).inflate(layoutRes, this, false)
