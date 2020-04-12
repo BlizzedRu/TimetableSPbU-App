@@ -12,6 +12,8 @@ data class StudyProgramCombination(
 )
 
 data class AdmissionYear(
-  val studyProgramId: Int,
+  val studyProgramId: StudyProgramId,
   val year: Int
 )
+
+typealias StudyProgramId = Int

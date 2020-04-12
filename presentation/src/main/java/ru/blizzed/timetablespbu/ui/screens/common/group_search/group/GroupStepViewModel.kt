@@ -3,6 +3,7 @@ package ru.blizzed.timetablespbu.ui.screens.common.group_search.group
 import android.os.Bundle
 import io.reactivex.Single
 import ru.blizzed.timetablespbu.domain.entities.Group
+import ru.blizzed.timetablespbu.domain.entities.StudyProgramId
 import ru.blizzed.timetablespbu.domain.usecases.group_selection.GetGroupsByProgramUseCase
 import ru.blizzed.timetablespbu.domain.usecases.group_selection.SelectGroupUseCase
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.base.BaseSelectionStepViewModel
@@ -12,7 +13,7 @@ class GroupStepViewModel(
   private val selectGroup: SelectGroupUseCase
 ) : BaseSelectionStepViewModel<Group, Group>() {
 
-  private var studyProgramId: Int = -1
+  private var studyProgramId: StudyProgramId = -1
 
   init {
     onInitialized()

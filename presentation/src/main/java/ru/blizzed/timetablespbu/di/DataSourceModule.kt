@@ -9,6 +9,7 @@ import ru.blizzed.timetablespbu.data.datasources.EducatorsLocalDataSource
 import ru.blizzed.timetablespbu.data.datasources.EducatorsRemoteDataSource
 import ru.blizzed.timetablespbu.data.datasources.FacultiesAssetsDataSource
 import ru.blizzed.timetablespbu.data.datasources.GroupSelectionCacheDataSource
+import ru.blizzed.timetablespbu.data.datasources.GroupsCacheDataSource
 import ru.blizzed.timetablespbu.data.datasources.UserInfoDataSource
 
 val dataSourceModule = module {
@@ -26,4 +27,6 @@ val dataSourceModule = module {
     single { DivisionsCacheDataSource() }
 
     single { GroupSelectionCacheDataSource() }
+
+    single { GroupsCacheDataSource() }
 }

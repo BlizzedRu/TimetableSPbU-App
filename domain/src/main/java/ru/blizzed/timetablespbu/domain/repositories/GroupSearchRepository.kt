@@ -5,6 +5,7 @@ import ru.blizzed.timetablespbu.domain.entities.FacultyAlias
 import ru.blizzed.timetablespbu.domain.entities.Group
 import ru.blizzed.timetablespbu.domain.entities.StudyLevel
 import ru.blizzed.timetablespbu.domain.entities.StudyProgramCombination
+import ru.blizzed.timetablespbu.domain.entities.StudyProgramId
 
 interface GroupSearchRepository {
 
@@ -12,6 +13,6 @@ interface GroupSearchRepository {
 
     fun getProgramCombinations(facultyAlias: String, studyLevelId: Int): Single<List<StudyProgramCombination>>
 
-    fun getGroupsByProgramId(programId: Int): Single<List<Group>>
+    fun getGroupsByProgramId(programId: StudyProgramId): Single<List<Group>>
 
 }

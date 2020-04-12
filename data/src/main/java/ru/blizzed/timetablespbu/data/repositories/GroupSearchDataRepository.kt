@@ -3,14 +3,17 @@ package ru.blizzed.timetablespbu.data.repositories
 import io.reactivex.Single
 import ru.blizzed.timetablespbu.data.datasources.DivisionsCacheDataSource
 import ru.blizzed.timetablespbu.data.datasources.DivisionsRemoteDataSource
+import ru.blizzed.timetablespbu.data.datasources.GroupsCacheDataSource
 import ru.blizzed.timetablespbu.domain.entities.Group
 import ru.blizzed.timetablespbu.domain.entities.StudyLevel
 import ru.blizzed.timetablespbu.domain.entities.StudyProgramCombination
+import ru.blizzed.timetablespbu.domain.entities.StudyProgramId
 import ru.blizzed.timetablespbu.domain.repositories.GroupSearchRepository
 
 class GroupSearchDataRepository(
   private val divisionsRemoteDataSource: DivisionsRemoteDataSource,
-  private val divisionsCacheDataSource: DivisionsCacheDataSource
+  private val divisionsCacheDataSource: DivisionsCacheDataSource,
+  private val groupsCacheDataSource: GroupsCacheDataSource
 ) : GroupSearchRepository {
 
   override fun getStudyLevelsByDivisionAlias(facultyAlias: String): Single<List<StudyLevel>> =
@@ -27,7 +30,10 @@ class GroupSearchDataRepository(
         ?: throw IllegalStateException("Study combinations not found for faculty $facultyAlias and study level id $studyLevelId")
     }
 
-  override fun getGroupsByProgramId(programId: Int): Single<List<Group>> =
-    divisionsRemoteDataSource.getProgramGroups(programId)
+  override fun getGroupsByProgramId(programId: StudyProgramId): Single<List<Group>> =
+    groupsCacheDataSource.getOrNull(programId)
+      ?.let { Single.just(it) }
+      ?: divisionsRemoteDataSource.getProgramGroups(programId)
+        .doOnSuccess { groups -> groupsCacheDataSource.put(programId, groups) }
 
 }
