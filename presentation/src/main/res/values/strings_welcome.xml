@@ -12,4 +12,6 @@
     <string name="welcome_student_group_search_step_program_combination_title">Образовательная программа</string>
     <string name="welcome_student_group_search_step_group_title">Группа</string>
     <string name="welcome_student_group_search_step_admission_year_title">Год поступления</string>
+
+    <string name="welcome_student_group_search_selected_groups_title">Выбранные группы</string>
 </resources>
