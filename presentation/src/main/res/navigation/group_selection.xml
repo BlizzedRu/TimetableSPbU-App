@@ -33,6 +33,11 @@
     </fragment>
     <fragment
         android:id="@+id/groupSelectionStep"
-        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.group.GroupSelectionStepFragment"
-        android:label="GroupSelectionStep" />
+        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.admission_year.AdmissionYearSelectionStepFragment"
+        android:label="GroupSelectionStep" >
+        <argument android:name="studyLevelId"
+            app:argType="integer"/>
+        <argument android:name="facultyAlias"
+            app:argType="string"/>
+    </fragment>
 </navigation>

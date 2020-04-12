@@ -8,16 +8,21 @@ import ru.blizzed.timetablespbu.domain.repositories.FacultiesRepository
 import ru.blizzed.timetablespbu.domain.repositories.GroupSearchRepository
 
 class GroupSearchUseCase(
-        private val groupSearchRepository: GroupSearchRepository,
-        private val facultiesRepository: FacultiesRepository
+  private val groupSearchRepository: GroupSearchRepository,
+  private val facultiesRepository: FacultiesRepository
 ) {
 
-    fun getAllFaculties() = facultiesRepository.getAll()
+  fun getAllFaculties() = facultiesRepository.getAll()
 
-    fun getStudyLevelsByDivisionAlias(facultyAlias: FacultyAlias) = groupSearchRepository.getStudyLevelsByDivisionAlias(facultyAlias)
+  fun getStudyLevelsByDivisionAlias(facultyAlias: FacultyAlias) =
+    groupSearchRepository.getStudyLevelsByDivisionAlias(facultyAlias)
 
-    fun getStudyProgramCombinationsByLevel(studyLevel: StudyLevel) = Single.just(studyLevel.studyProgramCombinations)
+  fun getStudyProgramCombinationsByLevel(studyLevel: StudyLevel) = Single.just(studyLevel.studyProgramCombinations)
 
-    fun getGroupsByAdmissionYear(admissionYear: AdmissionYear) = groupSearchRepository.getGroupsByProgramId(admissionYear.studyProgramId)
+  fun getProgramCombinations(facultyAlias: FacultyAlias, studyLevelId: Int) =
+    groupSearchRepository.getProgramCombinations(facultyAlias, studyLevelId)
+
+  fun getGroupsByAdmissionYear(admissionYear: AdmissionYear) =
+    groupSearchRepository.getGroupsByProgramId(admissionYear.studyProgramId)
 
 }
