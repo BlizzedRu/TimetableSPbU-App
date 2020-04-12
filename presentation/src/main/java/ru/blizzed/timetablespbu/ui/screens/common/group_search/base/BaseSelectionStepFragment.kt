@@ -25,7 +25,7 @@ abstract class BaseSelectionStepFragment<Item, SelectionItem, TViewModel> : Navi
     stepTitle.setText(titleRes)
 
     viewModel.observeState(this, ::render)
-    viewModel.dispatchEvent(ViewEvent.Load())
+    viewModel.dispatchEvent(ViewEvent.Load)
   }
 
   protected fun onItemSelected(item: SelectionItem) {
@@ -51,7 +51,7 @@ abstract class BaseSelectionStepFragment<Item, SelectionItem, TViewModel> : Navi
 
   private fun renderError() {
     loadableContentLayout.status = LoadableContentLayout.Status.ERROR
-    loadableContentLayout.setOnRetryButtonClickListener { viewModel.dispatchEvent(ViewEvent.Load()) }
+    loadableContentLayout.setOnRetryButtonClickListener { viewModel.dispatchEvent(ViewEvent.Load) }
   }
 
   private fun renderLoaded(items: List<Item>) {
