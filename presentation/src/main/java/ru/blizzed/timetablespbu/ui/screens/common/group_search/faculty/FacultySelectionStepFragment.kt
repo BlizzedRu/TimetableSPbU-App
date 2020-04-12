@@ -27,7 +27,7 @@ class FacultySelectionStepFragment :
     recycler.adapter = adapter
   }
 
-  override fun renderLoaded(items: List<Faculty>) {
+  override fun submitItems(items: List<Faculty>) {
     adapter.submitItems(items)
   }
 

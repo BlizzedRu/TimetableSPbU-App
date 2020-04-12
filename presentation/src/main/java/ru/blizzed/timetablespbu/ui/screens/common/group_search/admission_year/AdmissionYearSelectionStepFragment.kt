@@ -23,7 +23,7 @@ class AdmissionYearSelectionStepFragment :
     recycler.adapter = adapter
   }
 
-  override fun renderLoaded(items: List<StudyProgramCombination>) {
+  override fun submitItems(items: List<StudyProgramCombination>) {
     adapter.submitItems(items)
   }
 

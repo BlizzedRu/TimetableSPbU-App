@@ -6,6 +6,7 @@ import ru.blizzed.timetablespbu.ui.screens.common.faculty_search.FacultiesSearch
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.admission_year.AdmissionYearStepViewModel
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.base.SelectionStepsSharedViewModel
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.faculty.FacultySelectionStepViewModel
+import ru.blizzed.timetablespbu.ui.screens.common.group_search.group.GroupStepViewModel
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.study_level.StudyLevelStepViewModel
 import ru.blizzed.timetablespbu.ui.screens.launcher.LauncherViewModel
 import ru.blizzed.timetablespbu.ui.screens.welcome.student.GroupSelectionSharedViewModel
@@ -24,4 +25,5 @@ val viewModelModule = module {
     viewModel { FacultySelectionStepViewModel(get()) }
     viewModel { StudyLevelStepViewModel(get()) }
     viewModel { AdmissionYearStepViewModel(get()) }
+    viewModel { GroupStepViewModel(get()) }
 }

@@ -1,22 +1,22 @@
-package ru.blizzed.timetablespbu.ui.screens.common.group_search.study_level
+package ru.blizzed.timetablespbu.ui.screens.common.group_search.group
 
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_base_group_selection_step.recycler
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.blizzed.timetablespbu.R
-import ru.blizzed.timetablespbu.domain.entities.StudyLevel
+import ru.blizzed.timetablespbu.domain.entities.Group
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.base.BaseSelectionStepAdapter
 import ru.blizzed.timetablespbu.ui.screens.common.group_search.base.BaseSelectionStepFragment
 
-class StudyLevelSelectionStepFragment : BaseSelectionStepFragment<StudyLevel, StudyLevel, StudyLevelStepViewModel>() {
+class GroupSelectionStepFragment : BaseSelectionStepFragment<Group, Group, GroupStepViewModel>() {
 
-  override val viewModel: StudyLevelStepViewModel by viewModel()
+  override val viewModel: GroupStepViewModel by viewModel()
 
-  override val titleRes: Int = R.string.welcome_student_group_search_step_level_title
+  override val titleRes: Int = R.string.welcome_student_group_search_step_group_title
 
   private val adapter by lazy {
-    BaseSelectionStepAdapter(StudyLevel::name).also {
+    BaseSelectionStepAdapter(Group::alias).also {
       it.onItemClickListener = { item, _ ->
         onItemSelected(item)
       }
@@ -28,7 +28,7 @@ class StudyLevelSelectionStepFragment : BaseSelectionStepFragment<StudyLevel, St
     recycler.adapter = adapter
   }
 
-  override fun submitItems(items: List<StudyLevel>) {
+  override fun submitItems(items: List<Group>) {
     adapter.submitItems(items)
   }
 }

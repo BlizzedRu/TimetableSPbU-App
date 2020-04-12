@@ -1,4 +1,4 @@
-package ru.blizzed.timetablespbu.ui.screens.common.group_search.base
+package ru.blizzed.timetablespbu.ui.screens.common.group_search.group
 
 import android.view.View
 import android.view.ViewGroup
@@ -6,20 +6,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import ru.blizzed.timetablespbu.R
+import ru.blizzed.timetablespbu.domain.entities.Group
 import ru.blizzed.timetablespbu.extensions.inflateAsParent
 import ru.blizzed.timetablespbu.ui.common.adapters.BaseSingleTypeListAdapter
-import ru.blizzed.timetablespbu.ui.common.adapters.SimpleDiffCallback2
+import ru.blizzed.timetablespbu.ui.common.adapters.SimpleDiffCallback
+import ru.blizzed.timetablespbu.ui.screens.common.group_search.group.GroupSelectionStepAdapter.ViewHolder
 
-typealias ItemTitleProvider<T> = T.() -> String
-
-class BaseSelectionStepAdapter<Item>(
-  private val titleProvider: ItemTitleProvider<Item>
-) : BaseSingleTypeListAdapter<Item, BaseSelectionStepAdapter.ViewHolder>(createDiffCallback(titleProvider)) {
+class GroupSelectionStepAdapter : BaseSingleTypeListAdapter<Group, ViewHolder>(DIFF_CALLBACK) {
 
   companion object {
-    fun <T> createDiffCallback(converter: ItemTitleProvider<T>) = object : SimpleDiffCallback2<T>() {
-      override fun areContentsTheSame(oldItem: T, newItem: T): Boolean =
-        converter.invoke(oldItem) == converter.invoke(newItem)
+    val DIFF_CALLBACK = object : SimpleDiffCallback<Group>() {
+      override fun areItemsTheSame(oldItem: Group, newItem: Group): Boolean {
+        return oldItem.id == newItem.id
+      }
     }
   }
 
@@ -33,15 +32,13 @@ class BaseSelectionStepAdapter<Item>(
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: List<Any>) {
     super.onBindViewHolder(holder, position, payloads)
-    titleProvider.invoke(getItems()[holder.adapterPosition]).let(holder::bind)
+    holder.bind(getItems()[holder.adapterPosition])
   }
 
   class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    fun bind(text: String) {
-      (itemView as TextView).text = text
+    fun bind(group: Group) {
+      (itemView as TextView).text = group.alias
     }
-
   }
 
 }

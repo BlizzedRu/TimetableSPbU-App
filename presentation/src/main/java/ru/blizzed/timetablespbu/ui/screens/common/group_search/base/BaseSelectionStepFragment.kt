@@ -33,7 +33,7 @@ abstract class BaseSelectionStepFragment<Item, SelectionItem, TViewModel> : Navi
     sharedViewModel.dispatchEvent(SharedEvent.ItemSelected(item))
   }
 
-  protected abstract fun renderLoaded(items: List<Item>)
+  protected abstract fun submitItems(items: List<Item>)
 
   private fun render(state: ViewState<Item>) {
     with(state) {
@@ -51,7 +51,12 @@ abstract class BaseSelectionStepFragment<Item, SelectionItem, TViewModel> : Navi
 
   private fun renderError() {
     loadableContentLayout.status = LoadableContentLayout.Status.ERROR
-//    loadableContentLayout.setOnRetryButtonClickListener { viewModel.dispatchEvent(ViewEvent.Load(param.value)) }
+    loadableContentLayout.setOnRetryButtonClickListener { viewModel.dispatchEvent(ViewEvent.Load()) }
+  }
+
+  private fun renderLoaded(items: List<Item>) {
+    loadableContentLayout.status = LoadableContentLayout.Status.CONTENT
+    submitItems(items)
   }
 
 }

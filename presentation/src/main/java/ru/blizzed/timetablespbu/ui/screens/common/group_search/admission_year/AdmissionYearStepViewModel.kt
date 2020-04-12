@@ -23,6 +23,7 @@ class AdmissionYearStepViewModel(
     groupSearchUseCase.getProgramCombinations(facultyAlias, studyLevelId)
 
   override fun onItemSelected(item: AdmissionYear) {
+    navigate(AdmissionYearSelectionStepFragmentDirections.actionAdmissionYearSelectionStepToGroupSelectionStep(item.studyProgramId))
   }
 
   override fun observeArguments(bundle: Bundle) {

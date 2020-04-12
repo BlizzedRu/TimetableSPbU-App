@@ -24,7 +24,7 @@
         <argument android:name="facultyAlias"
             app:argType="string"/>
         <action android:id="@+id/action_studyLevelSelectionStep_to_groupSelectionStep"
-            app:destination="@id/groupSelectionStep"
+            app:destination="@id/admissionYearSelectionStep"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -32,12 +32,26 @@
             app:popUpTo="@id/studyLevelSelectionStep"/>
     </fragment>
     <fragment
-        android:id="@+id/groupSelectionStep"
+        android:id="@+id/admissionYearSelectionStep"
         android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.admission_year.AdmissionYearSelectionStepFragment"
-        android:label="GroupSelectionStep" >
+        android:label="AdmissionYearSelectionStep">
         <argument android:name="studyLevelId"
             app:argType="integer"/>
         <argument android:name="facultyAlias"
             app:argType="string"/>
+        <action android:id="@+id/action_admissionYearSelectionStep_to_groupSelectionStep"
+            app:destination="@id/groupSelectionStep"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/admissionYearSelectionStep"/>
+    </fragment>
+    <fragment
+        android:id="@+id/groupSelectionStep"
+        android:name="ru.blizzed.timetablespbu.ui.screens.common.group_search.group.GroupSelectionStepFragment"
+        android:label="GroupSelectionStep">
+        <argument android:name="programId"
+            app:argType="integer"/>
     </fragment>
 </navigation>
